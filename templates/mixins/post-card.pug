@@ -1,0 +1,44 @@
+mixin post-card(post)
+    .card-post
+        .row
+            //- avatar pic
+            //- .col-xs-3.col-sm-2
+            //-     a(href='/profile/' + post.author)
+            //-         img.img-circle.img-user(src=post.author.authorPhoto, alt=post.author.authorName.full)
+            //- author name
+            .col-xs-9.col-sm-10.info-user
+                h3
+                    a(href='/profile/' + post.author.slug) #{post.author.authorName.full}
+                p
+                    i
+                        if post.publishedDate
+                            | #{post._.publishedDate.format('MMMM Do, YYYY')}
+                p
+                    | #{post.slug}
+
+//- .card-post
+//-     .row
+//-         .col-xs-3.col-sm-2
+//-             a(href='personal-profile.html')
+//-                 img.img-circle.img-user(src='img/user.jpg', alt='User name')
+//-         .col-xs-9.col-sm-10.info-user
+//-             h3
+//-                 a(href='personal-profile.html') My User
+//-             p
+//-                 i 2h
+//-     .row
+//-         .col-sm-8.col-sm-offset-2.data-post
+//-             p Lorem Ipsum Dolor si amet
+//-             .reaction
+//-                 img.emoji(draggable='false', alt='❤', src='https://twemoji.maxcdn.com/16x16/2764.png')
+//-                 img.emoji(draggable='false', alt='😃', src='https://twemoji.maxcdn.com/16x16/1f603.png')
+//-             .comments
+//-                 ul
+//-                     .more-comments View more comments
+//-                     li
+//-                         b User1
+//-                     li
+//-                         b User2
+//-                         img.emoji(draggable='false', alt='😂', src='https://twemoji.maxcdn.com/16x16/1f602.png')
+//-                 form
+//-                     input.form-control(type='text', placeholder='Add a comment')

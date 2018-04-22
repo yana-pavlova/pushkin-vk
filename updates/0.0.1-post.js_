@@ -1,0 +1,66 @@
+var keystone = require('keystone');
+var async = require('async');
+
+async function findAuthor(name) {
+    let q = keystone.list('User').model.findOne({
+        'name.first': name,
+    // }).populate('author categories'); // TODO kill me
+    })
+
+    let author = await q.exec((err, result) => {
+        return result
+    })
+    console.log(author);
+    
+    return author;
+}
+
+
+exports.create = {
+    Post: [
+        { 
+            title: 'Написал новый стих, зацените.',
+            state: 'published',
+            // author: findAuthor('Admin'),
+            publishedDate: new Date(),
+            content: {
+                extended: 'Мой дядя самых честных грабил...',
+            },
+        },
+    ],
+};
+
+/*
+
+// This is the long-hand version of the functionality above:
+
+var keystone = require('keystone');
+var async = require('async');
+var User = keystone.list('User');
+
+var admins = [
+    { email: 'user@keystonejs.com', password: 'admin', name: { first: 'Admin', last: 'User' } }
+];
+
+function createAdmin (admin, done) {
+
+    var newAdmin = new User.model(admin);
+
+    newAdmin.isAdmin = true;
+    newAdmin.save(function (err) {
+        if (err) {
+            console.error('Error adding admin ' + admin.email + ' to the database:');
+            console.error(err);
+        } else {
+            console.log('Added admin ' + admin.email + ' to the database.');
+        }
+        done(err);
+    });
+
+}
+
+exports = module.exports = function (done) {
+    async.forEach(admins, createAdmin, done);
+};
+
+*/

@@ -1,0 +1,50 @@
+var keystone = require('keystone');
+var Types = keystone.Field.Types;
+
+/**
+ * Author Model
+ * ==========
+ */
+let Author = new keystone.List('Author');
+
+Author.add(
+	{
+		name: { type: Types.Name, required: true,  initial: true, index: true }, // имя
+		// surname: { type: Types.Name, required: true, index: true }, // фамилия
+		patronymic: { type: Types.Text, required: false, initial: true, label: 'Отчество', },
+		birthDay: { type: Types.Date, required: true, initial: true, label: 'Дата рождения', },
+		birthCountry: { type: Types.Text, required: true, initial: true, label: 'Страна рождения', },
+		birthCity: { type: Types.Text, required: true, initial: true, label: 'Город рождения', }, 
+		wikipediaLink: {type: Types.Url, required: true, initial: true, label: 'Ссылка на страницу в Wikipedia', },
+		honors: { type: Types.Text, required: false, initial: true, label: 'Награды', },
+		additionalLinks: { type: Types.Text, required: false, initial: true, label: 'Ссылки на дополнительную информацию', },
+		photo: { type: Types.Text, required: true, initial: true, label: 'Фото', },
+		children: { type: Types.Text, required: false, initial: true, label: 'Дети', },
+		parents: { type: Types.Text, required: false, initial: true, label: 'Родители', },
+		user: { type: Types.Relationship, ref: 'User', index: true, label: 'Пользователь, отвественный за автора', },
+		
+		// email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
+		// password: { type: Types.Password, initial: true, required: true },
+	}, 
+	// 	'Permissions', {
+	// 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
+	// }
+);
+
+// Provide access to Keystone
+// User.schema.virtual('canAccessKeystone').get(function () {
+// 	return this.isAdmin;
+// });
+
+
+/**
+ * Relationships
+ */
+Author.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
+
+
+/**
+ * Registration
+ */
+// User.defaultColumns = 'name, email, isAdmin';
+// User.register();

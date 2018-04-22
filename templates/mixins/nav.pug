@@ -1,0 +1,64 @@
+mixin nav()
+    .navbar(role='navigation-demo')
+        .container
+            .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navigation')
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href='/')
+                    img(alt='ККРЯ' src='/images/logo.png')
+            
+            #navigation.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-left
+                    each link in navLinks
+                        li(class=(section == link.key ? 'active' : null)): a.btn(href=link.href class=(link.style ? link.style : 'btn-simple'))= link.label
+                ul.nav.navbar-nav.navbar-right
+                        if user
+                            if user.canAccessKeystone
+                                li: a(href='/keystone') Open Keystone
+                            li: a(href='/keystone/signout') Sign Out
+                        else
+                            li: a(href='/keystone/signin') Sign In
+
+        //- search field
+        //- form.text-left.search(method='GET')
+        //-     input(name='q', type='text', placeholder='Search..')
+        //- menu
+        //- .menu-icon
+        //-     .dropdown
+        //-         span#dropdownSettings.dropdown-toggle(role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
+        //-             span.hidden-xs.hidden-sm Settings
+        //-             i.fa.fa-cogs(aria-hidden='true')
+        //-         ul.dropdown-menu.dropdown-menu-right(aria-labelledby='dropdownSettings')
+        //-             li
+        //-                 a(href='settings.html', title='Settings', data-toggle='modal', data-target='#settingsmodal')
+        //-                     .col-xs-4
+        //-                         i.fa.fa-wrench(aria-hidden='true')
+        //-                     .col-xs-8.text-left
+        //-                         span Settings
+        //-             li
+        //-                 a(href='#', title='Settings')
+        //-                     .col-xs-4
+        //-                         i.fa.fa-question(aria-hidden='true')
+        //-                     .col-xs-8.text-left
+        //-                         span FAQ
+        //-             li
+        //-                 a(href='#', title='Settings')
+        //-                     .col-xs-4
+        //-                         i.fa.fa-sign-out(aria-hidden='true')
+        //-                     .col-xs-8.text-left
+        //-                         span Logout
+
+        //- .second-icon.menu-icon
+        //-     span
+        //-         a(href='personal-profile.html', title='Profile')
+        //-             span.hidden-xs.hidden-sm 
+        //-             i.fa.fa-user(aria-hidden='true')
+
+        //- .second-icon.menu-icon
+        //-     span
+        //-         a(href='wall.html', title='Wall')
+        //-             span.hidden-xs.hidden-sm Wall
+        //-             i.fa.fa-database(aria-hidden='true')

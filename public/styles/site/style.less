@@ -1,0 +1,74 @@
+@color-body: #edf1f5;
+@color-header-background: #4F5467;
+@color-header-dropdown: #404040;
+@color-light-text: white;
+@color-light-text-darker: lightgray;
+@color-active-light: #f3ad00;
+@color-active-dark: #f3ad00;
+
+// buttons
+.btn {
+    min-width: 100px;
+    border-radius: 26px !important;
+    border: solid 3px;
+    border-color: @color-active-light;
+    fill: @color-active-light;
+    text-align: center;
+}
+
+// header
+.navbar {
+    min-height: 50px;
+    background: @color-header-background;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: fixed;
+    border: none !important;
+    border-radius: 0 !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+
+    // a, a:link, a:visited, a:focus {
+    //     color: @color-light-text;
+    //     text-decoration: none;
+    // }
+
+    .nav {
+        margin-bottom: 0 !important;
+    
+        a {
+            color: @color-light-text-darker !important;
+        }
+        a:hover {
+            color: @color-light-text !important;
+            background-color: transparent;
+        }
+        .active {
+            a {
+                color: @color-light-text !important;
+            }
+            .btn-danger {
+                background-color: @color-active-light !important;
+                color: white !important;
+                border-color: @color-active-light !important;
+            }
+        }
+    }
+
+    .navbar-brand {
+        position: relative;
+        img {
+            margin-top: 10px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+    }
+}
