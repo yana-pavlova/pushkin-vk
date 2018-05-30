@@ -6,8 +6,17 @@ var Types = keystone.Field.Types;
  * ==========
  */
 var User = new keystone.List('User',{
-    map: { name: 'slugLink' },
-    autokey: { path: 'slug', from: 'slugLink', unique: true },
+    label: 'Авторы',
+    map: { name: 'authorName' },
+    autokey: { path: 'slug', from: 'slugLink', unique: true, label: 'slug' },
+});
+
+let storage = new keystone.Storage({
+    adapter: keystone.Storage.Adapters.FS,
+    fs: {
+        path: 'uploads',
+        publicPath: '/public/uploads/',
+	}
 });
 
 User.add({
@@ -22,7 +31,7 @@ User.add({
     wikipediaLink: {type: Types.Url, required: true, initial: true, label: 'Ссылка на страницу в Wikipedia Автора', },
     honors: { type: Types.Text, required: false, initial: true, label: 'Награды Автора', },
     additionalLinks: { type: Types.Text, required: false, initial: true, label: 'Ссылки на дополнительную информацию об Авторе', },
-    authorPhoto: { type: Types.Text, required: true, initial: true, label: 'Фото Автора', },
+    authorPhoto: { type: Types.File, storage: storage, required: true, initial: true, label: 'Фото Автора', },
     children: { type: Types.Text, required: false, initial: true, label: 'Дети Автора', },
     parents: { type: Types.Text, required: false, initial: true, label: 'Родители Автора', },
 
@@ -39,12 +48,16 @@ User.schema.virtual('slugLink').get(function () {
     return this.authorName.full;
 });
 
+User.schema.methods.wasActive = function () {
+    this.lastActiveOn = new Date();
+    return this;
+};
 
 /**
  * Relationships
  */
 User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
-
+User.relationship({ ref: 'PostComment', path: 'postcomments', refPath: 'author' });
 
 /**
  * Registration

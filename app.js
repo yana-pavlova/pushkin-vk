@@ -18,6 +18,8 @@ keystone.init({
     'less': 'public',
     'static': [
         rootPath + '/public',
+        rootPath + '/uploads',
+        rootPath + '/node_modules',
     ],
 
     'favicon': 'public/favicon.ico',
@@ -53,10 +55,9 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-    // posts: ['posts', 'post-categories'], // TODO kill me
-    posts: ['posts'],
+    posts: ['posts', 'post-comments'],
     // galleries: 'galleries', // TODO kill me or use me
-    enquiries: 'enquiries', // TODO kill me or use me
+    // enquiries: 'enquiries', // TODO kill me or use me
     users: 'users',
 });
 

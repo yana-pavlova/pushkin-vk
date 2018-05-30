@@ -1,0 +1,199 @@
+//- include ../mixins/comments.pug
+
+mixin post-card(post)
+    .card-post(id='post_' + post.id)
+        .row.card-post-header
+            //- avatar pic
+            .col-xs-3.col-sm-2
+                a(href='/profile/' + post.author.slug)
+                    if post.author.authorPhoto.filename
+                        img.user-picture.img-circle(src=post.author.authorPhoto.filename, alt=post.author.authorName.full)
+                    else
+                        img.user-picture.img-circle(src='/images/avatar-default.png', alt=post.author.authorName.full)
+            //- author name
+            .col-xs-9.col-sm-10
+                div
+                    a(href='/profile/' + post.author.slug) #{post.author.authorName.full}
+                div
+                    if post.publishedDate
+                        | #{post._.publishedDate.format('MMMM Do, YYYY')}
+
+        .row
+            .card-post-content.col-sm-8.col-sm-offset-2
+                if post.content.length > 100
+                    div(onclick='showMore(this, "' + post.content + '")').card-post-text.post-extendable
+                        | #{post.content.substr(0, 100)}...
+                        br
+                        a Показать полностью
+                else
+                    div.card-post-text #{post.content}
+                //- TOOLBAR
+                //- if locals.data.canEditContent(user, { list: 'Post', id: post.id })
+                if (locals.user)
+                    if (locals.user.id == post.author.id)
+                        .post-tool-bar.dropdown
+                            button#dropdownMenu1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') ...
+                                span.caret
+                            ul.dropdown-menu(aria-labelledby='dropdownMenu1')
+                                li
+                                    a(onclick='editPost(this, "' + post.content + '", "' + post.id + '")') edit
+                                li
+                                    a(href='#') Another action
+                                li
+                                    a(href='#') Something else here
+                                li.divider(role='separator')
+                                li
+                                    a(href='#') Separated link
+        .row.comments
+            .col-sm-8.col-sm-offset-2
+                ul
+                    each comment in data.postComments
+                        if comment.post == post.id
+                            //- #{comment}
+                            li
+                                //- avatar pic
+                                .col-xs-3.col-sm-2
+                                    a(href='/profile/' + comment.author.slug)
+                                        if comment.author.authorPhoto.filename
+                                            img.user-picture.img-circle(src=comment.author.authorPhoto.filename, alt=comment.author.authorName.full)
+                                        else
+                                            img.user-picture.img-circle(src='/images/avatar-default.png', alt=comment.author.authorName.full)
+                                //- author name
+                                .col-xs-9.col-sm-10
+                                    div
+                                        a(href='/profile/' + comment.author.slug) #{comment.author.authorName.full}
+                                    div
+                                        if post.publishedDate
+                                            | #{comment._.publishedDate.format('MMMM Do, YYYY')}
+                                .comment-content
+                                    | #{comment.content}
+                                //- we can edit comments here
+                                //- if (locals.user.id == comment.author.id)
+                            //- #{createCommentEl(this, comment)}
+                
+                if locals.user
+                    .add-new-comment
+                        .comment-editor
+                            form(onsubmit='addComment(this, "' + post.id + '"); return false;')
+                                textarea.form-control
+                                button(type='submit').btn.btn-default Комментировать
+                
+block js
+    script.
+        var xhr = new XMLHttpRequest();
+
+        function showMore(that, fullText) {
+            that.innerText = fullText;
+            that.className = 'card-post-text';
+        }
+
+        function editPost(element, postContent, postId) {
+            var parentEl = document.getElementById('post_' + postId);
+            var postContentEl = parentEl.querySelector('.card-post-content');
+            var postTextEl = postContentEl.querySelector('.card-post-text');
+            postTextEl.hidden = true;
+            var postEditorEl = document.createElement('div');
+            postEditorEl.className = 'card-post-editor';
+            var textareaEl = document.createElement('textarea');
+            textareaEl.className = 'form-control';
+            textareaEl.innerText = postContent;
+            var cancelButtonEl = document.createElement('button');
+            cancelButtonEl.className = 'btn btn-default';
+            cancelButtonEl.innerText = 'Отменить';
+            cancelButtonEl.onclick = function() {
+                postEditorEl.hidden = true;
+                postTextEl.hidden = false;
+            };
+
+            var saveButtonEl = document.createElement('button');
+            saveButtonEl.className = 'btn btn-primary';
+            saveButtonEl.innerText = 'Сохранить';
+            saveButtonEl.onclick = function() {
+                let content = textareaEl.value;
+                xhr.open('GET', '/api/post/' + postId + '/update?content=' + content, true);
+                xhr.send();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == XMLHttpRequest.DONE) {
+                        postTextEl.innerText = content;
+                        postEditorEl.hidden = true;
+                        postTextEl.hidden = false;
+                    }
+                }
+            }
+            postEditorEl.appendChild(textareaEl);
+            postEditorEl.appendChild(cancelButtonEl);
+            postEditorEl.appendChild(saveButtonEl);
+            postContentEl.appendChild(postEditorEl);
+        }
+
+        function createCommentEl(this, comment) {
+            let el = $('li');
+            let avatarPic = $('div')
+                            .addClass('col-xs-3 col-sm-2')
+                                .append('a')
+                                    .attr('href', '/profile/' + comment.author.slug)
+                                    .append('img')
+                                        .addClass('user-picture img-circle')
+                                        .attr('alt', comment.author.authorName.full)
+                                        .attr('src', function() {
+                                            if (comment.author.authorPhoto.filename) return comment.author.authorPhoto.filename;
+                                            else return '/images/avatar-default.png';
+                                        })
+            
+            let authorNameContainer = $('div').addClass('col-xs-9 col-sm-10')
+            let authorNameLink = $('a').attr('href', '/profile/' + comment.author.slug).text(comment.author.authorName.full)
+            authorNameContainer
+                .append(authorNameLink)
+                .append('div')
+                    .text(function(){
+                        if (post.publishedDate) return comment._.publishedDate.format('MMMM Do, YYYY')
+                        else return ''
+                    })
+            let commentContent = $('div').addClass('comment-content').text(comment.content)
+        }
+
+        function addComment(that, postId) {
+            let content = that[0].value;
+            let q = '/api/comment/create?';
+            q += 'content=' + content;
+            q += '&post=' + postId;
+            xhr.open('GET', q, true);
+            xhr.send();
+            xhr.onreadystatechange = function(res) {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    console.log(content);
+                    console.log(res)
+                    //- postTextEl.innerText = content;
+                    //- postEditorEl.hidden = true;
+                    //- postTextEl.hidden = false;
+                }
+            }
+        }
+
+
+//- .card-post
+//-     .row
+//-         .col-xs-3.col-sm-2
+//-             a(href='personal-profile.html')
+//-                 img.img-circle.img-user(src='img/user.jpg', alt='User name')
+//-         .col-xs-9.col-sm-10.info-user
+//-             h3
+//-                 a(href='personal-profile.html') My User
+//-             p
+//-                 i 2h
+//-     .row
+//-         .col-sm-8.col-sm-offset-2.data-post
+//-             p Lorem Ipsum Dolor si amet
+//-             .reaction
+//-                 img.emoji(draggable='false', alt='❤', src='https://twemoji.maxcdn.com/16x16/2764.png')
+//-                 img.emoji(draggable='false', alt='😃', src='https://twemoji.maxcdn.com/16x16/1f603.png')
+//-             .comments
+//-                 ul
+//-                     .more-comments View more comments
+//-                     li
+//-                         b User1
+//-                     li
+//-                         b User2
+//-                         img.emoji(draggable='false', alt='😂', src='https://twemoji.maxcdn.com/16x16/1f602.png')
+//-                 form
+//-                     input.form-control(type='text', placeholder='Add a comment')

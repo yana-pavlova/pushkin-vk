@@ -1,0 +1,16 @@
+extends ../layouts/default
+
+block content
+    #content
+        .login-page(style="background-image: url('/images/login.jpg');")
+            .form-box.col-md-4.col-md-offset-4.col-sm-12
+                .form-logo
+                    p.text-center
+                        img(src='./images/logo.png', alt='logo')
+                
+                form
+                    input.form-control(type='text', placeholder='Username')
+                    input.form-control(type='password', placeholder='Password')
+                    input.btn.btn-info(type='submit', value='LOGIN')
+                    a.btn(href='#', title='Forgot password') Forgot your password?
+                    a.btn(href='signin.html', title='Signi in') New User?

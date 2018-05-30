@@ -1,0 +1,118 @@
+mixin comment(post)
+    .card-post(id='post_' + post.id)
+        .row.card-post-header
+            //- avatar pic
+            .col-xs-3.col-sm-2
+                a(href='/profile/' + post.author.slug)
+                    if post.author.authorPhoto
+                        img.card-post-header-avatar.img-circle(src=post.author.authorPhoto.filename, alt=post.author.authorName.full)
+                    else
+                        img.card-post-header-avatar.img-circle(src='/images/avatar-default.png', alt=post.author.authorName.full)
+            //- author name
+            .col-xs-9.col-sm-10
+                h3
+                    a(href='/profile/' + post.author.slug) #{post.author.authorName.full}
+                p
+                    if post.publishedDate
+                        | #{post._.publishedDate.format('MMMM Do, YYYY')}
+
+        .row.card-post-content
+            .col-sm-8.col-sm-offset-2
+                if post.content.length > 100
+                    div(onclick='showMore(this, "' + post.content + '")').card-post-text.post-extendable
+                        | #{post.content.substr(0, 100)}...
+                        br
+                        a Показать полностью
+                else
+                    div.card-post-text #{post.content}
+                //- TOOLBAR
+                if editable(user, { list: 'Post', id: post.id })
+                    .post-tool-bar.dropdown
+                        button#dropdownMenu1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') ...
+                            span.caret
+                        ul.dropdown-menu(aria-labelledby='dropdownMenu1')
+                            li
+                                a(onclick='editPost(this, "' + post.content + '", "' + post.id + '")') edit
+                            li
+                                a(href='#') Another action
+                            li
+                                a(href='#') Something else here
+                            li.divider(role='separator')
+                            li
+                                a(href='#') Separated link
+
+//- block js
+//-     script.
+//-         function showMore(that, fullText) {
+//-             that.innerText = fullText;
+//-             that.className = 'card-post-text';
+//-         }
+
+//-         function editPost(element, postContent, postId) {
+//-             var xhr = new XMLHttpRequest();
+//-             //- xhr.open("GET", url, false);
+//-             console.log(element, postContent, postId);
+//-             var parent = document.getElementById('post_' + postId);
+//-             var postText = parent.querySelector('.card-post-text');
+//-             postText.hidden = true;
+//-             var postEditor = document.createElement('div');
+//-             postEditor.className = 'card-post-editor';
+//-             var textarea = document.createElement('textarea');
+//-             textarea.className = 'form-control';
+//-             textarea.innerText = postContent;
+//-             var cancelButton = document.createElement('button');
+//-             cancelButton.className = 'btn btn-default';
+//-             cancelButton.innerText = 'Отменить';
+//-             cancelButton.onclick = function() {
+//-                 postEditor.hidden = true;
+//-                 postText.hidden = false;
+//-             };
+
+//-             var saveButton = document.createElement('button');
+//-             saveButton.className = 'btn btn-primary';
+//-             saveButton.innerText = 'Сохранить';
+//-             saveButton.onclick = function() {
+//-                 let content = textarea.value;
+//-                 xhr.open('GET', '/api/post/' + postId + '/update?content=' + content, true);
+//-                 xhr.send();
+//-                 xhr.onreadystatechange = function() {
+//-                     if (xhr.readyState == XMLHttpRequest.DONE) {
+//-                         postText.innerText = content;
+//-                         postEditor.hidden = true;
+//-                         postText.hidden = false;
+//-                     }
+//-                 }
+//-             }
+//-             postEditor.appendChild(textarea);
+//-             postEditor.appendChild(cancelButton);
+//-             postEditor.appendChild(saveButton);
+//-             parent.appendChild(postEditor);
+//-         }
+
+
+//- .card-post
+//-     .row
+//-         .col-xs-3.col-sm-2
+//-             a(href='personal-profile.html')
+//-                 img.img-circle.img-user(src='img/user.jpg', alt='User name')
+//-         .col-xs-9.col-sm-10.info-user
+//-             h3
+//-                 a(href='personal-profile.html') My User
+//-             p
+//-                 i 2h
+//-     .row
+//-         .col-sm-8.col-sm-offset-2.data-post
+//-             p Lorem Ipsum Dolor si amet
+//-             .reaction
+//-                 img.emoji(draggable='false', alt='❤', src='https://twemoji.maxcdn.com/16x16/2764.png')
+//-                 img.emoji(draggable='false', alt='😃', src='https://twemoji.maxcdn.com/16x16/1f603.png')
+//-             .comments
+//-                 ul
+//-                     .more-comments View more comments
+//-                     li
+//-                         b User1
+//-                     li
+//-                         b User2
+//-                         img.emoji(draggable='false', alt='😂', src='https://twemoji.maxcdn.com/16x16/1f602.png')
+//-                 form
+//-                     input.form-control(type='text', placeholder='Add a comment')

@@ -3,7 +3,7 @@ include ../mixins/nav
 
 
 doctype html
-html
+html(lang='ru')
 
     //- HTML HEADER
     head
@@ -37,10 +37,9 @@ html
 
     //- HTML BODY
     body
-
         //- HEADER
         #nav
-            +nav
+            //- +nav
             
         //- BODY
         #body
@@ -83,12 +82,18 @@ html
         //- them specifically here, instead of bootstrap-3.3.5.min.js
         script(src='/js/bootstrap/bootstrap-3.3.5.min.js')
 
+        script(src="/hyperhtml/index.js")
+
         //- The KeystoneJS Content Editor provides support for ks-editable data attributes,
         //- which generate links to edit content for users who can access Keystone
         if user && user.canAccessKeystone
             script(src='/keystone/js/content/editor.js')
 
         //- Add scripts that are globally required by your site here.
-
+        //- LOCALS
+        script.
+            let _LOCALS = !{data};
+            _LOCALS.section = "!{section}";
+        
         //- Include template-specific javascript files by extending the js block
         block js

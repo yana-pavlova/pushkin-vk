@@ -1,5 +1,7 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
+var express = require('express');
+var a = require('eslint')
 
 /**
  * Post Model
@@ -7,26 +9,50 @@ var Types = keystone.Field.Types;
  */
 
 var Post = new keystone.List('Post', {
-    map: { name: 'title' },
-    autokey: { path: 'slug', from: 'title', unique: true },
-});
+    label: 'Посты',
+    map: { name: 'content' },
+    defaultSort: '-publishedDate',
+})
 
 Post.add({
-    title: { type: String, required: true },
-    state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
-    author: { type: Types.Relationship, ref: 'User', index: true },
-    publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
-    image: { type: Types.CloudinaryImage },
-    content: {
-        // brief: { type: Types.Html, wysiwyg: true, height: 150 },
-        extended: { type: Types.Html, wysiwyg: true, height: 400 },
-    },
-    // categories: { type: Types.Relationship, ref: 'PostCategory', many: true },
-});
+    state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true, label: 'Статус' },
+    author: { type: Types.Relationship, ref: 'User', index: true, label: 'Автор' },
+    publishedDate: { type: Types.Date, default: new Date(), index: true, dependsOn: { state: 'published' }, label: 'Дата публикации' },
+    // image: { type: Types.CloudinaryImage, label: 'Картинка???' },
+    content: { type: Types.Textarea, wysiwyg: true, height: 400, label: 'Содержание' },
+})
 
-Post.schema.virtual('content.full').get(function () {
-    return this.content.extended || this.content.brief;
-});
+Post.schema.virtual('comments', {
+    ref: 'PostComment',
+    localField: '_id',
+    foreignField: 'post',
+})
 
-Post.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
+Post.schema.virtual('likes', {
+    ref: 'PostLike',
+    localField: '_id',
+    foreignField: 'post',
+})
+
+Post.schema.set('toJSON', {
+    virtuals: true,
+    transform: (doc, ret, options) => {
+        delete ret._;
+        delete ret.list;
+        delete ret.authorRefList;
+        delete ret.stateOptionsMap;
+        delete ret.stateOptions;
+        delete ret.stateLabel;
+        delete ret.stateData;
+        delete ret._id;
+        return ret;
+    }
+    
+})
+
+// Relationships
+Post.relationship({ ref: 'PostComment', refPath: 'post' });
+Post.relationship({ ref: 'PostLike', refPath: 'post' });
+
+Post.defaultColumns = 'content|20%, state, author, publishedDate';
 Post.register();

@@ -6,8 +6,8 @@ exports = module.exports = function (req, res) {
     var locals = res.locals;
 
     // Init locals
-    locals.section = 'wall';
+    locals.section = 'test';
     
     // Render the view
-    view.render('wall');
+    view.render('test');
 };
