@@ -1,5 +1,6 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+const keystone = require('keystone');
+const Types = keystone.Field.Types;
+const { storage } = require('../utils/storage');
 
 /**
  * User Model
@@ -11,14 +12,6 @@ var User = new keystone.List('User',{
     autokey: { path: 'slug', from: 'slugLink', unique: true, label: 'slug' },
 });
 
-let storage = new keystone.Storage({
-    adapter: keystone.Storage.Adapters.FS,
-    fs: {
-        path: 'uploads',
-        publicPath: '/public/uploads/',
-	}
-});
-
 User.add({
     name: { type: Types.Name, required: true, index: true },
     email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
@@ -26,6 +19,7 @@ User.add({
     authorName: { type: Types.Name, required: true,  initial: true, index: true, label: 'Фамилия и Имя Автора', },
     authorPatronymic: { type: Types.Text, required: false, initial: true, label: 'Отчество Автора', },
     birthDay: { type: Types.Date, required: true, initial: true, label: 'Дата рождения Автора', },
+    deathDay: { type: Types.Date, required: true, initial: true, label: 'Дата рождения Автора', },
     birthCountry: { type: Types.Text, required: true, initial: true, label: 'Страна рождения Автора', },
     birthCity: { type: Types.Text, required: true, initial: true, label: 'Город рождения Автора', }, 
     wikipediaLink: {type: Types.Url, required: true, initial: true, label: 'Ссылка на страницу в Wikipedia Автора', },
@@ -52,6 +46,20 @@ User.schema.methods.wasActive = function () {
     this.lastActiveOn = new Date();
     return this;
 };
+
+User.schema.set('toJSON', {
+    // virtuals: true,
+    transform: (doc, ret, options) => {
+        delete ret._;
+        // delete ret._id;
+        delete ret.email;
+        delete ret.isAdmin;
+        // delete ret.name;
+        delete ret.password;
+        return ret;
+    }
+    
+})
 
 /**
  * Relationships

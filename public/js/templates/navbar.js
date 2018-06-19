@@ -7,7 +7,7 @@ class NavBar extends hyperHTML.Component {
 
     render() {
         return this.html`
-            <div role="navigation-demo" class="navbar">
+            <div class="navbar">
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggle">

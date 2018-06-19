@@ -4,23 +4,34 @@
   "private": true,
   "dependencies": {
     "async": "2.1.4",
+    "bootstrap": "^4.1.1",
     "dotenv": "4.0.0",
     "hyperhtml": "^2.10.0",
+    "jquery": "^3.3.1",
     "keystone": "4.0.0-beta.5",
     "keystone-email": "1.0.5",
     "lodash": "^4.13.1",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "uppy": "^0.25.5",
+    "vanilla-lazyload": "^8.7.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "babel-loader": "^8.0.0-beta.3",
     "eslint": "3.15.0",
     "eslint-config-keystone": "3.0.0",
     "eslint-plugin-react": "^5.1.1",
     "nodemon": "^1.17.3",
-    "twemoji": "twitter/twemoji"
+    "twemoji": "twitter/twemoji",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8"
   },
   "scripts": {
     "lint": "eslint .",
+    "pack": "webpack",
     "nodemon": "node node_modules/nodemon/bin/nodemon.js ./app.js",
+    "dev": "NODE_ENV=development npm run pack & npm run nodemon",
     "start": "node app.js"
   }
 }

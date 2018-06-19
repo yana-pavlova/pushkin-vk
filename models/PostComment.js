@@ -9,7 +9,7 @@ var Types = keystone.Field.Types;
 var PostComment = new keystone.List('PostComment', {
     label: 'Комментарии',
     map: { name: 'content' },
-    defaultSort: '-post',
+    defaultSort: '-publishedDate',
 
 });
 

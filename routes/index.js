@@ -53,6 +53,9 @@ exports = module.exports = function (app) {
     app.get('/api/post/:id', keystone.middleware.api, routes.api.post.get);
     app.all('/api/post/:id/update', keystone.middleware.api, routes.api.post.update);
     app.get('/api/post/:id/remove', keystone.middleware.api, routes.api.post.remove);
+
+    // file
+    app.all('/api/file/uploadImage', keystone.middleware.api, routes.api.file.uploadImage);
     
     // likes
     app.all('/api/like/post/:id', keystone.middleware.api, routes.api.like.likePost);

@@ -1,10 +1,20 @@
 extends ../layouts/default
 
+block css
+    link(href="/uppy/dist/uppy.min.css", rel="stylesheet")
+
+//- block head 
+    //- script(src="/uppy/dist/uppy.min.js")
+
 block content
     #content
 
 block js
-    script(src="/js/templates/navbar.js")
-    script(src="/js/templates/posts.js")
-    script(src="/js/templates/authorsPage.js")
-    script(src="/js/view/author.js")
+    script(src="/js/build/vendors~author.js")
+    script(src="/js/build/commons.js")
+    script(src="/js/build/author.js")
+    
+    //- script(src="/js/templates/navbar.js")
+    //- script(src="/js/templates/posts.js")
+    //- script(src="/js/templates/authorsPage.js")
+    //- script(src="/js/view/author.js")

@@ -13,7 +13,7 @@ class Wall extends hyperHTML.Component {
                         ${new Posts(this.state)}
                     </div>
                     <div class="sidebar-right hidden-xs hidden-sm">
-                    ${new Related(this.state)}
+                        ${new Related(this.state)}
                     </div>
                 </div>
             </div>

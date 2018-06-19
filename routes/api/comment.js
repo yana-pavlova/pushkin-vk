@@ -6,11 +6,13 @@ let PostComment = keystone.list('PostComment');
 // List
 exports.list = function(req, res) {
     requireAdmin(req, res, () => {
-        PostComment.model.find(function(err, items) {
-            if (err) return res.apiError('database error', err);
-            res.apiResponse({
-                comments: items
-            });
+        PostComment.model.find()
+            .sort('-publishedDate')
+            .exec((err, items) => {
+                if (err) return res.apiError('database error', err);
+                res.apiResponse({
+                    comments: items
+                });
         });
     })
 }

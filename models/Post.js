@@ -1,7 +1,6 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
-var express = require('express');
-var a = require('eslint')
+const keystone = require('keystone');
+const Types = keystone.Field.Types;
+const { storage } = require('../utils/storage');
 
 /**
  * Post Model
@@ -18,7 +17,7 @@ Post.add({
     state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true, label: 'Статус' },
     author: { type: Types.Relationship, ref: 'User', index: true, label: 'Автор' },
     publishedDate: { type: Types.Date, default: new Date(), index: true, dependsOn: { state: 'published' }, label: 'Дата публикации' },
-    // image: { type: Types.CloudinaryImage, label: 'Картинка???' },
+    image: { type: Types.File, storage: storage, required: false, label: 'Изображение', },
     content: { type: Types.Textarea, wysiwyg: true, height: 400, label: 'Содержание' },
 })
 
