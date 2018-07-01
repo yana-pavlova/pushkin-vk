@@ -33,6 +33,13 @@ keystone.init({
     'auth': true,
     'user model': 'User',
 
+    'cookie secret': Math.random().toString(36).substr(2),
+    'signin redirect': function (user, req, res) {
+        let url = (user.isAdmin) ? '/keystone' : '/wall';
+        res.redirect(url);
+    },
+    
+
     'port': process.env.PORT || 3005,
 });
 

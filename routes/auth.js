@@ -17,16 +17,17 @@ exports.signin = function (req, res) {
       }
       
       keystone.session.signin({ email: user.email, password: data.password }, req, res, function(user) {
-        
+
         return res.json({
           success: true,
           session: true,
           date: new Date().getTime(),
           userId: user.id,
-        });
+        })
+
       }, function(err) {
         return res.json({
-          success: true,
+          success: false,
           session: false,
           message: (err && err.message ? err.message : false) || 'Sorry, there was an issue signing you in, please try again.'
         });
