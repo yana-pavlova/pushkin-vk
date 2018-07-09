@@ -40,6 +40,17 @@
             color: @color-light-text !important;
             background-color: transparent;
         }
+
+        .dropdown {
+
+            li > a {
+                color: @color-header-dropdown !important;
+            }
+
+            li > a:hover {
+                background-color: @color-body;
+            }
+        }
         .active {
             a {
                 color: @color-light-text !important;
@@ -49,6 +60,11 @@
                 color: white !important;
                 border-color: @color-active-light !important;
             }
+        }
+
+        .dropdown-toggle img {
+            height: 20px;
+            width: 20px;
         }
     }
 

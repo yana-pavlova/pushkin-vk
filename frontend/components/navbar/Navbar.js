@@ -1,4 +1,5 @@
 const hyperHTML = require('hyperhtml/cjs').default;
+import LoginDropdown from './LoginDropdown';
 
 module.exports = class NavBar extends hyperHTML.Component {
     constructor() {
@@ -8,6 +9,20 @@ module.exports = class NavBar extends hyperHTML.Component {
     }
 
     render() {
+        let currentAuthor = '';
+        if (_LOCALS.isSignedIn) {
+            if (_LOCALS.user.currentAuthorId != '') {
+                _LOCALS.user.authors.forEach((a) => {
+                    if (a._id == _LOCALS.user.currentAuthorId) {
+                        currentAuthor = hyperHTML.wire()`
+                            <li>
+                                <a href=${`/author/${a.slug}`}>${a.name.first} ${a.name.last}</a>
+                            </li>
+                        `
+                    }
+                })
+            }
+        }
         return this.html`
             <div class="navbar">
                 <div class="container">
@@ -28,7 +43,8 @@ module.exports = class NavBar extends hyperHTML.Component {
                             `)}
                         </ul>
                         <ul class='nav navbar-nav navbar-right'>
-                            <li><a>access??settings??</a></li>
+                            ${currentAuthor}
+                            ${new LoginDropdown()}
                         </ul>
                     </div>
                 </div>

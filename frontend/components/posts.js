@@ -1,5 +1,5 @@
 const hyperHTML = require('hyperhtml/cjs').default;
-const PostEditor = require('./postEditor');
+const PostEditor = require('./PostEditor');
 
 // let lazyLoad = new LazyLoad();
 
@@ -50,6 +50,8 @@ class PostContent extends hyperHTML.Component {
         this.showAll = false;
         this.isEdited = false;
         this.visible = true;
+        this.state.uploadedFiles = [];
+        this.getUploadedFiles = this.getUploadedFiles.bind(this);
     }
     
     deletePost() {
@@ -76,20 +78,56 @@ class PostContent extends hyperHTML.Component {
     }
 
     saveEdition(content) {
-        content = content.render().querySelector('textarea').value;
+        let contentValue = content.render().querySelector('textarea').value;
         let postId = this.post.id;
-        let that = this;
+
+        let queryArray = [];
+        if (contentValue !== '') queryArray.push(`content=${contentValue}`);
+        let newImage = this.post.image;
+        
+        if (this.state.uploadedFiles.length !== 0) {
+            newImage = this.state.uploadedFiles[0];
+            
+            queryArray.push(`image=${newImage.filename}`);
+            
+        }
+
+        if (queryArray.length === 0) return;
+
+        let conditions = queryArray.map((q) => q).join('&');
+
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', '/api/post/' + postId + '/update?content=' + content, true);
+        xhr.open('GET', '/api/post/' + postId + '/update?' + conditions, true);
         xhr.send();
+
+        let that = this;
         xhr.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
-                that.post.content = content;
+                console.log('content', contentValue, 'image', that.state.uploadedFiles);
+                
+                that.post.content = contentValue;
+                that.post.image = newImage;
+                
                 that.showAll = true;
                 that.isEdited = false;
                 that.render();
             }
         }
+    }
+
+    getUploadedFiles(file) {
+        let uploadedFile = [];
+        
+        let nextState = { ...this.state };
+        
+        nextState.uploadedFiles.push({
+            preview: file.preview,
+            path: file.response.body.fullPath,
+            filename: file.response.body.fileName,
+        });
+
+        this.state = { ...nextState };
+        
     }
 
     showMore() {
@@ -98,6 +136,7 @@ class PostContent extends hyperHTML.Component {
     }
 
     render(){
+        
         let content;
         if (this.isEdited) {
             content = hyperHTML.wire()`
@@ -110,6 +149,7 @@ class PostContent extends hyperHTML.Component {
                             {title: 'Сохранить', class: 'btn btn-primary', onClick: this.saveEdition}, 
                             {title: 'Отменить', class: 'btn', onClick: this.cancelEdition},
                         ],
+                        actions: {getUploadedFiles: this.getUploadedFiles}
                     })
                 }
             `
@@ -136,7 +176,7 @@ class PostContent extends hyperHTML.Component {
                     `
                     : ''
                 }
-                ${(_LOCALS.registered && this.post.author._id == _LOCALS.user._id)
+                ${(_LOCALS.isSignedIn && this.post.author._id == _LOCALS.user.currentAuthorId)
                     ? new Dropdown([
                         {text: 'редактировать', clickHandler: this.editContent, that: this}, 
                         {text: 'удалить', clickHandler: this.deletePost, that: this}
@@ -165,14 +205,15 @@ class Like extends hyperHTML.Component {
 
     clickHandler(e) {
         e.preventDefault();
-        if (!_LOCALS.registered) return;
+        if (!_LOCALS.isSignedIn) return;
         if (_LOCALS.user._id == this.state.postAuthor) return;
-        let q = `/api/like/post/${this.state.postId}`;
-        let xhr = new XMLHttpRequest();
-        let that = this;
         
+        let q = `/api/like/post/?postId=${this.state.postId}&author=${_LOCALS.user.currentAuthorId}`;
+        let xhr = new XMLHttpRequest();
         xhr.open('GET', q, true);
         xhr.send();
+
+        let that = this;
         xhr.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
                 let res = JSON.parse(this.responseText);
@@ -187,12 +228,12 @@ class Like extends hyperHTML.Component {
     render() {
         let image = (this.state.likesCount == 0) ? 'https://twemoji.maxcdn.com/2/72x72/1f49b.png' : 'https://twemoji.maxcdn.com/16x16/2764.png';
         let imageAlt = (this.state.likesCount == 0) ? '♡' : '❤';
-        let clName = 'disabled';
-        if (_LOCALS.registered) {
-            if (_LOCALS.user._id != this.state.postAuthor) clName = 'enabled';
+        let className = 'disabled';
+        if (_LOCALS.isSignedIn) {
+            if (_LOCALS.user._id != this.state.postAuthor) className = 'enabled';
         }
         return this.html`
-            <a onclick='${this.clickHandler}' class='${clName}'>
+            <a onclick='${this.clickHandler}' class='${className}'>
                 <img draggable='false' class='emoji' alt=${imageAlt} src=${image}><span class='emoji-count'>${this.state.likesCount}</span>
             </a>
         `
@@ -209,19 +250,29 @@ class CommentBlock extends hyperHTML.Component {
         this.addComment = this.addComment.bind(this);
     }
 
-    addComment(content) {
-        content = content.render().querySelector('textarea').value;
-        let q = '/api/comment/create?';
-            q += 'content=' + content;
-            q += '&post=' + this.postId;
+    addComment(event) {
+        let contentValue = event.render().querySelector('textarea').value;
+        let queryArray = [];
+        if (contentValue !== '') queryArray.push(`content=${contentValue}`);
+        queryArray.push(`post=${this.postId}`);
+        queryArray.push(`author=${_LOCALS.user.currentAuthorId}`);
+
+        if (queryArray.length === 0) return;
+
+        let query = queryArray.map((q) => q).join('&');
         
+        query = `/api/comment/create/?${query}`;
+
         let xhr = new XMLHttpRequest();
-        let that = this;
-        xhr.open('GET', q, true);
+        xhr.open('GET', query, true);
         xhr.send();
+        
+        let that = this;
         xhr.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
                 let newComment = JSON.parse(this.responseText);
+                console.log(newComment);
+                
                 that.comments.unshift(newComment.comment);
                 that.render();
             }
@@ -234,7 +285,7 @@ class CommentBlock extends hyperHTML.Component {
     }
 
     render() {
-        if (!this.comments.length && !_LOCALS.registered) return this.html`<div></div>`;
+        if (!this.comments.length && !_LOCALS.isSignedIn) return this.html`<div></div>`;
         let content;
         let comments;
         if (this.comments.length >= this.commentsMaxLength && !this.showAll) {
@@ -275,7 +326,7 @@ class CommentBlock extends hyperHTML.Component {
         }
         return this.html`
             <div class='comments'>
-                ${(_LOCALS.registered)
+                ${(_LOCALS.isSignedIn)
                     ? hyperHTML.wire()`
                         <div class='add-new-comment'>
                             ${new CommentEditor({
@@ -324,8 +375,8 @@ class ContentHeader extends hyperHTML.Component {
 
     render() {
         let authorsPage = '/author/' + this.author.slug;
-        let authorPhoto = this.author.authorPhoto;
-        let name = `${this.author.authorName.last} ${this.author.authorName.first}`;
+        let authorPhoto = this.author.photo;
+        let name = `${this.author.name.last} ${this.author.name.first}`;
         return this.html`
             <div class='row'>
                     <div class='col-xs-3 col-sm-2'>

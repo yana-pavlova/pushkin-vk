@@ -15,11 +15,10 @@ var Post = new keystone.List('Post', {
 
 Post.add({
     state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true, label: 'Статус' },
+    author: { type: Types.Relationship, ref: 'User', index: true, label: 'Автор' },
     publishedDate: { type: Types.Date, default: new Date(), index: true, dependsOn: { state: 'published' }, label: 'Дата публикации' },
     image: { type: Types.File, storage: storage, required: false, label: 'Изображение', },
     content: { type: Types.Textarea, default: '', wysiwyg: true, height: 400, label: 'Содержание' },
-
-    author: { type: Types.Relationship, ref: 'Author', index: true, label: 'Автор' },
 })
 
 Post.schema.virtual('comments', {

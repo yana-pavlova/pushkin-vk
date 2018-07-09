@@ -4,6 +4,7 @@ let fs = require('fs');
 
 
 // Upload image
+// TODO: check doubles
 exports.uploadImage = function(req, res) {
     requireUser(req, res, () => {
         let files = req.files;

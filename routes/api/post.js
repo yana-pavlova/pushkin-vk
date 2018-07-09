@@ -4,6 +4,7 @@ let { requireAdmin, requireUser } = require('../auth');
 let Post = keystone.list('Post');
 let PostComment = keystone.list('PostComment');
 let User = keystone.list('User');
+let Author = keystone.list('Author');
 
 const POST_PER_PAGE = 100;
 
@@ -19,7 +20,7 @@ exports.list = function(req, res) {
             // Post.model.find()
             .where({state: 'published'})
             .sort('-publishedDate')
-            .populate({path: 'author', select: 'slug authorPhoto authorName'})
+            .populate({path: 'author', select: 'slug photo name'})
             .populate({path: 'comments', options: { sort: { publishedDate: -1 } } })
             .populate({path: 'likes'})
             .exec(function(err, results) {
@@ -31,17 +32,18 @@ exports.list = function(req, res) {
 }
 
 // List Posts by User
-exports.listByUser = function(req, res) {
+exports.listByAuthor = function(req, res) {
         let data = req.params;
         if (!data) return res.apiError('error', 'no data');
-        if (!data.user) return res.apiError('error', 'no data');
-        let userId = data.user
-        console.log('list by user', userId);
+        if (!data.author) return res.apiError('error', 'no data');
         
-        User.model.find().where({'slug': userId}).exec(function(err, user) {
+        let authorSlug = data.author
+        console.log('post list by author', authorSlug);
+        
+        Author.model.find().where({'slug': authorSlug}).exec(function(err, author) {
             if (err) return res.apiError('database error', err);
             
-            let userId = user[0]._id;
+            let authorId = author[0]._id;
             
             Post.paginate({
                     page: 1,
@@ -50,18 +52,19 @@ exports.listByUser = function(req, res) {
                 })
                 // Post.model.find()
                 .where({
-                    'author': userId,
+                    'author': authorId,
                     'state': 'published'
                 })
                 .sort('-publishedDate')
                 .populate({path: 'comments', options: { sort: { publishedDate: -1 } }})
                 .populate({path: 'likes'})
-                .populate({path: 'author', select: 'slug authorPhoto authorName'})
+                .populate({path: 'author'})
+                // .populate({path: 'author', select: 'slug authorPhoto authorName'})
                 .exec(function(err, items) {
                     if (err) return res.apiError('database error', err);
                     res.apiResponse({
                         posts: items,
-                        author: user[0],
+                        author: author[0],
                     });
                 });
         })        
@@ -71,27 +74,35 @@ exports.listByUser = function(req, res) {
 // Create a Post
 exports.create = function(req, res) {    
     requireUser(req, res, () => {
-        let item = new Post.model();
+        
         let data = (req.method == 'POST') ? req.body : req.query;
         if (!data) return res.apiError('error', 'no data');
-        if (!data.content) return res.apiError('error', 'no data');
-        data.state = 'published';
-        data.author = req.user;
-        data.publishedDate = new Date();
-        data.image = (data.image) ? {filename: data.image} : null;
+        if (!data.content && !data.image) return res.apiError('error', 'no data');
+        if (!data.author) return res.apiError('error', 'no data');
+        
+        let item = new Post.model();
 
-        item.getUpdateHandler(req).process(data, function(err) {
-            if (err) return res.apiError('error', err);
+        //check authors user
+        Author.model.findById(data.author).exec((err, author) => {
+            if (err) return res.apiError('database error', err);
+            if (author.user.toString() !== req.user.id) return res.apiError('user error');
 
-            // item.populate({path: 'comments', options: { sort: { publishedDate: -1 } }})
-            //     .populate({path: 'likes'})
-            //     .populate({path: 'author', select: 'slug authorPhoto authorName'})
-            
-            res.apiResponse({
-                post: item
+            data.state = 'published';
+            data.publishedDate = new Date();
+            data.image = (data.image) ? {filename: data.image} : null;
+
+            item.getUpdateHandler(req).process(data, function(err) {
+                if (err) return res.apiError('error', err);
+                let i = item;
+                i.author = author;
+
+                res.apiResponse({
+                    post: i,
+                });
+                
             });
-            
-        });
+
+        })
     })
 }
 
@@ -99,24 +110,35 @@ exports.create = function(req, res) {
 exports.update = function(req, res) {
     requireUser(req, res, () => {
         Post.model.findById(req.params.id).exec(function(err, item) {
-            if (item.author.toString() != req.user.id) return res.apiError('user error');
+            
             if (err) return res.apiError('database error', err);
             if (!item) return res.apiError('not found');
             
-            var data = (req.method == 'POST') ? req.body : req.query;
-            data.publishedDate = new Date();
+            // check if this post belongs to author curated by user
+            Author.model.findById(item.author).exec((err, author) => {
 
-            item.getUpdateHandler(req).process(data, 
-                {   
-                    fields: ['content', 'publishedDate'],
-                    flashErrors: true,
-                },
-                function(err) {
-                    if (err) return res.apiError('create error', err);
-                    res.apiResponse({
-                        post: item
-                    });
-            });
+                if (err) return res.apiError('database error', err);
+                if (author.user.toString() !== req.user.id) return res.apiError('user error');
+
+                let data = (req.method == 'POST') ? req.body : req.query;
+                data.publishedDate = new Date();
+
+                if (data.image) data.image = {filename: data.image}
+
+                item.getUpdateHandler(data)
+                    .process(data, 
+                        {   
+                            fields: ['content', 'image', 'publishedDate'],
+                            flashErrors: true,
+                        },
+                        function(err) {
+                            if (err) return res.apiError('create error', err);
+                            res.apiResponse({
+                                post: item
+                            });
+                        }
+                    );
+            })
         });
     });
 }
@@ -125,18 +147,24 @@ exports.update = function(req, res) {
 exports.remove = function(req, res) {
     requireUser(req, res, () => {
         Post.model.findById(req.params.id).exec(function (err, item) {
-            if (item.author.toString() != req.user.id) return res.apiError('user error');
             if (err) return res.apiError('database error', err);
             if (!item) return res.apiError('not found');
-            
-            item.remove(function (err) {
+
+            // check authors user
+            Author.model.findById(item.author).exec((err, author) => {
+
                 if (err) return res.apiError('database error', err);
+                if (author.user.toString() !== req.user.id) return res.apiError('user error');
                 
-                return res.apiResponse({
-                    success: true
+                item.remove(function (err) {
+                    if (err) return res.apiError('database error', err);
+                    
+                    return res.apiResponse({
+                        success: true
+                    });
                 });
-            });
             
+            });
         });
     });
 }

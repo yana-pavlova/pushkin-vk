@@ -1,5 +1,5 @@
 const hyperHTML = require('hyperhtml/cjs').default;
-const AuthorsPage = require('./components/authorsPage');
+const AuthorsPage = require('./screens/AuthorsPage');
 
 // let api = (_LOCALS) ? '?apiKey=' + _LOCALS.apiKey : '';
 let api = (_LOCALS) ? '?apiKey=' + _LOCALS.apiKey : '?apiKey=123';

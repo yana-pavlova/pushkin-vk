@@ -16,9 +16,9 @@ Enquiry.add({
 	email: { type: Types.Email, required: true },
 	phone: { type: String },
 	enquiryType: { type: Types.Select, options: [
-		{ value: 'message', label: 'Just leaving a message' },
-		{ value: 'question', label: 'I\'ve got a question' },
-		{ value: 'other', label: 'Something else...' },
+		{ value: 'message', label: 'Сообщение' },
+		{ value: 'question', label: 'Вопрос' },
+		{ value: 'other', label: 'Другое' },
 	] },
 	message: { type: Types.Markdown, required: true },
 	createdAt: { type: Date, default: Date.now },
@@ -39,7 +39,7 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 	if (typeof callback !== 'function') {
 		callback = function (err) {
 			if (err) {
-				console.error('There was an error sending the notification email:', err);
+				console.error('Ошибка отправления e-mail:', err);
 			}
 		};
 	}

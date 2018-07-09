@@ -8,6 +8,7 @@
  * modules in your project's /lib directory.
  */
 var _ = require('lodash');
+let keystone = require('keystone');
 
 let { API_KEY } = require('./auth');
 
@@ -22,34 +23,48 @@ exports.initLocals = function (req, res, next) {
     res.locals.navLinks = [
         { label: 'О проекте', key: 'home', href: '/' },
         { label: 'Стена', key: 'wall', href: '/wall' },
-        { label: 'login', key: 'login', href: '/login' },
+        // { label: 'login', key: 'login', href: '/login' },
         // { label: 'Gallery', key: 'gallery', href: '/gallery' }, // TODO kill me 
         // { label: 'Contact', key: 'contact', href: '/contact' }, // TODO kill me or use me
     ];
     let user = req.user;
     
     res.locals.user = user;
-    
 
     let data = {
-        registered: false,
+        isSignedIn: false,
         apiKey: API_KEY,
         navLinks: res.locals.navLinks,
     }
 
     if (user) {
-        data.user = {
-            authorName: user.authorName,
-            authorPatronymic: user.authorPatronymic,
-            name: user.name,
-            _id: user.id,
-        }
-        data.registered = true;
-    }
+        let User = keystone.list('User');
+        
+        User.model.findById(user._id)
+            .populate('authors')
+            .exec((err, user) => {
+                if (err) next();
+                
+                data.user = {
+                    authors: user.authors,
+                    // name: user.name,
+                    slug: user.slug,
+                    _id: user.id,
+                    currentAuthorId: '',
+                }
+                
+                if (user.authors.length) data.user.currentAuthorId = user.authors[0]._id;
 
-    res.locals.data = JSON.stringify(data);
-    
-    next();
+                data.isSignedIn = true;
+
+                res.locals.data = JSON.stringify(data);
+                next();
+            })
+    }
+    else {
+        res.locals.data = JSON.stringify(data);
+        next();
+    }
 };
 
 

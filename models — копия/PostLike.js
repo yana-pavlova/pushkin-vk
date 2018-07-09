@@ -14,10 +14,9 @@ var PostLike = new keystone.List('PostLike', {
 });
 
 PostLike.add({
+    author: { type: Types.Relationship, ref: 'User', index: true, label: 'Автор комментария' },
     post: { type: Types.Relationship, ref: 'Post', index: true, label: 'Пост' },
     publishedDate: { type: Types.Date, default: new Date(), label: 'Дата создания' },
-
-    author: { type: Types.Relationship, ref: 'Author', index: true, label: 'Автор комментария' },
 });
 
 PostLike.schema.pre('save', (next) => {
@@ -26,7 +25,7 @@ PostLike.schema.pre('save', (next) => {
 })
 
 PostLike.schema.pre('find', function() {
-    this.populate({path: 'author', select: 'slug photo name'});
+    this.populate({path: 'author', select: 'slug authorPhoto authorName'});
 });
 
 PostLike.defaultColumns = 'post|20%, author, publishedDate';

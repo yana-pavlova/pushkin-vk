@@ -32,8 +32,9 @@ exports = module.exports = function (app) {
     
     // app.get('/wall/:category?', routes.views.blog); // TODO kill me
     // app.get('/wall/post/:post', routes.views.post); // TODO kill me
-    app.get('/author/:user', routes.views.author);
+    app.get('/author/:author', routes.views.author);
     app.get('/login', routes.views.login);
+    app.get('/register', routes.views.register);
 
 
     //auth
@@ -46,9 +47,12 @@ exports = module.exports = function (app) {
 
     // app.get('/whoami', keystone.middleware.api, routes.api.session); // TODO kill me
 
+    // authors
+    app.get('/api/authors/available', keystone.middleware.api, routes.api.author.available);
+    
     // post
     app.get('/api/post/list', keystone.middleware.api, routes.api.post.list);
-    app.get('/api/post/list/:user', keystone.middleware.api, routes.api.post.listByUser);
+    app.get('/api/post/list/:author', keystone.middleware.api, routes.api.post.listByAuthor);
     app.all('/api/post/create', keystone.middleware.api, routes.api.post.create);
     app.get('/api/post/:id', keystone.middleware.api, routes.api.post.get);
     app.all('/api/post/:id/update', keystone.middleware.api, routes.api.post.update);
@@ -58,7 +62,7 @@ exports = module.exports = function (app) {
     app.all('/api/file/uploadImage', keystone.middleware.api, routes.api.file.uploadImage);
     
     // likes
-    app.all('/api/like/post/:id', keystone.middleware.api, routes.api.like.likePost);
+    app.get('/api/like/post', keystone.middleware.api, routes.api.like.likePost);
     
     // comment
     app.get('/api/comment/list', keystone.middleware.api, routes.api.comment.list);
