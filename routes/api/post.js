@@ -8,6 +8,64 @@ let Author = keystone.list('Author');
 
 const POST_PER_PAGE = 100;
 
+// list all posts and get popular authors
+exports.listAndGetPopAuthors = function(req, res) {
+    // requireAdmin(req, res, () => {
+
+        Post.paginate({
+                page: 1,
+                perPage: POST_PER_PAGE,
+                // maxPages: 10
+            })
+            // Post.model.find()
+            .where({state: 'published'})
+            .sort('-publishedDate')
+            .populate({path: 'author', select: 'slug photo name'})
+            .populate({path: 'comments', options: { sort: { publishedDate: -1 } } })
+            .populate({path: 'likes'})
+            .exec(function(err, posts) {
+                if (err) return res.apiError('database error', err);
+                
+                postAuthorCount = {};
+                posts.results.forEach((p) => {
+                    if (!postAuthorCount.hasOwnProperty(p.author._id)) postAuthorCount[p.author._id] = 0;
+                    postAuthorCount[p.author._id] ++;
+                })
+
+                console.log('postAuthorCount', postAuthorCount);
+                
+                let sortable = [];
+                for (let id in postAuthorCount) {
+                    sortable.push([id, postAuthorCount[id]]);
+                }
+
+                sortable.sort((a, b) => a[1] - b[1]);
+
+                console.log('sortable', sortable);
+                
+                let maxAuthors = 5;
+                maxAuthors = (maxAuthors > sortable.length) ? sortable.length : maxAuthors;
+
+                console.log('maxAuthors', maxAuthors);
+                
+                let popularAuthorsId = [];
+                for (let i = 0; i < maxAuthors; i++) {
+                    popularAuthorsId.push(sortable[i][0])
+                }
+                
+                console.log(popularAuthorsId);
+                
+                Author.model.find().where('_id').in(popularAuthorsId).exec((err, popularAuthors) => {
+                    res.apiResponse({
+                        posts: posts,
+                        popularAuthors: popularAuthors,
+                    });
+                })
+            });
+
+    // })
+}
+
 // List Posts
 exports.list = function(req, res) {
     // requireAdmin(req, res, () => {
@@ -31,7 +89,7 @@ exports.list = function(req, res) {
     // })
 }
 
-// List Posts by User
+// List Posts by Author
 exports.listByAuthor = function(req, res) {
         let data = req.params;
         if (!data) return res.apiError('error', 'no data');

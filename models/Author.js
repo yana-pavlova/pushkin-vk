@@ -6,7 +6,6 @@ var Author = new keystone.List('Author',{
     label: 'Авторы',
     map: { name: 'name' },
     autokey: { path: 'slug', from: 'slugLink', unique: true, label: 'slug' },
-    autokey: { path: 'available', from: 'availability', label: 'available' }
 });
 
 Author.add(
@@ -29,12 +28,8 @@ Author.add(
 );
 
 Author.schema.virtual('slugLink').get(function () {
-    return this.name.full;
-});
-
-Author.schema.virtual('availability').get(function () {
-    let a = (this.user) ? false : true;
-    return a;
+    let wholeName = `${this.name.full}-${this.patronymic}`;
+    return wholeName;
 });
 
 Author.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });

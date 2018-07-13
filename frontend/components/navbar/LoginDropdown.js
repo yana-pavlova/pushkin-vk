@@ -1,5 +1,4 @@
 const hyperHTML = require('hyperhtml/cjs').default;
-let chooseAuthorModal = require('../chooseAuthorModal');
 
 module.exports = class LoginDropdown extends hyperHTML.Component {
     constructor() {
@@ -10,7 +9,6 @@ module.exports = class LoginDropdown extends hyperHTML.Component {
         this.showDropDown = this.showDropDown.bind(this);
         this.hideDropDown = this.hideDropDown.bind(this);
         this.logout = this.logout.bind(this);
-        this.chooseAuthor = this.chooseAuthor.bind(this);
     }
 
     showDropDown() {
@@ -21,10 +19,6 @@ module.exports = class LoginDropdown extends hyperHTML.Component {
     hideDropDown() {
         this.isDropDownShown = false;
         this.render();
-    }
-
-    chooseAuthor() {
-        this.chooseAuthorModal = new chooseAuthorModal();
     }
 
     logout() {
@@ -45,7 +39,7 @@ module.exports = class LoginDropdown extends hyperHTML.Component {
         let dropdownContent;
         if (this.isSignedIn) {
             dropdownContent = hyperHTML.wire()`
-                <li> <a onclick=${this.chooseAuthor} >Сменить автора</a> </li>
+                <li> <a href='/settings' >Сменить автора</a> </li>
                 <li role='separator' class='divider'></li>
                 <li><a onclick=${this.logout} >Выйти</a></li>
             `

@@ -35,7 +35,7 @@ exports = module.exports = function (app) {
     app.get('/author/:author', routes.views.author);
     app.get('/login', routes.views.login);
     app.get('/register', routes.views.register);
-
+    app.get('/settings', routes.views.settings);
 
     //auth
     app.get('/auth/signin', keystone.middleware.api, auth.signin);
@@ -45,13 +45,18 @@ exports = module.exports = function (app) {
     // api
     // app.all('/api*', auth.checkAPIKey); // TODO use me
 
-    // app.get('/whoami', keystone.middleware.api, routes.api.session); // TODO kill me
+    // users
+    app.get('/api/user/create', keystone.middleware.api, routes.api.user.create);
+    app.get('/api/user/change-current-author', keystone.middleware.api, routes.api.user.changeCurrentAuthor);
+
 
     // authors
     app.get('/api/authors/available', keystone.middleware.api, routes.api.author.available);
+    app.get('/api/authors/popular', keystone.middleware.api, routes.api.author.popular);
     
     // post
     app.get('/api/post/list', keystone.middleware.api, routes.api.post.list);
+    app.get('/api/post/list-and-pop-authors', keystone.middleware.api, routes.api.post.listAndGetPopAuthors);
     app.get('/api/post/list/:author', keystone.middleware.api, routes.api.post.listByAuthor);
     app.all('/api/post/create', keystone.middleware.api, routes.api.post.create);
     app.get('/api/post/:id', keystone.middleware.api, routes.api.post.get);

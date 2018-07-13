@@ -7,7 +7,8 @@ module.exports = {
 	entry: {
         wall: './wall',
 		author: './author',
-		register: './register'
+		register: './register',
+		settings: './settings',
 	},
 
 	output: {

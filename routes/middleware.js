@@ -42,18 +42,17 @@ exports.initLocals = function (req, res, next) {
         
         User.model.findById(user._id)
             .populate('authors')
+            .populate('currentAuthor')
             .exec((err, user) => {
                 if (err) next();
+                console.log(user);
                 
                 data.user = {
                     authors: user.authors,
-                    // name: user.name,
-                    slug: user.slug,
+                    currentAuthor: user.currentAuthor,
+                    name: user.name,
                     _id: user.id,
-                    currentAuthorId: '',
                 }
-                
-                if (user.authors.length) data.user.currentAuthorId = user.authors[0]._id;
 
                 data.isSignedIn = true;
 

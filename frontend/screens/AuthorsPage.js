@@ -133,7 +133,7 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
         let queryArray = [];
         if (contentValue !== '') queryArray.push(`content=${contentValue}`);
         if (this.state.uploadedFiles.length !== 0) queryArray.push(`image=${this.state.uploadedFiles[0].filename}`);
-        queryArray.push(`author=${_LOCALS.user.currentAuthorId}`);
+        queryArray.push(`author=${_LOCALS.user.currentAuthor._id}`);
 
         if (queryArray.length === 0) return;
 
@@ -167,7 +167,7 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
                         <div class='banner-profile' style='background-image: url("/images/bookshelf.jpg");'></div>
                         <div class='container-fluid container-posts'>
 
-                            ${(_LOCALS.isSignedIn && _LOCALS.user.currentAuthorId == this.state.author._id)
+                            ${(_LOCALS.isSignedIn && _LOCALS.user.currentAuthor._id == this.state.author._id)
                                 ? hyperHTML.wire()`
                                     <div class='card-post'>
                                         <div>Новая публикация</div>

@@ -176,7 +176,7 @@ class PostContent extends hyperHTML.Component {
                     `
                     : ''
                 }
-                ${(_LOCALS.isSignedIn && this.post.author._id == _LOCALS.user.currentAuthorId)
+                ${(_LOCALS.isSignedIn && this.post.author._id == _LOCALS.user.currentAuthor._id)
                     ? new Dropdown([
                         {text: 'редактировать', clickHandler: this.editContent, that: this}, 
                         {text: 'удалить', clickHandler: this.deletePost, that: this}
@@ -208,7 +208,7 @@ class Like extends hyperHTML.Component {
         if (!_LOCALS.isSignedIn) return;
         if (_LOCALS.user._id == this.state.postAuthor) return;
         
-        let q = `/api/like/post/?postId=${this.state.postId}&author=${_LOCALS.user.currentAuthorId}`;
+        let q = `/api/like/post/?postId=${this.state.postId}&author=${_LOCALS.user.currentAuthor._id}`;
         let xhr = new XMLHttpRequest();
         xhr.open('GET', q, true);
         xhr.send();
@@ -255,7 +255,7 @@ class CommentBlock extends hyperHTML.Component {
         let queryArray = [];
         if (contentValue !== '') queryArray.push(`content=${contentValue}`);
         queryArray.push(`post=${this.postId}`);
-        queryArray.push(`author=${_LOCALS.user.currentAuthorId}`);
+        queryArray.push(`author=${_LOCALS.user.currentAuthor._id}`);
 
         if (queryArray.length === 0) return;
 

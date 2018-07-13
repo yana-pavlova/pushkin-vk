@@ -36,7 +36,6 @@ exports.signin = function (req, res) {
     });
 }
 
-
 exports.signout = function (req, res) {
   keystone.session.signout(req, res, function() {
       res.json({ 'signedout': true });

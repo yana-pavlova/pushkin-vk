@@ -12,7 +12,6 @@ module.exports = class Related extends hyperHTML.Component {
             <div class="card-post">
                 <div class="row">
                     <div class="col-sm-12">
-                        <p><i>Интересное</i></p>
                         <h3><a href="#" title="Company">О проекте</a></h3>
                         <img src="/images/login.jpg" alt="Suggested post">
                     </div>
@@ -25,50 +24,23 @@ module.exports = class Related extends hyperHTML.Component {
                     <div class="col-sm-12">
                         <h3>Популярные авторы</h3>
                     </div>
-                    <div class="col-xs-3 popular-img">
-                        <a href="#">
-                        <img src="/images/avatar-default.png" alt="User name" class="img-circle">
-                        </a>
-                    </div>
-                    <div class="col-xs-3 popular-img">
-                        <a href="#">
-                        <img src="/images/avatar-default.png" alt="User name" class="img-circle">
-                        </a>
-                    </div>
-                    <div class="col-xs-3 popular-img">
-                        <a href="#">
-                        <img src="/images/avatar-default.png" alt="User name" class="img-circle">
-                        </a>
-                    </div>
-                    <div class="col-xs-3 popular-img">
-                        <a href="#">
-                        <img src="/images/avatar-default.png" alt="User name" class="img-circle">
-                        </a>
-                    </div>
-                    <div class="col-xs-3 popular-img">
-                        <a href="#">
-                        <img src="/images/avatar-default.png" alt="User name" class="img-circle">
-                        </a>
-                    </div>
-                    <div class="col-xs-3 popular-img">
-                        <a href="#">
-                        <img src="/images/avatar-default.png" alt="User name" class="img-circle">
-                        </a>
-                    </div>
-                    <div class="col-xs-3 popular-img">
-                        <a href="#">
-                        <img src="/images/avatar-default.png" alt="User name" class="img-circle">
-                        </a>
-                    </div>
-                    <div class="col-xs-3 popular-img">
-                        <a href="#">
-                        <img src="/images/avatar-default.png" alt="User name" class="img-circle">
-                        </a>
-                    </div>
+                    ${this.state.popularAuthors.map(a => {
+                        return hyperHTML.wire()`
+                            <div class="col-xs-3 popular-img">
+                                <a href='${`/author/ + ${a.slug}`}'>
+                                    <img class='img-circle img-user' src='${(a.photo) ? `/${a.photo.filename}` : '/images/avatar-default.png'}' alt='${`${a.name.last} ${a.name.first}`}'>
+                                </a>
+                            </div>
+                        `
+                    })}
+                    
                 </div>
             </div>
-        
-            <!-- PHOTOS -->
+        `;
+    }
+
+    /*
+    <!-- PHOTOS -->
             <div class="card-post">
                 <div class="row">
                     <div class="col-sm-12">
@@ -121,6 +93,5 @@ module.exports = class Related extends hyperHTML.Component {
                     </div>
                 </div>
             <div/>
-        `;
-    }
+        */
 }

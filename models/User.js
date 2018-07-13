@@ -17,6 +17,8 @@ User.add({
 
     authors: { type: Types.Relationship, many: true, ref: 'Author', index: true, label: 'Авторы' },
 
+    currentAuthor: { type: Types.Relationship, ref: 'Author', label: 'Текущий автор'},
+
 }, 'Permissions', {
     isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 });

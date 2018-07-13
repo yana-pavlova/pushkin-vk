@@ -11,16 +11,13 @@ module.exports = class NavBar extends hyperHTML.Component {
     render() {
         let currentAuthor = '';
         if (_LOCALS.isSignedIn) {
-            if (_LOCALS.user.currentAuthorId != '') {
-                _LOCALS.user.authors.forEach((a) => {
-                    if (a._id == _LOCALS.user.currentAuthorId) {
-                        currentAuthor = hyperHTML.wire()`
+            let a = _LOCALS.user.currentAuthor;
+            if (a) {
+                currentAuthor = hyperHTML.wire()`
                             <li>
                                 <a href=${`/author/${a.slug}`}>${a.name.first} ${a.name.last}</a>
                             </li>
                         `
-                    }
-                })
             }
         }
         return this.html`

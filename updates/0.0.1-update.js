@@ -7,6 +7,7 @@ exports.create = {
             'password': 'admin', 
             'isAdmin': true,
             'authors': ['pushkin', 'dostoevsky'],
+            'currentAuthor': 'pushkin',
             __ref: 'admin',
         },
         { 
