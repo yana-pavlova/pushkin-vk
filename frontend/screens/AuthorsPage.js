@@ -27,7 +27,7 @@ class AuthorSidebar extends hyperHTML.Component {
     }
 
     render() {
-        let photo = this.state.authorPhoto;
+        let photo = this.state.photo;
         let name = `${this.state.name.first} ${this.state.name.last} ${this.state.patronymic}`;
         let birthDay = new Date(this.state.birthDay);
         birthDay = birthDay.toLocaleString('ru', AUTHOR_DATE_OPTS);

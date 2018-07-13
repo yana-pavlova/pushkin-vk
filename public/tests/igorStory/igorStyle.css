@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Caveat|Pacifico');
+
+.storyContinious {
+    display: none;
+}
+
+body {
+    background: url(./1.jpg) no-repeat;
+    background-size: cover;
+}
+
+div {
+    margin: 1%;
+    padding: 1%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px black;
+}
+
+#mainDiv {
+    background: white;
+    margin: 3%;
+    padding: 3%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 18px black;
+    /* font-family: 'Pacifico', cursive; */
+}
+
+p {
+    font-family: 'Caveat', cursive;
+    font-size: 170%;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 250%;
+    text-align: center;
+}
+
+button {
+    /* padding: 1%; */
+    /* margin: 7%; */
+    /* width: 100%; */
+    background: white;
+    border-radius: 10px;
+    border: 0.5px solid black;
+}
+
+button:hover {
+    background: #CCCCCC;
+    transition: 0.5s linear;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-family: 'Caveat', cursive;
+    font-size: 150%;
+}
+
+img {
+    /* width: 50%; */
+    max-height: 370px;
+    box-shadow: 0px 0px 3px black;
+}
+
+#story2, #story3, #story4, #story5, #story6,#story7, #story8, #story9, #story10, #story11, #story12, #story13, #story14, #story15, #story16, #story17, #story18, #story19, #story20, #story21, #story22, #story23, #story24, #story25, #story26, #story27, #story28, #story29, #story30, #story31, #story32, #story33, #story34, #story35, #story36, #story37, #story38, #story39, #story40, #story41 {
+    display: none;
+}

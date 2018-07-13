@@ -21,8 +21,8 @@ let { API_KEY } = require('./auth');
 */
 exports.initLocals = function (req, res, next) {
     res.locals.navLinks = [
-        { label: 'О проекте', key: 'home', href: '/' },
-        { label: 'Стена', key: 'wall', href: '/wall' },
+        // { label: 'О проекте', key: 'home', href: '/', style: 'aliveA' },
+        // { label: 'Стена', key: 'wall', href: '/wall', style: 'aliveA' },
         // { label: 'login', key: 'login', href: '/login' },
         // { label: 'Gallery', key: 'gallery', href: '/gallery' }, // TODO kill me 
         // { label: 'Contact', key: 'contact', href: '/contact' }, // TODO kill me or use me
@@ -45,14 +45,16 @@ exports.initLocals = function (req, res, next) {
             .populate('currentAuthor')
             .exec((err, user) => {
                 if (err) next();
-                console.log(user);
                 
                 data.user = {
                     authors: user.authors,
                     currentAuthor: user.currentAuthor,
                     name: user.name,
+                    isAdmin: user.isAdmin,
                     _id: user.id,
                 }
+
+                data.user.currentAuthor = data.user.currentAuthor || user.authors[0]
 
                 data.isSignedIn = true;
 

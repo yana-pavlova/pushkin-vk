@@ -88,12 +88,19 @@ video, img {
 }
 
 .img-user {
-    width: 90%;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
     margin-left: 5%;
 }
 
-.card-post .img-user  { max-width: 110px;
-                        min-width: 60px;}
+.card-post .img-user  { 
+    max-width: 110px;
+    min-width: 60px;
+    max-height: 110px;
+    min-height: 60px;
+}
 
 .card-post .chat-row .img-user { min-width:inherit; }
 
@@ -104,6 +111,11 @@ video, img {
 
 .popular-img {
    margin-top:10px;
+}
+
+.img-user-popular {
+    width: 50px;
+    height: 50px;
 }
 
 
@@ -276,6 +288,8 @@ header .badge {
 .comments .img-user {
     max-width: 80px;
     min-width: 40px;
+    max-height: 80px;
+    min-height: 40px;
 }
 
 .comments .info-user a {
@@ -448,6 +462,10 @@ textarea.post-textarea {
     /* text-indent: -9999px; */
 }
 
+
+.authors-list {
+    margin: 10px;
+}
 /*----------------------------------------------------------------
 Editor
 -----------------------------------------------------------------*/
@@ -571,8 +589,8 @@ footer.login-footer {
                                           .container-posts { padding:0px 30px;  }
                                       }
 
-@media screen and (max-width:991px) {  .img-user { width: 100%;
-                                                   margin: 0px;}
+/* @media screen and (max-width:991px) {  .img-user { width: 100%;
+                                                   margin: 0px;} */
 
                                         header .dropdown-menu { top:33px; }
 
@@ -596,14 +614,14 @@ footer.login-footer {
                   height: auto;
                   padding: 10px;}
 
-  .img-user   { width:80%;
-                margin-left:10%;  }
+  /* .img-user   { width:80%;
+                margin-left:10%;  } */
 
-  .card-post .img-user { width:70%;
-                        margin-left:15%; }
+  /* .card-post .img-user { width:70%;
+                        margin-left:15%; } */
 
-  .card-post .chat-row .img-user  { width:100%;
-                                    margin:0px;}
+  /* .card-post .chat-row .img-user  { width:100%;
+                                    margin:0px;} */
 
   header .menu-icon { margin:0px;
                       margin-top:25px;
@@ -643,11 +661,11 @@ footer.login-footer {
 
                                           header .dropdown-menu { top:32px; }
 
-                                           .img-user {  width:100%;
-                                                        margin: 0px;}
+                                           /* .img-user {  width:100%;
+                                                        margin: 0px;} */
 
-                                          .card-post  .img-user  {width:90%;
-                                                                  margin-left:5%;}
+                                          /* .card-post  .img-user  {width:90%;
+                                                                  margin-left:5%;} */
 
                                           .sidebar-nav { width: 100px;}
 

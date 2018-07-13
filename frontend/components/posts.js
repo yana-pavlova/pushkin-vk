@@ -375,14 +375,14 @@ class ContentHeader extends hyperHTML.Component {
 
     render() {
         let authorsPage = '/author/' + this.author.slug;
-        let authorPhoto = this.author.photo;
+        let photo = this.author.photo ? this.author.photo.filename : "/images/avatar-default.png";
         let name = `${this.author.name.last} ${this.author.name.first}`;
         return this.html`
             <div class='row'>
                     <div class='col-xs-3 col-sm-2'>
                         <!--author's photo -->
                         <a href='${authorsPage}'>
-                            <img class='img-circle img-user' src='${(authorPhoto) ? `/${authorPhoto.filename}` : '/images/avatar-default.png'}' alt='${name}'>
+                            <div class='img-circle img-user' style=${`background-image:URL(${photo});`} alt='${name}'></div>
                         </a>
                         <!--author's name -->
                     </div>

@@ -25,10 +25,11 @@ module.exports = class Related extends hyperHTML.Component {
                         <h3>Популярные авторы</h3>
                     </div>
                     ${this.state.popularAuthors.map(a => {
+                        let photo = a.photo ? a.photo.filename : "/images/avatar-default.png";
                         return hyperHTML.wire()`
-                            <div class="col-xs-3 popular-img">
+                            <div class="col-xs-4 popular-img">
                                 <a href='${`/author/ + ${a.slug}`}'>
-                                    <img class='img-circle img-user' src='${(a.photo) ? `/${a.photo.filename}` : '/images/avatar-default.png'}' alt='${`${a.name.last} ${a.name.first}`}'>
+                                    <div class='img-circle img-user' style=${`background-image:URL(${photo});`} alt='${name}'></div>
                                 </a>
                             </div>
                         `

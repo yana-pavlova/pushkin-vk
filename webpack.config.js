@@ -5,6 +5,7 @@ module.exports = {
 	context: __dirname + '/frontend',
 
 	entry: {
+		index: './index',
         wall: './wall',
 		author: './author',
 		register: './register',

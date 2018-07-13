@@ -36,8 +36,6 @@ exports.create = function(req, res) {
 
             newUser.getUpdateHandler(req).process(content, function(err) {
                 if (err) return res.apiError('error', err);
-                // i.author = author
-                // let i = newUser;
                 
                 author.getUpdateHandler(req).process({user: newUser}, function(err){
                     if (err) return res.apiError('error', err);

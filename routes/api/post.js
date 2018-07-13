@@ -10,8 +10,6 @@ const POST_PER_PAGE = 100;
 
 // list all posts and get popular authors
 exports.listAndGetPopAuthors = function(req, res) {
-    // requireAdmin(req, res, () => {
-
         Post.paginate({
                 page: 1,
                 perPage: POST_PER_PAGE,
@@ -31,8 +29,6 @@ exports.listAndGetPopAuthors = function(req, res) {
                     if (!postAuthorCount.hasOwnProperty(p.author._id)) postAuthorCount[p.author._id] = 0;
                     postAuthorCount[p.author._id] ++;
                 })
-
-                console.log('postAuthorCount', postAuthorCount);
                 
                 let sortable = [];
                 for (let id in postAuthorCount) {
@@ -40,20 +36,14 @@ exports.listAndGetPopAuthors = function(req, res) {
                 }
 
                 sortable.sort((a, b) => a[1] - b[1]);
-
-                console.log('sortable', sortable);
                 
                 let maxAuthors = 5;
                 maxAuthors = (maxAuthors > sortable.length) ? sortable.length : maxAuthors;
-
-                console.log('maxAuthors', maxAuthors);
                 
                 let popularAuthorsId = [];
                 for (let i = 0; i < maxAuthors; i++) {
                     popularAuthorsId.push(sortable[i][0])
                 }
-                
-                console.log(popularAuthorsId);
                 
                 Author.model.find().where('_id').in(popularAuthorsId).exec((err, popularAuthors) => {
                     res.apiResponse({
@@ -62,8 +52,6 @@ exports.listAndGetPopAuthors = function(req, res) {
                     });
                 })
             });
-
-    // })
 }
 
 // List Posts

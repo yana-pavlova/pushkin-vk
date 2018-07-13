@@ -26,9 +26,6 @@ exports = module.exports = function (app) {
     // Views
     app.get('/', routes.views.index);
     app.get('/wall', routes.views.wall);
-
-    app.get('/test', routes.views.test); // TODO kill me
-    app.get('/test2', routes.views.test2); // TODO kill me
     
     // app.get('/wall/:category?', routes.views.blog); // TODO kill me
     // app.get('/wall/post/:post', routes.views.post); // TODO kill me

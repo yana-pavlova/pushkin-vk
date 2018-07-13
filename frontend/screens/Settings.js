@@ -92,14 +92,24 @@ module.exports = class RegisterPage extends hyperHTML.Component {
                 <div>
                     <b>Другие ваши авторы:</b>
                 <div>
-                <div>
-                    ${this.myAuthors.map(a => {
-                        return hyperHTML.wire()`
-                        <div>
-                            ${a.name.first} ${a.name.last} ${a.patronymic}
-                            <button id=${a._id} class='btn btn-link' onclick=${this.changeCurrentAuthor}>Сменить</button>
-                        <div>
-                    `})}
+                <div class='row'>
+                    <div class='container'>
+                        ${this.myAuthors.map(a => {
+                            let photo = a.photo ? a.photo.filename : "/images/avatar-default.png";
+                            return hyperHTML.wire()`
+                            <div class='row authors-list'>
+                                <div class="col-xs-1 popular-img">
+                                    <div class='img-circle img-user img-user-mini' style=${`background-image:URL(${photo});`} alt='${name}'></div>
+                                </div>
+                                <div class='col-xs-7'>
+                                    ${a.name.first} ${a.name.last} ${a.patronymic}
+                                </div>
+                                <div class='col-xs-4'>
+                                    <button id=${a._id} class='btn btn-link' onclick=${this.changeCurrentAuthor}>Сменить</button>
+                                </div>
+                            <div>
+                        `})}
+                    </div>
                 </div>
             `
         }
@@ -110,7 +120,7 @@ module.exports = class RegisterPage extends hyperHTML.Component {
                 <div class='container'>
                     <div class='row'>
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3'>
-                            <div class='form-box'>
+                            <div class='form-box modal-dialog'>
                                 <div>
                                     Сейчас вы  <b>${this.currentAuthorName}</b>
                                 </div>
