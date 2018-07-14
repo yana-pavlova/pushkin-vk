@@ -12,7 +12,10 @@ services:
   #     - app
 
   app:
-    image: cnstntn/pushkin-vk
+    build: .
+      # context: .
+      # dockerfile: Dockerfile
+    # image: cnstntn/pushkin-vk
     container_name: pushkinvk
     ports:
       - "3005:3005"

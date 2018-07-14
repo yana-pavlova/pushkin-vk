@@ -1,5 +1,5 @@
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || admin@pushkinvk.ru;
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || admin;
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@pushkinvk.ru'
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin'
 
 exports.create = {
   User: [
