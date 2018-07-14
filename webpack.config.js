@@ -78,16 +78,16 @@ module.exports = {
 	}
 };
 
-if (NODE_ENV == 'production') {
-	module
-		.exports
-		.plugins
-		.push(new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				// don't show unreachable variables etc
-				warnings: false,
-				drop_console: true,
-				unsafe: true
-			}
-		}));
-}
+// if (NODE_ENV == 'production') {
+// 	module
+// 		.exports
+// 		.plugins
+// 		.push(new webpack.optimize.UglifyJsPlugin({
+// 			compress: {
+// 				// don't show unreachable variables etc
+// 				warnings: false,
+// 				drop_console: true,
+// 				unsafe: true
+// 			}
+// 		}));
+// }

@@ -1,7 +1,7 @@
 {
   "name": "pushkin-vk",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "dependencies": {
     "async": "2.1.4",
     "bootstrap": "^4.1.1",
@@ -13,6 +13,7 @@
     "keystone-email": "1.0.5",
     "lodash": "^4.13.1",
     "pug": "2.0.0-beta11",
+    "sendmail": "^1.4.1",
     "uppy": "^0.25.5",
     "vanilla-lazyload": "^8.7.1"
   },
@@ -30,9 +31,9 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "pack": "webpack",
+    "pack": "NODE_ENV=production webpack",
     "nodemon": "node node_modules/nodemon/bin/nodemon.js ./app.js",
     "dev": "NODE_ENV=development npm run pack & npm run nodemon",
-    "start": "node app.js"
+    "start": "NODE_ENV=production node app.js"
   }
 }

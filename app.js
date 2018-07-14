@@ -12,8 +12,8 @@ var rootPath = process.cwd();
 // and documentation.
 
 keystone.init({
-    'name': 'pushkin-vk',
-    'brand': 'pushkin-vk',
+    'name': 'pushkinvk.ru',
+    'brand': 'pushkinvk.ru',
 
     'less': 'public',
     'static': [
@@ -39,9 +39,24 @@ keystone.init({
         res.redirect(url);
     },
     
+    'compress': true,
 
     'port': process.env.PORT || 3005,
+
+
 });
+
+let isSSL = process.env.SSL == 'TRUE';
+if (isSSL) {
+    params['ssl'] = true;
+    params['ssl port'] = process.env.SSL_PORT || 3443;
+    
+    params['ssl key'] = '/data/cert/rusredbook.key';
+    params['ssl cert'] = '/data/cert/rusredbook.crt';
+    
+    // params['ssl key'] = './data/cert/localhost.key';
+    // params['ssl cert'] = './data/cert/localhost.crt';
+}
 
 // Load your project's Models
 keystone.import('models');
@@ -81,5 +96,11 @@ if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
     + '\nset up your mailgun integration');
 }
 
+let startParams = '';
+if (isSSL) startParams = {
+    onHttpsServerCreated: function(){
+        console.log('HTTPS!!!!');
+    }
+};
 
-keystone.start();
+keystone.start(startParams);

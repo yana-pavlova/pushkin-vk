@@ -1,0 +1,39 @@
+version: "2"
+
+services:
+  # nginx:
+  #   build: nginx
+  #   container_name: nginx
+  #   ports:
+  #     - "80:80"
+  #   links:
+  #     - app
+  #   volumes_from:
+  #     - app
+
+  app:
+    image: cnstntn/pushkin-vk
+    container_name: pushkinvk
+    ports:
+      - "3005:3005"
+    links:
+      - mongo
+    volumes:
+      - ./data/cert:/data/cert
+    environment:
+      - MONGO_URI=mongo
+      - NODE_ENV=production
+      - PORT=3005
+      - ADMIN_EMAIL=222@ya.ru
+      - ADMIN_PASSWORD=123
+      # - SSL=TRUE
+    restart: always
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - "27017:27017"
+    restart: always

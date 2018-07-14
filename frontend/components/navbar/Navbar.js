@@ -19,7 +19,7 @@ module.exports = class NavBar extends hyperHTML.Component {
                             </div>
                             <div class="modal-body">
                             <p>Ваше мнение очень важно для нас. Сайт функционирует в тестовом режиме. Если вы обнаружили баги, опечатки или что-то другое не менее неприятное, пожалуйста, сообщите об этом!</p>
-                            <p>По любым интересующим вас вопросам обращайтесь по адресу ХХХ@mail.ru или в личку к администратору групп <a href="" style="color:black">вконтакте</a> и <a href="" style="color:black">фейсбука</a></p>
+                            <p>По любым интересующим вас вопросам обращайтесь по адресу yana.filfak@gmail.com</p>
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Всё понял!</button>
