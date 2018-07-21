@@ -7,9 +7,9 @@ module.exports = {
 	entry: {
 		index: './index',
         wall: './wall',
-		// author: './author',
-		// register: './register',
-		// settings: './settings',
+		author: './author',
+		register: './register',
+		settings: './settings',
 	},
 
 	output: {

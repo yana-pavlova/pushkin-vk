@@ -1,4 +1,5 @@
 shared/db
+shared/cert
 build
 
 # Logs
