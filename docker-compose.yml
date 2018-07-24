@@ -13,7 +13,7 @@ services:
     restart: always
 
   app:
-    image: cnstntn/pushkin-vk
+    image: yana-pavlova/pushkin-vk
     container_name: pushkinvk
     ports:
       - "3005:3005"
