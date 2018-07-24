@@ -9,9 +9,8 @@ html(lang='ru')
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible" content="IE=edge")
 
-        title= title || 'pushkin-vk'
-        link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
-
+        title= title || 'Пушкин в ВК'
+        include ../mixins/favicon
         //- Customise the stylesheet for your site by editing /public/styles/site.less
         //- All .less files will be automatically compiled and minified in production.
         link(href="/styles/site.min.css", rel="stylesheet")

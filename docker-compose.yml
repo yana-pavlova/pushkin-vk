@@ -1,15 +1,16 @@
 version: "2"
 
 services:
-  # nginx:
-  #   build: nginx
-  #   container_name: nginx
-  #   ports:
-  #     - "80:80"
-  #   links:
-  #     - app
-  #   volumes_from:
-  #     - app
+  nginx:
+    build: nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    links:
+      - app
+    volumes:
+      - ./data/logs:/data/logs
+    restart: always
 
   app:
     image: cnstntn/pushkin-vk
@@ -19,6 +20,7 @@ services:
     links:
       - mongo
     volumes:
+      - ./data/logs:/data/logs
       - ./data/cert:/data/cert
     environment:
       - MONGO_URI=mongo

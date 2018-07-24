@@ -1,5 +1,6 @@
-shared/db
-shared/cert
+data/db
+data/cert
+data/logs
 build
 
 # Logs
