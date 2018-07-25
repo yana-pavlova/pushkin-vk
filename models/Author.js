@@ -13,7 +13,7 @@ Author.add(
         name: { type: Types.Name, required: true,  initial: true, index: true, label: 'Фамилия и Имя Автора', },
         patronymic: { type: Types.Text, required: false, initial: true, label: 'Отчество Автора', },
         birthDay: { type: Types.Date, required: false, initial: true, label: 'Дата рождения Автора', },
-        deathDay: { type: Types.Date, required: false, initial: true, label: 'Дата рождения Автора', },
+        deathDay: { type: Types.Date, required: false, initial: true, label: 'Дата смерти Автора', },
         birthCountry: { type: Types.Text, required: false, initial: true, label: 'Страна рождения Автора', },
         birthCity: { type: Types.Text, required: false, initial: true, label: 'Город рождения Автора', }, 
         wikipediaLink: {type: Types.Url, required: false, initial: true, label: 'Ссылка на страницу в Wikipedia Автора', },
