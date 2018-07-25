@@ -18,11 +18,10 @@ keystone.init({
     'less': 'public',
     'static': [
         rootPath + '/public',
-        rootPath + '/uploads',
+        rootPath + '/data/uploads',
         rootPath + '/node_modules',
     ],
 
-    'favicon': 'public/favicon.ico',
     'views': 'templates/views',
     'view engine': 'pug',
 

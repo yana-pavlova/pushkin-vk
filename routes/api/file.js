@@ -19,7 +19,7 @@ exports.uploadImage = function(req, res) {
                 return res.apiError('error', 'something goes wrong');
             }
 
-            let path = process.cwd() + '/uploads/'
+            let path = process.cwd() + '/data/uploads/'
             let fullPath = path + file.name;
             
             fs.writeFile(fullPath, data, function (err) {
