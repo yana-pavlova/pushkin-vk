@@ -18,7 +18,7 @@ keystone.init({
     'less': 'public',
     'static': [
         rootPath + '/public',
-        rootPath + '/data/uploads',
+        '/data/uploads',
         rootPath + '/node_modules',
     ],
 
