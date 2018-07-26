@@ -36,7 +36,7 @@ module.exports = class LoginDropdown extends hyperHTML.Component {
     }
 
     render() {
-        console.log('nav', this);
+        // console.log('nav', this);
         
         let dropdownContent;
         if (this.isSignedIn) {

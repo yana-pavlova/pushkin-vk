@@ -22,6 +22,7 @@ class AuthorSidebar extends hyperHTML.Component {
         let birthDay = new Date(this.state.birthDay);
         birthDay = birthDay.toLocaleString('ru', AUTHOR_DATE_OPTS);
         return this.html`
+          <div class="flexContainerForAllContent">
             <div class='sidebar-nav'>
                 <img class='img-circle user-picture' src='${(authorPhoto) ? `/${authorPhoto.filename}` : '/images/avatar-default.png'}' alt='${name}'>
                 <h2 class='text-center'>${name}</h2>
@@ -277,10 +278,9 @@ class AuthorsPage extends hyperHTML.Component {
         return this.html`
             <div onconnected=${this} >
                 ${new NavBar (this.state)}
-                <div class='profile'>
+                <div class='profile flexContainerForAll'>
                     ${new AuthorSidebar(this.state.author)}
                     <div class='content-posts profile-content'>
-                        <div class='banner-profile' style='background-image: url("/images/bookshelf.jpg");'></div>
                         <div class='container-fluid container-posts'>
                             ${(_LOCALS.registered && _LOCALS.user._id == this.state.author._id)
                                 ? hyperHTML.wire(_LOCALS, ':registered')`

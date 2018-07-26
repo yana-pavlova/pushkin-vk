@@ -70,22 +70,11 @@ module.exports = class NavBar extends hyperHTML.Component {
         }
         return this.html`
             <nav class="navbar nav-pills nav-justified">
-                <div class="container">
-                    <!--
-                    <div class="navbar-header">
-                        <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggle">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span><span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a href="/" class="navbar-brand"><img alt="ККРЯ" src="/images/logo.png"/></a>
-                    </div>
-                    -->
                     <div id='#navigation' class='collapse navbar-collapse'>
                         <ul class='nav navbar-nav navbar-left'>
                             <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal2">О<span style="opacity: 0;">о</span>проекте</a></li>
                             <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal">Контакты</a></li>
-                            <!-- <li><a class="aliveA" href="#">Политика</a></li> -->
+                            <li><a class="aliveA" href="#">Политика</a></li>
                             <li><a class="aliveA" href="/wall">Стена</a></li>                
                             <li><a class="aliveA" href="/tests/testsIndex.html">Тесты</a></li>    
                         </ul>
@@ -94,7 +83,6 @@ module.exports = class NavBar extends hyperHTML.Component {
                             ${new LoginDropdown()}
                         </ul>
                     </div>
-                </div>
             </nav>
         `;
     }

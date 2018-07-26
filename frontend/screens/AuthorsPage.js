@@ -189,10 +189,9 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
         return this.html`
             <div  >
                 ${new NavBar (this.state)}
-                <div class='profile'>
+                <div class='profile flexContainerForAll'>
                     ${new AuthorSidebar(this.state.author)}
                     <div class='content-posts profile-content'>
-                        <div class='banner-profile' style='background-image: url("/images/bookshelf.jpg");'></div>
                         <div class='container-fluid container-posts'>
 
                             ${(_LOCALS.isSignedIn && _LOCALS.user.currentAuthor._id == this.state.author._id)

@@ -1,4 +1,4 @@
-.btn-social, .badge, .btn-social, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary,
+/* .btn-social, .badge, .btn-social, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
 ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:window-inactive {
     background: #f3ad00;
@@ -6,7 +6,7 @@
 
 .btn-social {
     border: #f3ad00;
-}
+} */
 
 
 /*----------------------------------------------------------------
@@ -26,7 +26,7 @@
 -----------------------------------------------------------------*/
 
 html, body, .sidebar-nav, .content-posts {
-    height: 100%;
+    /* height: 100%; */
 }
 
 body {
@@ -67,12 +67,12 @@ video, img {
 .btn:focus,.btn:active, .btn:active:focus  { outline:none; }
 
 .content-posts {
-    margin-left: 240px;
-    margin-top: 65px;
+    /* margin-left: 240px;
+    margin-top: 65px; */
 }
 
 .wall .content-posts {
-    margin-left: 0;
+    /* margin-left: 0; */
 }
 
 .img-user {
@@ -117,29 +117,29 @@ video, img {
 /*----------------------------------------------------------------
 2. Header
 -----------------------------------------------------------------*/
-
+/* 
 header {
     min-height: 50px;
     background: #4F5467;
     font-size: 14px;
     padding: 15px 130px 10px 370px;
-    position: fixed;
-    top: 0;
+    /* position: fixed; */
+    /* top: 0;
     width: 100%;
     z-index: 9;
-}
+} */
 
-header, header a, header a:link, header a:visited, header a:focus {
+/* header, header a, header a:link, header a:visited, header a:focus {
     color: #ffffff;
     text-decoration: none;
-}
+} */
 
-header .search {
+/* header .search {
     float: left;
     margin: 0px;
-}
+} */
 
-header .fa {
+/* header .fa {
     font-size: 18px;
 }
 
@@ -200,19 +200,7 @@ header .badge {
     font-size: 13px;
     padding: 5px;
     padding-bottom: 3px;
-}
-
-.sidebar-nav {
-    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
-    position: fixed;
-    width: 240px;
-    top: 0px;
-    padding: 100px 30px 0px 30px;
-    background: #ffffff;
-    /* z-index: 99; */
-}
-
-
+} */
 
 /*----------------------------------------------------------------
 3. Wall
@@ -226,7 +214,8 @@ header .badge {
     padding: 15px;
     display: block;
     overflow: hidden;
-    margin-bottom: 30px;
+    margin-bottom: 2%;
+    width: 85%;
 }
 
 /* .card-post-content {
@@ -312,8 +301,10 @@ header .badge {
 
 .info-user p {margin:0px; }
 
-.primary-content { width:70%;
-                   float: left; }
+.primary-content {
+    width: 98%;
+    margin: 1%;
+}
 
 .sidebar-right  { width:28%;
                   float: left; }
@@ -360,27 +351,26 @@ header .badge {
 4. User Profile
 -----------------------------------------------------------------*/
 
-.banner-profile {
+/* .banner-profile {
     height: 160px;
-    width: 100%;
-    /* background-image: url('/images/login.jpg'); */
-    background-size: cover;
+    width: 100%; */
+    /* background-size: cover;
     background-position: center;
-    margin-bottom: 50px;
-}
+    margin-bottom: 50px; */
+/* } */
 
 .profile .container-posts {
     /* padding: 0 100px; */
-    width: 97%;
+    /* width: 97%; */
 }
 
 .profile-content {
-    padding-top: 50px;
-    margin-top:0px;
+    /* padding-top: 50px;
+    margin-top:0px; */
 }
 
 .profile-content .nav-tabs {
-    padding-left: 130px;
+    /* padding-left: 130px; */
 }
 
 .profile-data {
@@ -397,14 +387,16 @@ header .badge {
     display: flex;
     flex-direction: column;
     background: white;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     padding: 2%;
+    font-size: 1.5vw;
 }
 
 .flexBoxAuthorInformation {
     display: flex;
     flex-direction: row;
     /* background: #dadada; */
+    /* min-width: 290px; */
     margin-top: 1%;
 }
 
@@ -626,85 +618,28 @@ footer.login-footer {
     border-radius: 10px;
 }
 
-/*----------------------------------------------------------------
-8. Small Devices
------------------------------------------------------------------*/
 
-@media screen and (max-width:1199px)  {   header { padding: 15px 30px 10px 220px;  }
 
-                                          .sidebar-nav {  width:190px;  }
 
-                                          .content-posts {  margin-left:190px;}
 
-                                          .container-posts { padding:0px 30px;  }
-                                      }
 
-/* @media screen and (max-width:991px) {  .img-user { width: 100%;
-                                                   margin: 0px;} */
-
-                                        header .dropdown-menu { top:33px; }
-
-                                        .primary-content { width:100%;}
-                                     }
-
-@media screen and (max-width:767px)  {
-
-  header { padding:0px;
-           min-height: 104px;
-           padding-left:125px;}
-
-  header .search, header .search input, header .dropdown { width:100%; }
-
-  header .search input  { border-radius:0px;
-                          height: 40px;}
-
-  header .dropdown-menu { top:36px; }
-
-  .sidebar-nav {  width:125px;
-                  height: auto;
-                  padding: 10px;}
-
-  header .menu-icon { margin:0px;
-                      margin-top:25px;
-                      width:25%;
-                      text-align: center;}
-
-  header .menu-icon .fa  {  font-size: 20px;  }
-
-  header .badge { position: relative;
-                  right: 15px;
-                  top:-12px;}
-
-  .content-posts  {  margin:0px;
-                     margin-top:120px;}
-
-  .container-posts, .primary-content .container-posts { padding:0px 15px;  }
-
-  .data-post { margin-top:15px;}
-
-  .profile-content  {  margin-top: 0px;
-                       padding-top: 100px;}
-
-  .profile-content .nav-tabs  { padding-left:15px; }
-
-  .chat-message .chat-time {   top: 6px;
-                               right: 10px;}
-
-  .form-box  {margin-bottom:60px;}
-
-  .modal-dialog  { width:auto;}
-
+.flexContainerForAll {
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
 }
 
-@media screen and (max-width:479px)  {
-                                          header { padding-left: 100px;
-                                                   min-height:100px; }
+.content-posts {
+    width: 100%;
+}
 
-                                          header .dropdown-menu { top:32px; }
+.sidebar-nav {
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    min-width: 24% !important;
+    margin-right: 1%;
+}
 
-                                          .sidebar-nav { width: 100px;}
-
-                                          .form-box  {width: 310px;
-                                                      margin-top: -225px;}
-
-                                      }
+.user-picture {
+    margin: 1%;
+}

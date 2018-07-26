@@ -34,29 +34,3 @@ class NavBar extends hyperHTML.Component {
         `;
     }
 }
-
-
-
-// .navbar(role='navigation-demo')
-//     .container
-//         .navbar-header
-//             button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navigation')
-//                 span.sr-only Toggle navigation
-//                 span.icon-bar
-//                 span.icon-bar
-//                 span.icon-bar
-//             a.navbar-brand(href='/')
-//                 img(alt='ККРЯ' src='/images/logo.png')
-        
-//         #navigation.collapse.navbar-collapse
-//             ul.nav.navbar-nav.navbar-left
-//                 each link in navLinks
-//                     li(class=(section == link.key ? 'active' : null)): a.btn(href=link.href class=(link.style ? link.style : 'btn-simple'))= link.label
-//             ul.nav.navbar-nav.navbar-right
-//                     if user
-//                         if user.canAccessKeystone
-//                             li: a(href='/keystone') Open Keystone
-//                         li: a(href='/keystone/signout') Sign Out
-//                     else
-//                         li: a(href='/keystone/signin') Sign In
-                    

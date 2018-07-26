@@ -5,14 +5,8 @@ body {
     background-size: cover;
 }
 
-#pushkinCirc {
-    margin-top: 10%;
-    height: 100px;
-}
-
 nav {
     color: white;
-    font-size: 150%;
     font-family: 'Amatic SC', cursive;
     margin-bottom: 2%;
 }
