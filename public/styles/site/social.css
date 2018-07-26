@@ -1,15 +1,3 @@
-/*
-Template Name: Socialyte
-Author: Codeplus team
-Author URI: https://codeplus.it
-Description: An Html Template for Social Network
-Version: 1.1
-*/
-
-/*---------------------------------------------------------------
-[Main Color]
-here you can change #f3ad00 main color.
------------------------------------------------------------------*/
 .btn-social, .badge, .btn-social, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
 ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:window-inactive {
@@ -234,10 +222,11 @@ header .badge {
     margin-bottom: 30px;
 }
 
-.card-post-content {
+/* .card-post-content {
     margin-top: 15px;
     margin-bottom: 20px;
-}
+} */
+
 .container-posts {
     padding: 0 130px;
 }
@@ -249,9 +238,9 @@ header .badge {
 
 .info-user i { color:#929292; }
 
-.reaction {
+/* .reaction {
     padding: 10px 0;
-}
+} */
 
 .reaction a.enabled img {
     cursor: pointer;
@@ -326,9 +315,35 @@ header .badge {
     padding: 0 40px;
 }
 
+.flexContainerHeaderPost {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background: #dadada;
+}
 
+.flexBoxHeaderPost {
+    background: #ffeab6;
+    margin: 1%;
+}
 
+.flex_container {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    /* background: #c00; */
+}
 
+.flexBoxPost {
+    background: #b5b5b5;
+}
+
+.flexBoxLike {
+    margin-top: 1%;
+    background: #b5b5b5;
+}
 
 /*----------------------------------------------------------------
 4. User Profile
@@ -614,15 +629,6 @@ footer.login-footer {
                   height: auto;
                   padding: 10px;}
 
-  /* .img-user   { width:80%;
-                margin-left:10%;  } */
-
-  /* .card-post .img-user { width:70%;
-                        margin-left:15%; } */
-
-  /* .card-post .chat-row .img-user  { width:100%;
-                                    margin:0px;} */
-
   header .menu-icon { margin:0px;
                       margin-top:25px;
                       width:25%;
@@ -660,12 +666,6 @@ footer.login-footer {
                                                    min-height:100px; }
 
                                           header .dropdown-menu { top:32px; }
-
-                                           /* .img-user {  width:100%;
-                                                        margin: 0px;} */
-
-                                          /* .card-post  .img-user  {width:90%;
-                                                                  margin-left:5%;} */
 
                                           .sidebar-nav { width: 100px;}
 

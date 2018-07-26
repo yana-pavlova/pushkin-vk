@@ -32,11 +32,9 @@ class Post extends hyperHTML.Component {
         return this.html`
             <div class='card-post'>
                 ${new ContentHeader(author, post.publishedDate)}
-                <div class='row'>
-                    <div class='col-sm-8 col-sm-offset-2'>
+                <div class='flex_container'>
                         ${new PostContent(post)}
                         ${new CommentBlock(comments, post.id)}
-                    </div>
                 </div>
             </div>
             `
@@ -186,8 +184,8 @@ class PostContent extends hyperHTML.Component {
             `
         }
         return this.html`
-            <div class='card-post-content'>${content}</div>
-            <div class='reaction'>
+            <div class='card-post-content flexBoxPost'>${content}</div>
+            <div class='reaction flexBoxLike'>
                 ${new Like(this.post)}
             </div>
         `
@@ -378,23 +376,22 @@ class ContentHeader extends hyperHTML.Component {
         let photo = this.author.photo ? this.author.photo.filename : "/images/avatar-default.png";
         let name = `${this.author.name.last} ${this.author.name.first}`;
         return this.html`
-            <div class='row'>
-                    <div class='col-xs-3 col-sm-2'>
-                        <!--author's photo -->
-                        <a href='${authorsPage}'>
-                            <div class='img-circle img-user' style=${`background-image:URL(${photo});`} alt='${name}'></div>
-                        </a>
-                        <!--author's name -->
-                    </div>
-                    <div class='col-xs-9 col-sm-10 info-user'>
-                        <div>
-                            <a href='${authorsPage}'>${name}</a>
-                        </div>
-                        <p>
-                            <i>${this.pubDate}</i>
-                        </p>
-                    </div>
+            <div class='flexContainerHeaderPost'>
+                <div class='flexBoxHeaderPost'>
+                    <!--author's photo -->
+                    <a href='${authorsPage}'>
+                        <div class='img-circle img-user' style=${`background-image:URL(${photo});`} alt='${name}'></div>
+                    </a>
+                    <!--author's name -->
+                </div> <!-- end 1 flexBox -->
+                <div class='flexBoxHeaderPost info-user'>
+                        <a href='${authorsPage}'>${name}</a>
+                    <p>
+                        <i>${this.pubDate}</i>
+                    </p>
                 </div>
+                <!-- end 2flexBox -->
+            </div> <!-- end flexContainer -->
         `
     }
 }

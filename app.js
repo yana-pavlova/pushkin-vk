@@ -10,7 +10,8 @@ var rootPath = process.cwd();
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
-
+let uploadsPath = (process.env.NODE_ENV == 'production') ? '/data/uploads' : './data/uploads'
+keystone.set('uploadsPath', uploadsPath);
 keystone.init({
     'name': 'pushkinvk.ru',
     'brand': 'pushkinvk.ru',
@@ -18,7 +19,7 @@ keystone.init({
     'less': 'public',
     'static': [
         rootPath + '/public',
-        '/data/uploads',
+        uploadsPath,
         rootPath + '/node_modules',
     ],
 

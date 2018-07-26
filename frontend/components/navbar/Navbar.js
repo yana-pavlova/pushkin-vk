@@ -81,7 +81,6 @@ module.exports = class NavBar extends hyperHTML.Component {
                     </div>
                     <div id='#navigation' class='collepse navbar-collapse'>
                         <ul class='nav navbar-nav navbar-left'>
-                            <li><a class="aliveA" href="/">Главная</a></li>
                             <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal2">О<span style="opacity: 0;">о</span>проекте</a></li>
                             <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal">Контакты</a></li>
                             <!-- <li><a class="aliveA" href="#">Политика</a></li> -->
