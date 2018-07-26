@@ -45,7 +45,7 @@ b, strong {
 
 h1, h2, h3 { font-weight: 600 !important; }
 
-h2 {  font-size: 22px !important; }
+/* h2 {  font-size: 22px !important; } */
 
 h3 { font-size: 15px !important;
      margin-top:0;
@@ -83,14 +83,21 @@ video, img {
     margin-left: 5%;
 }
 
-.card-post .img-user  { 
+/* .card-post .img-user  { 
     max-width: 110px;
     min-width: 60px;
     max-height: 110px;
     min-height: 60px;
-}
+} */
 
-.card-post .chat-row .img-user { min-width:inherit; }
+/* .card-post .chat-row .img-user { min-width:inherit; } */
+
+.flexContainerCardPost {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: #d09400;
+}
 
 .img-user-mini {
     width: 30px;
@@ -228,12 +235,12 @@ header .badge {
 } */
 
 .container-posts {
-    padding: 0 130px;
+    /* padding: 0 1%; */
 }
 
 .img-post {
     width: 100%;
-    margin-top: 10px;
+    margin: 1%;
 }
 
 .info-user i { color:#929292; }
@@ -311,19 +318,19 @@ header .badge {
 .sidebar-right  { width:28%;
                   float: left; }
 
-.primary-content .container-posts {
+/* .primary-content .container-posts {
     padding: 0 40px;
-}
+} */
 
 .flexContainerHeaderPost {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    background: #dadada;
+    /* background: #dadada; */
 }
 
 .flexBoxHeaderPost {
-    background: #ffeab6;
+    /* background: #ffeab6; */
     margin: 1%;
 }
 
@@ -337,12 +344,16 @@ header .badge {
 }
 
 .flexBoxPost {
-    background: #b5b5b5;
+    /* background: #b5b5b5; */
 }
 
 .flexBoxLike {
     margin-top: 1%;
-    background: #b5b5b5;
+    /* background: #b5b5b5; */
+}
+
+.flexBoxLike img {
+    margin-left: 1%;
 }
 
 /*----------------------------------------------------------------
@@ -359,8 +370,8 @@ header .badge {
 }
 
 .profile .container-posts {
-    padding: 0 100px;
-    width: 90%;
+    /* padding: 0 100px; */
+    width: 97%;
 }
 
 .profile-content {
@@ -378,10 +389,34 @@ header .badge {
     line-height: 25px;
 }
 
-.profile .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+/* .profile .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
     border-top: none !important;
+} */
+
+.flexContainerAuthorInformation {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin-bottom: 5%;
+    padding: 2%;
 }
 
+.flexBoxAuthorInformation {
+    display: flex;
+    flex-direction: row;
+    /* background: #dadada; */
+    margin-top: 1%;
+}
+
+.flexBoxAuthorInformation .divDataName {
+    width: 20%;
+    margin-right: 2%;
+}
+
+.flexBoxAuthorInformation .divData {
+    width: 80%;
+    margin-right: 2%;
+}
 
 .chat-message {
     padding: 12px 5px;

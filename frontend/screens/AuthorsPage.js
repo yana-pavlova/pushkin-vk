@@ -62,44 +62,72 @@ class AuthorInfo extends hyperHTML.Component {
         deathDay = deathDay.toLocaleString('ru', AUTHOR_DATE_OPTS);
         
         return this.html`
-            <div class='card-post'>
-                <table class='table table-condensed'>
-                    <caption>${name}</caption>
-                    <tbody>
-                        <tr>
-                            <th>Дата рождения</th>
-                            <td>${birthDay}</td>
-                        </tr>
-                        <tr>
-                            <th>Дата смерти</th>
-                            <td>${deathDay}</td>
-                        </tr>
-                        <tr>
-                            <th>Место рождения</th>
-                            <td>${this.state.birthCity}, ${this.state.birthCountry}</td>
-                        </tr>
-                        <tr>
-                            <th>Родители</th>
-                            <td>${this.state.parents}</td>
-                        </tr>
-                        <tr>
-                            <th>Дети</th>
-                            <td>${this.state.children}</td>
-                        </tr>
-                        <tr>
-                            <th>Награды</th>
-                            <td>${this.state.honors}</td>
-                        </tr>
-                        <tr>
-                            <th>Ссылки</th>
-                            <td><a>${this.state.wikipediaLink}</a></td>
-                        </tr>
-                        <tr>
-                            <th>Куратор страницы автора</th>
-                            <td>${this.state.name.first} ${this.state.name.last}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class='flexContainerAuthorInformation'>
+                <h3>${name}</h3>
+                <div class="flexBoxAuthorInformation">
+                    <div class="divDataName">
+                        Дата рождения:
+                    </div>
+                    <div class="divData">
+                        ${birthDay}
+                    </div>
+                </div>
+                <div class="flexBoxAuthorInformation">
+                    <div class="divDataName">
+                        Дата смерти:
+                    </div>
+                    <div class="divData">
+                        ${deathDay}
+                    </div>
+                </div>
+                <div class="flexBoxAuthorInformation">
+                    <div class="divDataName">
+                        Место рождения:
+                    </div>
+                    <div class="divData">
+                        ${this.state.birthCity}, ${this.state.birthCountry}
+                    </div>
+                </div>
+                <div class="flexBoxAuthorInformation">
+                    <div class="divDataName">
+                        Родители:
+                    </div>
+                    <div class="divData">
+                        ${this.state.parents}
+                    </div>
+                </div>
+                <div class="flexBoxAuthorInformation">
+                    <div class="divDataName">
+                        Дети:
+                    </div>
+                    <div class="divData">
+                        ${this.state.children}
+                    </div>
+                </div>
+                <div class="flexBoxAuthorInformation">
+                    <div class="divDataName">
+                        Награды:
+                    </div>
+                    <div class="divData">
+                        ${this.state.honors}
+                    </div>
+                </div>
+                <div class="flexBoxAuthorInformation">
+                    <div class="divDataName">
+                        Ссылки:
+                    </div>
+                    <div class="divData">
+                        <a href="${this.state.wikipediaLink}">Вики</a>
+                    </div>
+                </div>            
+                <div class="flexBoxAuthorInformation">
+                    <div class="divDataName">
+                        Куратор страницы:
+                    </div>
+                    <div class="divData">
+                        ${this.state.name.first} ${this.state.name.last}
+                    </div>
+                </div>
             </div>
         `
     }
