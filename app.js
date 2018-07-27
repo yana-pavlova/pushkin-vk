@@ -12,6 +12,8 @@ var rootPath = process.cwd();
 // and documentation.
 let uploadsPath = (process.env.NODE_ENV == 'production') ? '/data/uploads' : './data/uploads'
 keystone.set('uploadsPath', uploadsPath);
+console.log('-------', uploadsPath);
+
 keystone.init({
     'name': 'pushkinvk.ru',
     'brand': 'pushkinvk.ru',
