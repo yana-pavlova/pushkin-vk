@@ -58,7 +58,7 @@ class AuthorInfo extends hyperHTML.Component {
         let name = `${this.state.name.first} ${this.state.name.last} ${this.state.patronymic}`;
         let birthDay = new Date(this.state.birthDay);
         birthDay = birthDay.toLocaleString('ru', AUTHOR_DATE_OPTS);
-        let deathDay = new Date(this.state.birthDay);
+        let deathDay = new Date(this.state.deathDay);
         deathDay = deathDay.toLocaleString('ru', AUTHOR_DATE_OPTS);
         
         return this.html`

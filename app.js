@@ -10,7 +10,7 @@ var rootPath = process.cwd();
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
-let uploadsPath = (process.env.NODE_ENV == 'production') ? '/data/uploads' : './data/uploads'
+let uploadsPath = (process.env.NODE_ENV == 'production') ? '/data/uploads/' : `${rootPath}/data/uploads/`
 keystone.set('uploadsPath', uploadsPath);
 console.log('-------', uploadsPath);
 

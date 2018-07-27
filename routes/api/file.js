@@ -21,6 +21,7 @@ exports.uploadImage = function(req, res) {
 
             let path = keystone.get('uploadsPath');
             let fullPath = path + file.name;
+            console.log('???????????????', fullPath);
             
             fs.writeFile(fullPath, data, function (err) {
                 if (err) {
