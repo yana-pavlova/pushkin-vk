@@ -27,7 +27,7 @@ class AuthorSidebar extends hyperHTML.Component {
                 <img class='img-circle user-picture' src='${(authorPhoto) ? `/${authorPhoto.filename}` : '/images/avatar-default.png'}' alt='${name}'>
                 <h2 class='text-center'>${name}</h2>
                 <hr>
-                <p class='text-center user-description hidden-xs'>
+                <p class='text-center user-description'>
                     <i>${birthDay}</i>
                     <br>
                     <i>${this.state.birthCity}, ${this.state.birthCountry}</i>

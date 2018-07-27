@@ -18,7 +18,7 @@ module.exports = class Wall extends hyperHTML.Component {
                     <div class='primary-content'>
                         ${new Posts(this.state)}
                     </div>
-                    <div class="sidebar-right hidden-xs hidden-sm">
+                    <div class="sidebar-right">
                         ${new Related(this.state)}
                     </div>
                 </div>

@@ -1,14 +1,3 @@
-/* .btn-social, .badge, .btn-social, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
-::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:window-inactive {
-    background: #f3ad00;
-}
-
-.btn-social {
-    border: #f3ad00;
-} */
-
-
 /*----------------------------------------------------------------
   [Table of contents]
   1. Body
@@ -24,10 +13,12 @@
 /*----------------------------------------------------------------
 1. Body
 -----------------------------------------------------------------*/
-
-html, body, .sidebar-nav, .content-posts {
-    /* height: 100%; */
-}
+/* 
+@media (max-width: 760px) {
+    .normNav {
+        background: #e8a500;
+    }
+} */
 
 body {
     background: #edf1f5 !important;
@@ -44,8 +35,6 @@ b, strong {
 }
 
 h1, h2, h3 { font-weight: 600 !important; }
-
-/* h2 {  font-size: 22px !important; } */
 
 h3 { font-size: 15px !important;
      margin-top:0;
@@ -66,15 +55,6 @@ video, img {
 
 .btn:focus,.btn:active, .btn:active:focus  { outline:none; }
 
-.content-posts {
-    /* margin-left: 240px;
-    margin-top: 65px; */
-}
-
-.wall .content-posts {
-    /* margin-left: 0; */
-}
-
 .img-user {
     width: 100px;
     height: 100px;
@@ -82,15 +62,6 @@ video, img {
     background-position: center;
     margin-left: 5%;
 }
-
-/* .card-post .img-user  { 
-    max-width: 110px;
-    min-width: 60px;
-    max-height: 110px;
-    min-height: 60px;
-} */
-
-/* .card-post .chat-row .img-user { min-width:inherit; } */
 
 .flexContainerCardPost {
     display: flex;
@@ -117,90 +88,7 @@ video, img {
 /*----------------------------------------------------------------
 2. Header
 -----------------------------------------------------------------*/
-/* 
-header {
-    min-height: 50px;
-    background: #4F5467;
-    font-size: 14px;
-    padding: 15px 130px 10px 370px;
-    /* position: fixed; */
-    /* top: 0;
-    width: 100%;
-    z-index: 9;
-} */
 
-/* header, header a, header a:link, header a:visited, header a:focus {
-    color: #ffffff;
-    text-decoration: none;
-} */
-
-/* header .search {
-    float: left;
-    margin: 0px;
-} */
-
-/* header .fa {
-    font-size: 18px;
-}
-
-header div {
-    float: right;
-}
-
-header .second-icon {
-    margin-right: 60px;
-}
-
-header .menu-icon { margin-top:3px; }
-
-header .dropdown-menu, header .dropdown-menu a, header .dropdown-menu a:link, header .dropdown-menu a:focus, header .dropdown-menu a:visited {
-    color: #404040;
-}
-
-header .dropdown-menu {
-    padding: 0px;
-    min-width: 220px;
-    text-align: center;
-}
-
-header .dropdown-menu li, header .dropdown-menu li a { 
-    display: block;
-    overflow: hidden;
-    background-color: #c00;
-}
-
-.dropdown-menu>li>a  {  padding: 8px 20px; }
-
-.dropdown-menu .divider {margin:0px;}
-
-.dropdown-toggle {
-    cursor: pointer;
-}
-
-.badge {
-    padding: 4px 8px;
-    font-size: 11px;
-}
-
-header .badge {
-    position: absolute;
-    top: -8px;
-    right: -12px;
-}
-
-.new-not {
-    background: #ffeab6;
-}
-
-.search input {
-    width: 200px;
-    border-radius: 10px;
-    border: 0px;
-    color: #404040;
-    font-size: 13px;
-    padding: 5px;
-    padding-bottom: 3px;
-} */
 
 /*----------------------------------------------------------------
 3. Wall
@@ -213,18 +101,7 @@ header .badge {
     background: #ffffff;
     padding: 15px;
     display: block;
-    overflow: hidden;
     margin-bottom: 2%;
-    width: 85%;
-}
-
-/* .card-post-content {
-    margin-top: 15px;
-    margin-bottom: 20px;
-} */
-
-.container-posts {
-    /* padding: 0 1%; */
 }
 
 .img-post {
@@ -245,7 +122,6 @@ header .badge {
 .reaction a:hover {
     text-decoration: none;
 }
-
 
 .comments {
     border-top: 1px solid #dadada;
@@ -306,13 +182,6 @@ header .badge {
     margin: 1%;
 }
 
-.sidebar-right  { width:28%;
-                  float: left; }
-
-/* .primary-content .container-posts {
-    padding: 0 40px;
-} */
-
 .flexContainerHeaderPost {
     display: flex;
     justify-content: flex-start;
@@ -334,10 +203,6 @@ header .badge {
     /* background: #c00; */
 }
 
-.flexBoxPost {
-    /* background: #b5b5b5; */
-}
-
 .flexBoxLike {
     margin-top: 1%;
     /* background: #b5b5b5; */
@@ -351,26 +216,8 @@ header .badge {
 4. User Profile
 -----------------------------------------------------------------*/
 
-/* .banner-profile {
-    height: 160px;
-    width: 100%; */
-    /* background-size: cover;
-    background-position: center;
-    margin-bottom: 50px; */
-/* } */
-
 .profile .container-posts {
-    /* padding: 0 100px; */
-    /* width: 97%; */
-}
-
-.profile-content {
-    /* padding-top: 50px;
-    margin-top:0px; */
-}
-
-.profile-content .nav-tabs {
-    /* padding-left: 130px; */
+    width: 100%;
 }
 
 .profile-data {
@@ -378,10 +225,6 @@ header .badge {
     padding: 0px;
     line-height: 25px;
 }
-
-/* .profile .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
-    border-top: none !important;
-} */
 
 .flexContainerAuthorInformation {
     display: flex;
@@ -396,7 +239,6 @@ header .badge {
     display: flex;
     flex-direction: row;
     /* background: #dadada; */
-    /* min-width: 290px; */
     margin-top: 1%;
 }
 
@@ -442,11 +284,11 @@ header .badge {
     right: 20px;
 }
 
-.scrollbar-container {
+/* .scrollbar-container {
     height: 340px;
     overflow-y: scroll;
     overflow-x: hidden;
-}
+} */
 
 .badge-replay, .badge-message {
     font-size: 14px;
@@ -492,7 +334,7 @@ textarea.post-textarea {
     max-height: 100%;
 }
 
-.image-preview .thumbnail a {
+/* .image-preview .thumbnail a {
     display: block;
     width: 20px;
     height: 20px;
@@ -500,9 +342,9 @@ textarea.post-textarea {
     top: 3px;
     right: 3px;
     background: #c00;
-    overflow: hidden;
+    /* overflow: hidden; */
     /* text-indent: -9999px; */
-}
+/* } */
 
 
 .authors-list {
@@ -631,6 +473,8 @@ footer.login-footer {
 
 .content-posts {
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar-nav {
@@ -642,4 +486,38 @@ footer.login-footer {
 
 .user-picture {
     margin: 1%;
+    max-width: 100%;
+    border-radius: 60%;
+}
+
+.card-post-text a {
+    color: #4F5467;
+    text-decoration: underline;
+    font-size: 85%;
+    font-weight: bold;
+}
+
+.reaction a {
+    color: darkgray;
+}
+
+.normNav {
+    background: yellow;
+}
+
+.normNav img {
+    width: 20px;
+}
+
+.flexContainerrelated {
+    display: flex;
+    flex-direction: column;
+    margin-right: 9px;
+    margin-left: 9px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.flexContainerrelated .card-post {
+    /* width: 97%; */
 }
