@@ -504,6 +504,7 @@ footer.login-footer {
     flex-direction: column;
     margin: 1%;
     min-width: 270px;
+    align-items: center;
 }
 
 /* .content-posts {
