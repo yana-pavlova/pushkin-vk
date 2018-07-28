@@ -13,7 +13,7 @@ module.exports = class Wall extends hyperHTML.Component {
     render() {
         return this.html`
             ${new NavBar (this.state)}
-            <div class='wall'>
+            <div class='wall flexContainerForAll'>
                         ${new Posts(this.state)}
             </div>
         `;

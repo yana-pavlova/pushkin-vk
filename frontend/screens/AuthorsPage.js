@@ -20,29 +20,29 @@ const AUTHOR_DATE_OPTS = {
     // second: 'numeric'
 };
 
-class AuthorSidebar extends hyperHTML.Component {
-    constructor(state) {
-        super();
-        this.state = state;
-    }
+// class AuthorSidebar extends hyperHTML.Component {
+//     constructor(state) {
+//         super();
+//         this.state = state;
+//     }
 
-    render() {
-        let photo = this.state.photo;
-        let name = `${this.state.name.first} ${this.state.name.last} ${this.state.patronymic}`;
-        let birthDay = new Date(this.state.birthDay);
-        birthDay = birthDay.toLocaleString('ru', AUTHOR_DATE_OPTS);
+//     render() {
+//         let photo = this.state.photo;
+//         let name = `${this.state.name.first} ${this.state.name.last} ${this.state.patronymic}`;
+//         let birthDay = new Date(this.state.birthDay);
+//         birthDay = birthDay.toLocaleString('ru', AUTHOR_DATE_OPTS);
         
-        return this.html`
-            <div class='sidebar-nav'>
-              <div class="flexContainerForSidebar">
-                <img class='img-circle user-picture' src='${(photo) ? `/${photo.filename}` : '/images/avatar-default.png'}' alt='${name}'>
-                <h2 class='text-center'>${name}</h2>
-                <hr>
-              </div>
-            </div>
-            `
-    }
-}
+//         return this.html`
+//             <div class='sidebar-nav'>
+//               <div class="flexContainerForSidebar">
+//                 <img class='img-circle user-picture' src='${(photo) ? `/${photo.filename}` : '/images/avatar-default.png'}' alt='${name}'>
+//                 <h2 class='text-center'>${name}</h2>
+//                 <hr>
+//               </div>
+//             </div>
+//             `
+//     }
+// }
 
 class AuthorInfo extends hyperHTML.Component {
     constructor(state) {
@@ -187,7 +187,6 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
             <div  >
                 ${new NavBar (this.state)}
                 <div class='profile flexContainerForAll'>
-                    ${new AuthorSidebar(this.state.author)}
                     <div class='content-posts profile-content'>                        <div class='container-posts'>
 
                             ${(_LOCALS.isSignedIn && _LOCALS.user.currentAuthor._id == this.state.author._id)
