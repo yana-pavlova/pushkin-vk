@@ -105,7 +105,7 @@ module.exports = class RegisterPage extends hyperHTML.Component {
                                     ${a.name.first} ${a.name.last} ${a.patronymic}
                                 </div>
                                 <div class='col-xs-4'>
-                                    <button id=${a._id} class='btn btn-link' onclick=${this.changeCurrentAuthor}>Сменить</button>
+                                    <button id=${a._id} class='btn btn-primary btn-link' onclick=${this.changeCurrentAuthor}>Сменить</button>
                                 </div>
                             <div>
                         `})}

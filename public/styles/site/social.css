@@ -56,8 +56,8 @@ video, img {
 .btn:focus,.btn:active, .btn:active:focus  { outline:none; }
 
 .img-user {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     background-size: cover;
     background-position: center;
     margin-left: 5%;
@@ -102,18 +102,31 @@ video, img {
     padding: 15px;
     display: block;
     margin-bottom: 2%;
+    /* max-width: 98.5%; */
+}
+
+.card-post-text {
+    margin: 1%;
 }
 
 .img-post {
-    width: 100%;
+    max-width: 500px;
+    /* max-width: 75%; */
+    /* max-height: 75%; */
     margin: 1%;
+    padding-right: 10%;
+    padding-left: 10%;
 }
 
 .info-user i { color:#929292; }
 
-/* .reaction {
-    padding: 10px 0;
-} */
+.myDropDownMenu {
+    display: none;
+}
+
+.myDropDownButton {
+    display: none;
+}
 
 .reaction a.enabled img {
     cursor: pointer;
@@ -123,9 +136,14 @@ video, img {
     text-decoration: none;
 }
 
+.reaction {
+    margin: 1%;
+}
+
 .comments {
-    border-top: 1px solid #dadada;
-    padding-top: 5px;
+    /* border-top: 1px solid #dadada; */
+    /* padding-top: 5px; */
+    margin: 1%;
 }
 
 .comments ul {
@@ -203,6 +221,17 @@ video, img {
     /* background: #c00; */
 }
 
+.flex_containerPost {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+}
+
+.post-tool-bar {
+    margin: 1%;
+
+}
+
 .flexBoxLike {
     margin-top: 1%;
     /* background: #b5b5b5; */
@@ -216,9 +245,11 @@ video, img {
 4. User Profile
 -----------------------------------------------------------------*/
 
-.profile .container-posts {
-    width: 100%;
-}
+/* .container-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
 
 .profile-data {
     list-style: none;
@@ -227,12 +258,15 @@ video, img {
 }
 
 .flexContainerAuthorInformation {
+    margin-top: 2%;
     display: flex;
     flex-direction: column;
     background: white;
     margin-bottom: 2%;
     padding: 2%;
     font-size: 1.5vw;
+    /* max-width: 98.5%; */
+    /* max-width: 75%; */
 }
 
 .flexBoxAuthorInformation {
@@ -464,31 +498,48 @@ footer.login-footer {
 
 
 
-
 .flexContainerForAll {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 1%;
+    min-width: 270px;
 }
 
-.content-posts {
+/* .content-posts {
     width: 100%;
     display: flex;
     flex-direction: column;
-}
+    max-width: 700px;
+} */
 
 .sidebar-nav {
     box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
     background: #ffffff;
-    min-width: 24% !important;
-    margin-right: 1%;
+    /* min-width: 24% !important; */
+    /* margin-right: 1%; */
+    /* max-width: 25% !important; */
+}
+
+.flexContainerForSidebar {
+    display: flex;
+    flex-direction: row;
+    max-height: 200px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .user-picture {
-    margin: 1%;
-    max-width: 100%;
-    border-radius: 60%;
+    max-width: 25%;
+    padding: 2%;
 }
+
+/* .quadratish {
+    width: 23vw;
+    height: 23vw;
+    border-radius: 50%;
+    margin: 1%;
+    overflow: hidden;
+} */
 
 .card-post-text a {
     color: #4F5467;
@@ -520,4 +571,12 @@ footer.login-footer {
 
 .flexContainerrelated .card-post {
     /* width: 97%; */
+}
+
+.wall {
+    max-width: 700px;
+}
+
+.newPublication {
+    /* max-width: 75%; */
 }

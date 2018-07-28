@@ -54,7 +54,7 @@ module.exports = class LoginDropdown extends hyperHTML.Component {
         }
         else {
             dropdownContent = hyperHTML.wire()`
-                <li><a href='/login' class='btn btn-link'>Войти</a></li>
+                <li><a href='/login' class='btn btn-primary btn-link'>Войти</a></li>
             `
         }
 

@@ -32,8 +32,9 @@
   "scripts": {
     "lint": "eslint .",
     "pack": "NODE_ENV=production webpack",
-    "nodemon": "node node_modules/nodemon/bin/nodemon.js ./app.js",
-    "dev": "NODE_ENV=development npm run pack & npm run nodemon",
+    "pack:dev": "NODE_ENV=development webpack",
+    "nodemon": "NODE_ENV=development node node_modules/nodemon/bin/nodemon.js ./app.js",
+    "dev": "npm run pack:dev & npm run nodemon",
     "start": "NODE_ENV=production node app.js"
   }
 }

@@ -34,14 +34,11 @@ class AuthorSidebar extends hyperHTML.Component {
         
         return this.html`
             <div class='sidebar-nav'>
+              <div class="flexContainerForSidebar">
                 <img class='img-circle user-picture' src='${(photo) ? `/${photo.filename}` : '/images/avatar-default.png'}' alt='${name}'>
                 <h2 class='text-center'>${name}</h2>
                 <hr>
-                <p class='text-center user-description'>
-                    <i>${birthDay}</i>
-                    <br>
-                    <i>${this.state.birthCity}, ${this.state.birthCountry}</i>
-                </p>
+              </div>
             </div>
             `
     }
@@ -191,20 +188,18 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
                 ${new NavBar (this.state)}
                 <div class='profile flexContainerForAll'>
                     ${new AuthorSidebar(this.state.author)}
-                    <div class='content-posts profile-content'>
-                        <div class='container-fluid container-posts'>
+                    <div class='content-posts profile-content'>                        <div class='container-posts'>
 
                             ${(_LOCALS.isSignedIn && _LOCALS.user.currentAuthor._id == this.state.author._id)
                                 ? hyperHTML.wire()`
-                                    <div class='card-post'>
-                                        <div>Новая публикация</div>
+                                    <div class='card-post newPublication'>
+                                        <p>Новая публикация</p>
                                         ${new PostEditor({that: this, autoFocus: false, post: '', class: '', buttons: [{title: 'Опубликовать', class: 'btn btn-primary', onClick: this.addNewPost}], actions: {getUploadedFiles: this.getUploadedFiles}})}
                                     </div>
                                 `
                                 : ''
                             }
                             ${new AuthorInfo(this.state.author)}
-                        </div>
                         ${new Posts(this.state)}
                     </div>
                 </div>

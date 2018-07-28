@@ -11,7 +11,7 @@ module.exports = class Posts extends hyperHTML.Component {
 
     render() {
         return this.html`
-            <div class='container-fluid container-posts'>
+            <div class='container-posts'>
                 ${ this.state.posts.results.map( post => new Post(post) ) }
             </div>
         `;
@@ -32,7 +32,7 @@ class Post extends hyperHTML.Component {
         return this.html`
             <div class='card-post'>
                 ${new ContentHeader(author, post.publishedDate)}
-                <div class='flex_container'>
+                <div class='flex_containerPost'>
                         ${new PostContent(post)}
                         ${new CommentBlock(comments, post.id)}
                 </div>
@@ -164,14 +164,34 @@ class PostContent extends hyperHTML.Component {
                 `
             }
             else {
-                text = hyperHTML.wire()`<div class='card-post-text'>${this.post.content}</div>`
+                text = hyperHTML.wire()`<div class='card-post-text'>${this.post.content}</div>
+
+
+                <a data-toggle="modal" data-target="myModalImg">Разверни меня полностью</a>
+                <div id="myModalImg" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h4>Ваше мнение важно для нас</h4>
+                        </div>
+                        <div class="modal-body">
+                        <p>Ваше мнение очень важно для нас. Сайт функционирует в тестовом режиме. Если вы обнаружили баги, опечатки или что-то другое не менее неприятное, пожалуйста, сообщите об этом!</p>
+                        <p>По любым интересующим вас вопросам обращайтесь по адресу pushkinvk@gmail.com</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Всё понял!</button>
+                        </div>
+                </div>
+                </div>
+            </div>
+                `
             }
             content = hyperHTML.wire()`
                 ${text}
                 ${(this.post.image.filename)
                     ? hyperHTML.wire()`
                         <img draggable='false' class='img-post' alt='Изображение' src='${'/' + this.post.image.filename}'>
-                    `
+                        `
                     : ''
                 }
                 ${(_LOCALS.isSignedIn && this.post.author._id == _LOCALS.user.currentAuthor._id)
@@ -292,9 +312,10 @@ class CommentBlock extends hyperHTML.Component {
                     ${this.comments.map((comment, i) => {
                         if (i < this.commentsMaxLength) {
                             return hyperHTML.wire()`
+                            <hr>
                                 <li>
                                     ${new ContentHeader(comment.author, comment.publishedDate)}
-                                    <div class='comment-content col-xs-offset-3 col-sm-offset-2'>
+                                    <div class='comment-content'>
                                         ${comment.content}
                                     </div>
                                 </li>
@@ -304,7 +325,7 @@ class CommentBlock extends hyperHTML.Component {
                     })}
                 </ul>
                 <div>
-                    <button type="button" class="btn btn-link" data-call=showMore onclick=${this}>Показать все комментарии</button>
+                    <button type="button" class="btn btn-primary btn-link" data-call=showMore onclick=${this}>Показать все комментарии</button>
                 </div>
             `
         }
@@ -312,10 +333,12 @@ class CommentBlock extends hyperHTML.Component {
             comments = hyperHTML.wire()`
                 <ul>
                     ${this.comments.map(comment => hyperHTML.wire(comment)`
+                    <hr>
                         <li>
                             ${new ContentHeader(comment.author, comment.publishedDate)}
-                            <div class='comment-content col-xs-offset-3 col-sm-offset-2'>
+                            <div class='comment-content'>
                                 ${comment.content}
+                                
                             </div>
                         </li>
                     `)}
@@ -333,7 +356,7 @@ class CommentBlock extends hyperHTML.Component {
                                     content: '', 
                                     class: '',
                                     buttons: [
-                                        {title: 'Комментировать', class: 'btn btn-link', onClick: this.addComment}, 
+                                        {title: 'Комментировать', class: 'btn btn-primary', onClick: this.addComment}, 
                                     ],
                                 })
                             }
@@ -373,8 +396,9 @@ class ContentHeader extends hyperHTML.Component {
 
     render() {
         let authorsPage = '/author/' + this.author.slug;
-        let photo = this.author.photo ? this.author.photo.filename : "/images/avatar-default.png";
+        let photo = this.author.photo ? `/${this.author.photo.filename}` : '/images/avatar-default.png';
         let name = `${this.author.name.last} ${this.author.name.first}`;
+        
         return this.html`
             <div class='flexContainerHeaderPost'>
                 <div class='flexBoxHeaderPost'>
@@ -404,7 +428,7 @@ class Dropdown extends hyperHTML.Component {
     render() {
         return this.html`
             <div class='post-tool-bar dropdown'>
-                <button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true', aria-expanded='false'>...</button>
+                <button class='btn btn-success dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true', aria-expanded='false'>Изменить пост</button>
                 <span class='caret'></span>
                 <ul class='dropdown-menu'>
                     ${ this.params.map( p => new DropdownButton(p.text, p.clickHandler, p.that) ) }
