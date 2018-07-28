@@ -5,72 +5,65 @@ html(lang='ru')
 
     //- HTML HEADER
     head
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122949880-1"></script>
-    <script>
+
+    //- Google analytics
+    script(async src="https://www.googletagmanager.com/gtag/js?id=UA-122949880-1")
+    script.
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'UA-122949880-1');
-    </script>
 
-        <!-- Yandex.Metrika counter -->
-            <script type="text/javascript" >
-                (function (d, w, c) {
-                    (w[c] = w[c] || []).push(function() {
-                        try {
-                            w.yaCounter49775953 = new Ya.Metrika2({
-                                id:49775953,
-                                clickmap:true,
-                                trackLinks:true,
-                                accurateTrackBounce:true,
-                                webvisor:true
-                            });
-                        } catch(e) { }
+    //- Yandex.Metrika counter
+    script.
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter49775953 = new Ya.Metrika2({
+                        id:49775953,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true,
+                        webvisor:true
                     });
+                } catch(e) { }
+            })
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/tag.js"
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks2");
+        noscript
+            div
+                img(src="https://mc.yandex.ru/watch/49775953" style="position:absolute; left:-9999px;" alt="")
 
-                    var n = d.getElementsByTagName("script")[0],
-                        s = d.createElement("script"),
-                        f = function () { n.parentNode.insertBefore(s, n); };
-                    s.type = "text/javascript";
-                    s.async = true;
-                    s.src = "https://mc.yandex.ru/metrika/tag.js";
-
-                    if (w.opera == "[object Opera]") {
-                        d.addEventListener("DOMContentLoaded", f, false);
-                    } else { f(); }
-                })(document, window, "yandex_metrika_callbacks2");
-            </script>
-            <noscript><div><img src="https://mc.yandex.ru/watch/49775953" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-        <!-- /Yandex.Metrika counter -->
-        meta(charset="utf-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible" content="IE=edge")
-        <meta name="yandex-verification" content="9bf88fae22456c86" />
-
-        title= title || 'Пушкин в ВК'
-        include ../mixins/favicon
-        //- Customise the stylesheet for your site by editing /public/styles/site.less
-        //- All .less files will be automatically compiled and minified in production.
-        link(href="/styles/site.min.css", rel="stylesheet")
-
-        //- This file provides the default styling for the KeystoneJS Content Editor
-        if user && user.canAccessKeystone
-            link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
-
-        //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-        //- Safely remove this block if you are not targeting IE8
-        //-[if lt IE 9]
-            script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
-            script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
-        //-[endif]
-
-        //- Include template-specific stylesheets by extending the css block
-        block css
-
-        //- Add any other template-specific HEAD tags by extending the head block
-        block head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    <meta name="yandex-verification" content="9bf88fae22456c86" />
+    title= title || 'Пушкин в ВК'
+    include ../mixins/favicon
+    //- Customise the stylesheet for your site by editing /public/styles/site.less
+    //- All .less files will be automatically compiled and minified in production.
+    link(href="/styles/site.min.css", rel="stylesheet")
+    //- This file provides the default styling for the KeystoneJS Content Editor
+    if user && user.canAccessKeystone
+        link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
+    //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    //- Safely remove this block if you are not targeting IE8
+    //-[if lt IE 9]
+        script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
+        script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
+    //-[endif]
+    //- Include template-specific stylesheets by extending the css block
+    block css
+    //- Add any other template-specific HEAD tags by extending the head block
+    block head
 
     //- HTML BODY
     body
