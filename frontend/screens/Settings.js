@@ -127,7 +127,7 @@ module.exports = class RegisterPage extends hyperHTML.Component {
                                     ${myAuthors}
                                 
                                 <div>
-                                    <button class='btn btn-social'>Зарегистрироваться</button>
+                                    <button class='btn btn-primary'>Зарегистрироваться</button>
                                 </div>
                             </div>
 

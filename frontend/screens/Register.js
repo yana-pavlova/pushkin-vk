@@ -101,7 +101,7 @@ module.exports = class RegisterPage extends hyperHTML.Component {
                 </div>
                 <div class='form-group'>
                     <div class='col-sm-offset-2 col-sm-10'>
-                        <button class='btn btn-social'>Зарегистрироваться</button>
+                        <button class='btn btn-primary'>Зарегистрироваться</button>
                     </div>
                 </div>
             </form>

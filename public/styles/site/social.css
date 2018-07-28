@@ -400,11 +400,11 @@ Login
 -----------------------------------------------------------------*/
 
 #login-page {
-    width: 100vw;
+    /* width: 100vw;
     height: 100vh;
     background-image: url('/images/login.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center; */
 }
 
 .btn-social { color: #ffffff;}
@@ -560,14 +560,14 @@ footer.login-footer {
 
 .navbar {
     min-width: 270px;
-    height: 60px;
+    /* height: 60px; */
 }
 
 .navbar nav a {
     font-size: 200%;
 }
 
-.normNav img {
+.nav img {
     width: 20px;
 }
 
@@ -590,4 +590,8 @@ footer.login-footer {
 
 .newPublication {
     /* max-width: 75%; */
+}
+
+.navForMainPage nav {
+    background: transparent;
 }

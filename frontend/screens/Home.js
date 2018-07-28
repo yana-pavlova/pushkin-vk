@@ -9,7 +9,9 @@ module.exports = class Home extends hyperHTML.Component {
 
     render(){
         return this.html`
+            <div class="navForMainPage">
             ${new NavBar}
+            </div>
             <container>
                 <div id="mainDiv" class="mainP">
                     <!-- <img class="img-responsive center-block" id="pushkinCirc" src="pushkinCirc.png"> -->
