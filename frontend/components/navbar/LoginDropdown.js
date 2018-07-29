@@ -44,17 +44,17 @@ module.exports = class LoginDropdown extends hyperHTML.Component {
                 <li> <a href='/settings' >Сменить автора</a> </li>
                 ${_LOCALS.user.isAdmin 
                     ? hyperHTML.wire()`
-                        <li><a href='/keystone/signin'>Секретный раздел</a></li>
+                        <li><a class="dropdown-item" href='/keystone/signin'>Секретный раздел</a></li>
                         `
                     : ''
                 }
                 <li role='separator' class='divider'></li>
-                <li><a onclick=${this.logout} >Выйти</a></li>
+                <li><a class="dropdown-item" onclick=${this.logout} >Выйти</a></li>
             `
         }
         else {
             dropdownContent = hyperHTML.wire()`
-                <li><a href='/login' class='btn btn-primary btn-link'>Войти</a></li>
+                <li><a  class="dropdown-item" href='/login' class='btn btn-primary btn-link'>Войти</a></li>
             `
         }
 

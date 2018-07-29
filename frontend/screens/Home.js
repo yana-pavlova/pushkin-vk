@@ -18,7 +18,7 @@ module.exports = class Home extends hyperHTML.Component {
                     <h1>"Пушкин в VK"</h1>
                     <p>Социальная сеть писателей и поэтов</p>
                     <p>Выбери любимого автора и начинай постить тексты прямо сейчас</p>
-                    <button><a href='/register'>Присоединиться!</a></button>
+                    <button><a style='color:white' href='/register'>Присоединиться!</a></button>
                 </div>
 
             </container>

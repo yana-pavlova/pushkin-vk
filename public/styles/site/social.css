@@ -415,6 +415,7 @@ Login
     background-image: url('/images/login.jpg');
     background-size: cover;
     background-position: center; */
+    height: 100vw;
 }
 
 .btn-social { color: #ffffff;}
@@ -425,17 +426,17 @@ Login
 .btn-social:active:focus { background: #d09400;}
 
 .form-box {
-    width: 380px;
+    width: 75%;
     /* height: 370px; */
-    padding: 15px;
+    padding: 4%;
     color: #ffffff;
     position: relative;
-    top: 50px;
     margin: auto;
     /* margin-top: -185px; */
     background: rgba(0, 0, 0, 0.7);
     /* background-color: white; */
     border-radius: 7px;
+    margin-bottom: 5%;
 }
 
 .form-box form {
@@ -634,3 +635,18 @@ footer.login-footer {
     pointer-events: none;
     cursor: zoom-out;
   }
+
+.navbar {
+    margin-bottom: 0px !important;
+}
+
+.register {
+    background: url('/images/backPushkin.png') center !important;
+    background-size: cover;
+}
+
+.myRegister {
+    margin-top: 5%;
+    background: url('/images/backPushkin.png') center !important;
+    background-size: cover;
+}

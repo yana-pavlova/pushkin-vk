@@ -2,7 +2,7 @@ extends ../layouts/default
 
 block content
     #content
-        #login-page(style="background-image: url('/images/login.jpg');")
+        #login-page(style="background-image: url('/images/backPushkin.png');")
             .form-box
                 .form-logo
                     p.text-center
@@ -11,10 +11,11 @@ block content
                 form(onsubmit='login(this); return false;')
                     input#email.form-control(type='text', placeholder='E-mail', autocomplete='email')
                     input#password.form-control(type='password', placeholder='Пароль', autocomplete='current-password')
-                    input.btn.btn-social(type='submit', value='LOGIN')
+                    input.btn.btn-primary(type='submit', value='LOGIN')
                     //- a.btn(href='#', title='Forgot password') Forgot your password?
-                    a.btn(href='register', title='Sign in') Новый пользователь?
-
+                    a.btn(href='register', title='Sign in', style='color: white') Новый пользователь?
+                    hr
+                    a.btn(href="/") На главную
 block js
     script.
         function login(form) {
