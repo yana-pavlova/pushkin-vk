@@ -13,7 +13,7 @@ module.exports = class RegisterPage extends hyperHTML.Component {
         this.state = state;
 
         this.changeCurrentAuthor = this.changeCurrentAuthor.bind(this);
-        console.log(this);
+        // console.log(this);
         
     }
 
@@ -57,7 +57,7 @@ module.exports = class RegisterPage extends hyperHTML.Component {
                 if (this.status == 200) window.location = '/login';
                 else {
                     let e = JSON.parse(this.responseText);
-                    console.log(e);
+                    // console.log(e);
                     
                 }
             }

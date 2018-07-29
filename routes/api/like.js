@@ -7,7 +7,7 @@ let PostLike = keystone.list('PostLike');
 exports.likePost = function(req, res) {
     requireUser(req, res, () => {
         let data = (req.method == 'POST') ? req.body : req.query;
-        console.log(data);
+        // console.log(data);
         
         if (!data) return res.apiError('error', 'no data');
         if (!data.postId) return res.apiError('error', 'no postId');

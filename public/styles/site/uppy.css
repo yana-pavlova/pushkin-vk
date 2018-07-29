@@ -627,6 +627,7 @@
   min-width: 300px !important;
   min-height: 400px !important;
   outline: none !important;
+  margin: auto;
   border: 1px solid rgba(147, 147, 147, 0.2) !important; }
   .uppy-Dashboard--modal .uppy-Dashboard-inner {
     z-index: 1002 !important; }

@@ -101,7 +101,7 @@ class PostContent extends hyperHTML.Component {
         let that = this;
         xhr.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
-                console.log('content', contentValue, 'image', that.state.uploadedFiles);
+                // console.log('content', contentValue, 'image', that.state.uploadedFiles);
                 
                 that.post.content = contentValue;
                 that.post.image = newImage;
@@ -164,33 +164,13 @@ class PostContent extends hyperHTML.Component {
                 `
             }
             else {
-                text = hyperHTML.wire()`<div class='card-post-text'>${this.post.content}</div>
-
-
-                <a data-toggle="modal" data-target="myModalImg">Разверни меня полностью</a>
-                <div id="myModalImg" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h4>Ваше мнение важно для нас</h4>
-                        </div>
-                        <div class="modal-body">
-                        <p>Ваше мнение очень важно для нас. Сайт функционирует в тестовом режиме. Если вы обнаружили баги, опечатки или что-то другое не менее неприятное, пожалуйста, сообщите об этом!</p>
-                        <p>По любым интересующим вас вопросам обращайтесь по адресу pushkinvk@gmail.com</p>
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Всё понял!</button>
-                        </div>
-                </div>
-                </div>
-            </div>
-                `
+                text = hyperHTML.wire()`<div class='card-post-text'>${this.post.content}</div>`
             }
             content = hyperHTML.wire()`
                 ${text}
                 ${(this.post.image.filename)
                     ? hyperHTML.wire()`
-                        <img draggable='false' class='img-post' alt='Изображение' src='${'/' + this.post.image.filename}'>
+                        <img draggable='false' tabindex='1' class='img-post' alt='Изображение' src='${'/' + this.post.image.filename}'>
                         `
                     : ''
                 }

@@ -181,7 +181,7 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
     }
 
     render() {
-        console.log(this);
+        // console.log(this);
         
         return this.html`
             <div  >

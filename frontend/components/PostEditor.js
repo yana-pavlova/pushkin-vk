@@ -37,7 +37,7 @@ module.exports = class PostEditor extends hyperHTML.Component {
             b.class = b.class || 'btn';
         })
         this.state.image = this.post.image || {};
-        console.log(params);
+        // console.log(params);
         
         this.actions = params.actions || {};
         this.showUploadModal = this.showUploadModal.bind(this);
@@ -94,7 +94,8 @@ module.exports = class PostEditor extends hyperHTML.Component {
             replaceTargetContent: false,
             showProgressDetails: true,
             note: 'Только изображения, 1 файл, размер до 1 MB',
-            height: 370,
+            width: 100,
+            height: 50,
             // metaFields: [
             //   { id: 'name', name: 'Название', placeholder: 'Имя файла' },
             //   { id: 'caption', name: 'Описание', placeholder: 'Описание' }

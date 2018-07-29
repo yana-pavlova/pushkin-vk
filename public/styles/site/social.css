@@ -102,20 +102,28 @@ video, img {
     padding: 15px;
     display: block;
     margin-bottom: 2%;
-    max-width: 900px;
+    max-width: 700px;
+}
+
+.card-post .btn-primary {
+    margin-top: 2%;
 }
 
 .card-post-text {
     margin: 1%;
 }
 
+.card-post-content img {
+    text-align: center;
+}
+
 .img-post {
-    max-width: 900px;
+    max-width: 500px;
     /* max-width: 75%; */
     /* max-height: 75%; */
     margin: 1%;
-    padding-right: 10%;
-    padding-left: 10%;
+    /* padding-right: 10%;
+    padding-left: 10%; */
 }
 
 .info-user i { color:#929292; }
@@ -265,7 +273,7 @@ video, img {
     margin-bottom: 2%;
     padding: 2%;
     font-size: 1.5vw;
-    max-width: 900px;
+    max-width: 700px;
     /* max-width: 98.5%; */
     /* max-width: 75%; */
 }
@@ -376,6 +384,7 @@ textarea.post-textarea {
     position: absolute;
     top: 3px;
     right: 3px;
+
     background: #c00;
     /* overflow: hidden; */
     /* text-indent: -9999px; */
@@ -394,6 +403,7 @@ Editor
     min-height: 70px;
     max-height: 200px;
     margin-bottom: 10px;
+    margin: auto;
 }
 /*----------------------------------------------------------------
 Login
@@ -505,6 +515,7 @@ footer.login-footer {
     margin: 1%;
     min-width: 270px;
     align-items: center;
+    margin: auto;
 }
 
 /* .content-posts {
@@ -595,3 +606,31 @@ footer.login-footer {
 .navForMainPage nav {
     background: transparent;
 }
+
+.uppy-Dashboard-inner {
+    
+}
+
+/* IMAGES IN MODAL WINDOW */
+
+.card-post img[tabindex="1"] {
+    cursor: zoom-in;
+  }
+.card-post img[tabindex="1"]:focus {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    max-width: 99%;
+    max-height: 99%;
+    margin: auto;
+    box-shadow: 0 0 20px #000, 0 0 0 1000px rgba(210,210,210,.4);
+  }
+  img[tabindex="1"]:focus, img[tabindex="1"]:focus ~ * {
+    pointer-events: none;
+    cursor: zoom-out;
+  }

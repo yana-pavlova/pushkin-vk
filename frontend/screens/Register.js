@@ -49,7 +49,7 @@ module.exports = class RegisterPage extends hyperHTML.Component {
                 if (this.status == 200) window.location = '/login';
                 else {
                     let e = JSON.parse(this.responseText);
-                    console.log(e);
+                    // console.log(e);
                     
                 }
             }
