@@ -221,6 +221,7 @@ module.exports = class PostEditor extends hyperHTML.Component {
     }
 
     render() {
+
         return this.html`
             <div class='${this.class}' onconnected=${this} >
                 <textarea class='form-control' id='${this.textAreaId}' value=${this.post.content}></textarea>
@@ -236,6 +237,8 @@ module.exports = class PostEditor extends hyperHTML.Component {
                 
             </div>
         `
+        console.log
+        
         // <button class='btn btn-link' onclick=${this.showUploadModal}>Добавить изображение</button>
     }
 }

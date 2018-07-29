@@ -154,17 +154,18 @@ class PostContent extends hyperHTML.Component {
         }
         else {
             let text;
-            if (this.post.content.length > 100 && !this.showAll) {
+            if (this.post.content.length > 200 && !this.showAll) {
                 text = hyperHTML.wire()`
                     <div class='card-post-text content-extendable' data-call=showMore onclick=${this}>
-                        ${this.post.content.substr(0, 100)}...
+                        ${{html: this.post.content.substr(0, 200)}}...
                         <br>
-                        <a>Показать полностью</a>
+                        <a>Разверни меня полностью</a>
                     </div>
                 `
             }
             else {
-                text = hyperHTML.wire()`<div class='card-post-text'>${this.post.content}</div>`
+                text = hyperHTML.wire()`<div class='card-post-text'>
+                    ${{html: this.post.content}}</div>`
             }
             content = hyperHTML.wire()`
                 ${text}

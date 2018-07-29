@@ -155,6 +155,9 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
 
     addNewPost(e) {
         let contentValue = e.render().querySelector('textarea').value;
+        contentValue = contentValue.split("\n").join("<br>");
+        console.log(contentValue);
+        
         let queryArray = [];
         if (contentValue !== '') queryArray.push(`content=${contentValue}`);
         if (this.state.uploadedFiles.length !== 0) queryArray.push(`image=${this.state.uploadedFiles[0].filename}`);
