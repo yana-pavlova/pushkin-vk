@@ -679,3 +679,20 @@ footer.login-footer {
     background: rgba(255, 255, 255, 0.2);
     transition: 0.5s linear;
 }
+
+#forgotPasswordModal {
+    color: black;
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 150%;
+}
+
+.forgotPasswordButton {
+    font-size: 100% !important;
+    border: 1px solid black !important;
+}
+
+.forgotPasswordButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transition: 0.5s linear;    
+}

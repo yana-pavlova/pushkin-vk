@@ -70,13 +70,13 @@ a:active, li:active {
 #myModal {
     text-align: center;
     font-family: 'Amatic SC', cursive;
-    font-size: 150%;
+    font-size: 150% !important;
 }
 
 #myModal2 {
     text-align: center;
     font-family: 'Amatic SC', cursive;
-    font-size: 200%;
+    font-size: 150%;
 }
 
 #myModal button {
@@ -85,7 +85,7 @@ a:active, li:active {
 }
 
 #myModal2 button {
-    font-size: 120%;
+    font-size: 100%;
     border: 1px solid black;
 }
 
