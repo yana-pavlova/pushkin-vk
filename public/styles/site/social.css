@@ -253,11 +253,13 @@ video, img {
 4. User Profile
 -----------------------------------------------------------------*/
 
-/* .container-posts {
-    display: flex;
+.container-posts {
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
-} */
+    align-items: center; */
+    width: 100%;
+    max-width: 900px;
+}
 
 .profile-data {
     list-style: none;
@@ -411,11 +413,11 @@ Login
 
 #login-page {
     /* width: 100vw;
-    height: 100vh;
-    background-image: url('/images/login.jpg');
+    height: 100vh; */
+    background-image: url('/images/loginBack.png');
     background-size: cover;
-    background-position: center; */
-    height: 100vw;
+    background-position: center;
+    height: 100%;
 }
 
 .btn-social { color: #ffffff;}
@@ -426,7 +428,7 @@ Login
 .btn-social:active:focus { background: #d09400;}
 
 .form-box {
-    width: 75%;
+    width: 50%;
     /* height: 370px; */
     padding: 4%;
     color: #ffffff;
@@ -649,4 +651,30 @@ footer.login-footer {
     margin-top: 5%;
     background: url('/images/backPushkin.png') center !important;
     background-size: cover;
+}
+
+.myFormControl {
+    margin-top: 20px !important;
+}
+
+.myFormLabelsName {
+    margin-top: 20px;
+}
+
+.myButtonRegister {
+    margin-top: 10px;
+}
+
+.myDropDownMenu {
+    position: relative !important;
+    margin-top: 6%;
+}
+
+.myLinkDropdownToggle {
+    float: left;
+}
+
+.navbar button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transition: 0.5s linear;
 }

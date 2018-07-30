@@ -21,7 +21,8 @@ h4 {
     color: white;
     font-size: 250%;
     text-align: center;
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Amatic SC', 'Geneva', 'Arial', 'Helvetica', 'sans-serif';
+    margin-bottom: 15%;
 }
 
 .mainP h1 {
@@ -69,7 +70,7 @@ a:active, li:active {
 #myModal {
     text-align: center;
     font-family: 'Amatic SC', cursive;
-    font-size: 200%;
+    font-size: 150%;
 }
 
 #myModal2 {
@@ -79,7 +80,7 @@ a:active, li:active {
 }
 
 #myModal button {
-    font-size: 120%;
+    font-size: 100%;
     border: 1px solid black;
 }
 
@@ -141,7 +142,11 @@ h4 {
 .thumbnail a {
     color: black;
     font-family: 'Amatic SC', cursive;
-    /* font-size: 200%; */
+    font-size: 150% !important;
+}
+
+.thumbnail p {
+    font-size: 150% !important;
 }
 
 .thumbnail {

@@ -60,8 +60,8 @@ module.exports = class LoginDropdown extends hyperHTML.Component {
 
         return this.html`
             <li class='dropdown'>
-                <a class='dropdown-toggle' onclick=${this.isDropDownShown ? this.hideDropDown : this.showDropDown}> <img src='/images/login-button.png'> <span class='caret'></span></a>
-                <ul class='dropdown-menu' style='${this.isDropDownShown ? "display: block;" : "display: none;"}'>
+                <a class='aliveA dropdown-toggle myLinkDropdownToggle' onclick=${this.isDropDownShown ? this.hideDropDown : this.showDropDown}> <img src='/images/login-button.png'> <span class='caret'></span></a>
+                <ul class='dropdown-menu myDropDownMenu' style='${this.isDropDownShown ? "display: block;" : "display: none;"}'>
                     ${dropdownContent}
                 </ul>
             </li>

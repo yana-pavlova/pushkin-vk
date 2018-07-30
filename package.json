@@ -34,7 +34,8 @@
     "pack": "NODE_ENV=production webpack",
     "pack:dev": "NODE_ENV=development webpack",
     "nodemon": "NODE_ENV=development node node_modules/nodemon/bin/nodemon.js ./app.js",
-    "dev": "npm run pack:dev & npm run nodemon",
+    "dev:mon": "npm run pack:dev & npm run nodemon",
+    "dev": "npm run pack:dev & NODE_ENV=development node app.js",
     "start": "NODE_ENV=production node app.js"
   }
 }

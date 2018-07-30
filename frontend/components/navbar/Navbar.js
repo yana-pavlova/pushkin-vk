@@ -88,12 +88,10 @@ module.exports = class NavBar extends hyperHTML.Component {
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a class="aliveA">
+        <li><a class="aliveA" style="font-size:100%">
         ${currentAuthor}</a>
         </li>
-        <li><a class="aliveA">
         ${new LoginDropdown()}</a>
-        </li>
       </ul>
     </div>
   </div>

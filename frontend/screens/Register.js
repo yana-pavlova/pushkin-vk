@@ -64,33 +64,33 @@ module.exports = class RegisterPage extends hyperHTML.Component {
         let firstPart = hyperHTML.wire()`
             <form class='form-horizontal form-box' onsubmit=${this.register}>
                 <div class='form-group'>
-                    <label for='name_first' class='col-sm-2 control-label'>Фамилия</label>
-                    <div class='col-sm-10'>
+                    <label for='name_first' class='col-sm-3 control-label myFormLabelsName'>Фамилия</label>
+                    <div class='col-sm-9'>
                         <input type='text' class='form-control' id='name_first' placeholder='Фамилия' autocomplete='family-name'>
                     </div>
                 </div>
                 <div class='form-group'>
-                    <label for='name_last' class='col-sm-2 control-label'>Имя</label>
-                    <div class='col-sm-10'>
+                    <label for='name_last' class='col-sm-3 control-label myFormLabelsName'>Имя</label>
+                    <div class='col-sm-9'>
                         <input type='text' class='form-control' id='name_last' placeholder='Имя' autocomplete='given-name'>
                     </div>
                 </div>
                 <div class='form-group'>
-                    <label for='email' class='col-sm-2 control-label'>Email</label>
-                    <div class='col-sm-10'>
+                    <label for='email' class='col-sm-3 control-label myFormLabelsName'>Email</label>
+                    <div class='col-sm-9'>
                         <input type='email' class='form-control' id='email' placeholder='Email'>
                     </div>
                 </div>
                 <div class='form-group'>
-                    <label for='password' class='col-sm-2 control-label'>Пароль</label>
-                    <div class='col-sm-10'>
+                    <label for='password' class='col-sm-3 control-label myFormLabelsName'>Пароль</label>
+                    <div class='col-sm-9'>
                         <input type='password' class='form-control' id='password' placeholder='Password'>
                     </div>
                 </div>
                 <div class='form-group'>
-                    <label for='authors' class='col-sm-2 control-label'>Автор</label>
-                    <div class='col-sm-10'>
-                        <select class='form-control' id='authors'>
+                    <label for='authors' class='col-sm-3 control-label myFormLabelsName'>Автор</label>
+                    <div class='col-sm-9'>
+                        <select class='form-control myFormControl' id='authors'>
                             ${this.state.availableAuthors.map((author) => {
                                 return hyperHTML.wire()`
                                     <option id=${author._id}>${author.name.first} ${author.name.last} ${author.patronymic}</option>
@@ -100,8 +100,8 @@ module.exports = class RegisterPage extends hyperHTML.Component {
                     </div>
                 </div>
                 <div class='form-group'>
-                    <div class='col-sm-offset-2 col-sm-10'>
-                        <button class='btn btn-primary'>Зарегистрироваться</button>
+                    <div class='col-sm-9'>
+                        <button class='btn btn-primary myButtonRegister'>Зарегистрироваться</button>
                     </div>
                 </div>
             </form>
