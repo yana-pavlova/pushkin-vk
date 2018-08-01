@@ -136,6 +136,7 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
         this.state = state;
         this.state.uploadedFiles = [];
         this.getUploadedFiles = this.getUploadedFiles.bind(this);
+        this.queryPrefix = `/api/post/list/${this.state.author.slug}`
     }
 
     getUploadedFiles(file) {
@@ -187,7 +188,7 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
         // console.log(this);
         
         return this.html`
-          <a class="linkUp" href="#top">Вверх!</a>
+          <a href="#top"><button class="linkUp">Вверх!</button></a>
             <div  >
                 ${new NavBar (this.state)}
                 <div class='profile flexContainerForAll'>
@@ -203,7 +204,7 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
                                 : ''
                             }
                             ${new AuthorInfo(this.state.author)}
-                        ${new Posts(this.state)}
+                        ${new Posts(this.state, this.queryPrefix)}
                     </div>
                 </div>
             </div>

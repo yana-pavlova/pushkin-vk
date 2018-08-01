@@ -4,15 +4,39 @@ const PostEditor = require('./PostEditor');
 // let lazyLoad = new LazyLoad();
 
 module.exports = class Posts extends hyperHTML.Component {
-    constructor(state) {
+    constructor(state, queryPrefix) {
         super();
+        this.queryPrefix = queryPrefix || '/api/post/list'
+        this.currentPage = 1;
         this.state = state;
+        this.getNextPage = this.getNextPage.bind(this);
+        this.hasMore = true;
     }
 
-    render() {
+    getNextPage(){
+        this.currentPage += 1;
+        let query = `${this.queryPrefix}?page=${this.currentPage}`;
+        
+        let that = this;
+        fetch(query, {method: 'GET'}).then((res) => {
+            return res.json();
+        }).then((res) => {
+            if (!res.posts.results.length) that.hasMore = false;
+            
+            that.state.posts.results = that.state.posts.results.concat(res.posts.results);
+            that.render();
+            // hyperHTML(document.querySelector('#content'))`${new Wall(res)}`;
+        }).catch(e => console.log(e));
+    }
+
+    render() {        
         return this.html`
             <div class='container-posts'>
                 ${ this.state.posts.results.map( post => new Post(post) ) }
+                ${(this.hasMore)
+                    ? hyperHTML.wire()`<button id="buttonDown" onclick='${this.getNextPage}'>Показать ещё</button>`
+                    : ''
+                }
             </div>
         `;
     }
@@ -375,7 +399,7 @@ class ContentHeader extends hyperHTML.Component {
         }
     }
 
-    render() {
+    render() {        
         let authorsPage = '/author/' + this.author.slug;
         let photo = this.author.photo ? `/${this.author.photo.filename}` : '/images/avatar-default.png';
         let name = `${this.author.name.last} ${this.author.name.first}`;

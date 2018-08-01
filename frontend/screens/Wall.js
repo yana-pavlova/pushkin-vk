@@ -11,11 +11,14 @@ module.exports = class Wall extends hyperHTML.Component {
     }
 
     render() {
+        // console.log(this.state.posts);
+        // console.log ('количество постов',this.state.posts.total)
+        // console.log ('один пост',this.state.posts.results[0])
         return this.html`
             ${new NavBar (this.state)}
             <div class='wall flexContainerForAll'>
                         ${new Posts(this.state)}
-            <a class="linkUp" href="#top">Вверх!</a>
+                        <a href="#top"><button class="linkUp">Вверх!</button></a>
             </div>
         `;
     }

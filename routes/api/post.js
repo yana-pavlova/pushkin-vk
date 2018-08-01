@@ -6,14 +6,16 @@ let PostComment = keystone.list('PostComment');
 let User = keystone.list('User');
 let Author = keystone.list('Author');
 
-const POST_PER_PAGE = 100;
+const FIRST_PAGE = 1;
+const POST_PER_PAGE = 5;
+const MAX_PAGES_PER_QUERY = 1;
 
 // list all posts and get popular authors
 exports.listAndGetPopAuthors = function(req, res) {
         Post.paginate({
-                page: 1,
+                page: FIRST_PAGE,
                 perPage: POST_PER_PAGE,
-                // maxPages: 10
+                maxPages: MAX_PAGES_PER_QUERY,
             })
             // Post.model.find()
             .where({state: 'published'})
@@ -57,11 +59,15 @@ exports.listAndGetPopAuthors = function(req, res) {
 // List Posts
 exports.list = function(req, res) {
     // requireAdmin(req, res, () => {
-
+        let data = (req.method == 'POST') ? req.body : req.query;
+        let page = data.page;
+        if (!data) return res.apiError('error', 'no data');
+        if (!page) page = FIRST_PAGE;
+        
         Post.paginate({
-                page: 1,
+                page: page,
                 perPage: POST_PER_PAGE,
-                // maxPages: 10
+                maxPages: MAX_PAGES_PER_QUERY,
             })
             // Post.model.find()
             .where({state: 'published'})
@@ -80,10 +86,13 @@ exports.list = function(req, res) {
 // List Posts by Author
 exports.listByAuthor = function(req, res) {
         let data = req.params;
+        let query = (req.method == 'POST') ? req.body : req.query;
+        let page = query.page;
         if (!data) return res.apiError('error', 'no data');
         if (!data.author) return res.apiError('error', 'no data');
+        if (!page) page = FIRST_PAGE;
         
-        let authorSlug = data.author
+        let authorSlug = data.author;
         console.log('post list by author', authorSlug);
         
         Author.model.find().where({'slug': authorSlug}).exec(function(err, author) {
@@ -92,9 +101,9 @@ exports.listByAuthor = function(req, res) {
             let authorId = author[0]._id;
             
             Post.paginate({
-                    page: 1,
+                    page: page,
                     perPage: POST_PER_PAGE,
-                    // maxPages: 10
+                    maxPages: MAX_PAGES_PER_QUERY,
                 })
                 // Post.model.find()
                 .where({
