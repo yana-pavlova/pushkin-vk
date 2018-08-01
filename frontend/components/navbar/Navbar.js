@@ -22,7 +22,7 @@ module.exports = class NavBar extends hyperHTML.Component {
                             <p>По любым интересующим вас вопросам обращайтесь по адресу pushkinvk@gmail.com</p>
                             </div>
                             <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Всё понял!</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
                             </div>
                     </div>
                     </div>
@@ -35,13 +35,13 @@ module.exports = class NavBar extends hyperHTML.Component {
                         <h4>Кто? Что? Зачем?</h4>
                         </div>
                         <div class="modal-body">
-                        <p>"Пушкин в VK" - это социальная сеть русских писателей. Главная цель проекта - вернуть обществу нежные чувства к русской словесности. К сожалению, проблема отсутствия интереса к чтению стоит в нашем мире слишком остро, чтобы её можно было игнорировать.</p>
+                        <p>"Пушкин в VK" - это социальная сеть писателей минувших эпох. Главная цель проекта - вернуть обществу нежные чувства к русской словесности. К сожалению, проблема отсутствия интереса к чтению стоит в нашем мире слишком остро, чтобы её можно было игнорировать.</p>
                         <p>Алгоритм приобщения к прекрасному очень прост: регистрируетесь, выбираете из списка авторов того, который вам нравится, и получаете доступ в личный кабинет.</p>
                         <p>На странице вы можете постить тексты (цитаты, отрывки из произведений), любые картинки (фотки, инфографику - созданную вами или не вами). Также вы можете просматривать страницы других писателей, оставлять комментарии к их постам и, конечно же, ставить лайки.</p>
                         <p>Всё, что вы постите на странице, попадает в раздел <a href="" style="color:black">"стена"</a>, на который, кстати, вы можете заглянуть и без регистрации.</p>
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Всё понял!</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
                         </div>
                     </div>
                     </div>
@@ -77,7 +77,7 @@ module.exports = class NavBar extends hyperHTML.Component {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span> 
       </button>
-      <a class="navbar-brand" href="/">Главная</a>
+      <a name="top" class="navbar-brand" href="/">Главная</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">

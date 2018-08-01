@@ -18,7 +18,7 @@ module.exports = class RegisterPage extends hyperHTML.Component {
         let email = form.querySelector('#email').value;
         let password = form.querySelector('#password').value;
         let authorsList = form.querySelector('#authors').querySelectorAll('option');
-        
+
         let author= ''
         for (let i in authorsList) {
             if (authorsList[i].selected) {
@@ -34,12 +34,12 @@ module.exports = class RegisterPage extends hyperHTML.Component {
         if (password != '') queryArray.push(`password=${password}`);
         if (author != '') queryArray.push(`author=${author}`);
         if (queryArray.length === 0) return;
-        
+
         let query = queryArray.map((q) => q).join('&');
         query = `/api/user/create?${query}`;
 
         const xhr = new XMLHttpRequest();
-        
+
         let that = this;
         xhr.open('GET', query, true);
         xhr.send();
@@ -54,15 +54,14 @@ module.exports = class RegisterPage extends hyperHTML.Component {
                 }
             }
         }
-        
-        
-        
+
         return false;
     }
 
     render() {
         let firstPart = hyperHTML.wire()`
             <form class='form-horizontal form-box' onsubmit=${this.register}>
+                <p>Внимание! Регистрируясь на сайте, вы безоговорочно и полностью принимаете <a target="_blank" href="/conditions.pdf">пользовательское соглашение</a>.</p>
                 <div class='form-group'>
                     <label for='name_first' class='col-sm-3 control-label myFormLabelsName'>Фамилия</label>
                     <div class='col-sm-9'>

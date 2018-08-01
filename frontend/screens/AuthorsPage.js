@@ -187,6 +187,7 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
         // console.log(this);
         
         return this.html`
+          <a class="linkUp" href="#top">Вверх!</a>
             <div  >
                 ${new NavBar (this.state)}
                 <div class='profile flexContainerForAll'>

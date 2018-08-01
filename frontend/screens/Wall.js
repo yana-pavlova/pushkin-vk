@@ -15,6 +15,7 @@ module.exports = class Wall extends hyperHTML.Component {
             ${new NavBar (this.state)}
             <div class='wall flexContainerForAll'>
                         ${new Posts(this.state)}
+            <a class="linkUp" href="#top">Вверх!</a>
             </div>
         `;
     }

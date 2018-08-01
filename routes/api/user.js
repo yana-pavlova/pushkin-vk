@@ -4,6 +4,9 @@ let { requireAdmin, requireUser } = require('../auth');
 let User = keystone.list('User');
 let Author = keystone.list('Author');
 
+const nodemailer = require('nodemailer');
+console.log(nodemailer);
+
 // Create a User
 exports.create = function(req, res) {    
         let data = (req.method == 'POST') ? req.body : req.query;
@@ -15,6 +18,52 @@ exports.create = function(req, res) {
         if (!data.email) return res.apiError('error', 'username required');
         if (!data.password) return res.apiError('error', 'password required');
         if (!data.author) return res.apiError('error', 'author required');
+
+        // EMAIL
+
+        nodemailer.createTestAccount((err, account) => {
+
+            let mailForUser = `<h2>Социальная сеть "Пушкин в VK" приветствует Вас, ${data.name_last}!</h2> <p>Поздравляем с успешной регистрацией на сайте pushkinvk.ru.</p><p>Ваш пароль: ${data.password}</p><p>Ваш логин: ${data.email} </p><p>Желаем приятного времяпрепровождения! </p>`;
+
+            let emailUser = data.email;
+
+            // create reusable transporter object using the default SMTP transport
+            let transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                // port: 587,
+                port: 465,
+                // secure: false, // true for 465, false for other ports
+                secure: true,
+                auth: {
+                    user: "pushkinvk@gmail.com", // generated ethereal user
+                    pass: "slavyanka20" // generated ethereal password
+                }
+            });
+        
+            // setup email data with unicode symbols
+            let mailOptions = {
+                from: '"Пушкин в VK" <pushkinvk@gmail.com>', // sender address
+                to: emailUser, // list of receivers
+                subject: 'Вы зарегистрировались на сайте pushkinvk.ru', // Subject line
+                html: mailForUser, // plain text body
+            };
+        
+            // send mail with defined transport object
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    return console.log(error);
+                }
+                console.log('Message sent: %s', info.messageId);
+                // Preview only available when sending through an Ethereal account
+                console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+        
+                // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+                // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+            });
+        });
+
+        // EMAIL
+
         
         let newUser = new User.model();
 
