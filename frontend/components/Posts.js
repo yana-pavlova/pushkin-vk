@@ -74,6 +74,7 @@ class PostContent extends hyperHTML.Component {
         this.visible = true;
         this.state.uploadedFiles = [];
         this.getUploadedFiles = this.getUploadedFiles.bind(this);
+        this.showImageModal = this.showImageModal.bind(this);
     }
     
     deletePost() {
@@ -157,9 +158,32 @@ class PostContent extends hyperHTML.Component {
         this.render();
     }
 
-    render(){
+    showImageModal(e) {
+        //отменить стандартное действие браузера
+        e.preventDefault();
+        // console.log($(this));
         
+        //присвоить атрибуту scr элемента img модального окна
+        //значение атрибута scr изображения, которое обёрнуто
+        //вокруг элемента a, на который нажал пользователь $(this.image.currentSrc)
+        let src = this.image.currentSrc;
+        // console.log(src);
+        
+        // src = src.split('/');
+        // src = src[src.length - 1];
+        // src = "images/" + src;
+        // console.log("SRC", src);
+        
+        $('#image-modal .modal-body img').attr('src', src);
+        //открыть модальное окно
+        $("#image-modal").modal('show');
+    }
+
+    render(){
         let content;
+        if (this.post.image.filename) {
+            this.image = hyperHTML.wire()`<img draggable='false' tabindex='1' class='img-post thumbnail' alt='Изображение' src='${'/' + this.post.image.filename}' onclick=${this.showImageModal}>`
+        }
         if (this.isEdited) {
             content = hyperHTML.wire()`
                 ${new PostEditor({
@@ -195,7 +219,27 @@ class PostContent extends hyperHTML.Component {
                 ${text}
                 ${(this.post.image.filename)
                     ? hyperHTML.wire()`
-                        <img draggable='false' tabindex='1' class='img-post' alt='Изображение' src='${'/' + this.post.image.filename}'>
+                        <a>
+                            ${this.image}
+                        </a>
+
+                        <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close myButtonClose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                <div class="modal-title my-image-modal-title">Просмотр изображения</div>
+                            </div>
+                            <div class="modal-body">
+                                <img class="img-responsive center-block" src="" alt="">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                         `
                     : ''
                 }

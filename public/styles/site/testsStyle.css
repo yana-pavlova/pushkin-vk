@@ -20,6 +20,16 @@
     background-size: cover;
 }
 
+.iudaBody {
+    background: url(/tests/iudaStory/iuda.jpg) no-repeat;
+    background-size: cover;
+}
+
+.shinelBody {
+    background: url(/tests/shinelStory/1.jpg) no-repeat;
+    background-size: cover;
+}
+
 div {
     margin: 10px;
     padding: 1%;

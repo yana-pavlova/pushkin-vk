@@ -620,7 +620,7 @@ footer.login-footer {
 .card-post img[tabindex="1"] {
     cursor: zoom-in;
   }
-.card-post img[tabindex="1"]:focus {
+/* .card-post img[tabindex="1"]:focus {
     position: fixed;
     z-index: 1000;
     top: 0;
@@ -637,7 +637,7 @@ footer.login-footer {
   img[tabindex="1"]:focus, img[tabindex="1"]:focus ~ * {
     pointer-events: none;
     cursor: zoom-out;
-  }
+  } */
 
 .navbar {
     margin-bottom: 0px !important;
@@ -733,4 +733,26 @@ footer.login-footer {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
+}
+
+/* СТИЛИ МОДАЛЬНОГО ОКНА ОТКРЫВАЮЩЕГО КАРТИНКУ */
+
+#image-modal {
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 150% !important;    
+}
+
+#image-modal button {
+    font-size: 120%;
+    border: 1px solid black;
+}
+
+.myButtonClose {
+    border: 0px !important;
+}
+
+#image-modal button:hover {
+    background: rgba(146,146,146,0.3);
+    transition: .5s linear;
 }
