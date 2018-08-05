@@ -106,8 +106,9 @@ video, img {
     /* max-width: 700px; */
 }
 
-.card-post .btn-primary {
+.card-post .btn {
     margin-top: 2%;
+    margin-right: 1%;
 }
 
 .card-post-text {

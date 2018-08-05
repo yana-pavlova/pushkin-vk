@@ -61,7 +61,8 @@ module.exports = class RegisterPage extends hyperHTML.Component {
     render() {
         let firstPart = hyperHTML.wire()`
             <form class='form-horizontal form-box' onsubmit=${this.register}>
-                <p>Внимание! Регистрируясь на сайте, вы безоговорочно и полностью принимаете <a target="_blank" href="/conditions.pdf">пользовательское соглашение</a>.</p>
+                <p>Внимание! Регистрируясь на сайте, Вы безоговорочно и полностью принимаете <a target="_blank" href="/conditions.pdf">пользовательское соглашение</a>.</p>
+                <p>После совершения регистрации Вы будете перенаправлены на страницу входа, а на указанную Вами почту придёт сообщением с Вашим логином и паролем.</p>
                 <div class='form-group'>
                     <label for='name_first' class='col-sm-3 control-label myFormLabelsName'>Фамилия</label>
                     <div class='col-sm-9'>
