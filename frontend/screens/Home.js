@@ -10,10 +10,10 @@ module.exports = class Home extends hyperHTML.Component {
     render(){
         return this.html`
             <div class="navForMainPage">
-            ${new NavBar}
+                ${new NavBar}
             </div>
             <container>
-                <div id="mainDiv" class="mainP">
+                <div id="bigDiv" class="mainP">
                     <!-- <img class="img-responsive center-block" id="pushkinCirc" src="pushkinCirc.png"> -->
                     <h1>"Пушкин в VK"</h1>
                         <p>Социальная сеть писателей и поэтов минувших эпох</p>

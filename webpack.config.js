@@ -10,6 +10,8 @@ module.exports = {
 		author: './author',
 		register: './register',
 		settings: './settings',
+		tests: './tests',
+		singleTest: './singleTest'
 	},
 
 	output: {

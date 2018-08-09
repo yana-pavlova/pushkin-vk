@@ -186,7 +186,7 @@ h4 {
     text-align: center;
 }
 
-.flex_container {
+.flex_container, .flex_container_tests {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;

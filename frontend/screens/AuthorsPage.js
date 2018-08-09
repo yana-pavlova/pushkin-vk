@@ -3,11 +3,6 @@ const NavBar = require('../components/navbar/Navbar');
 const Posts = require('../components/Posts');
 const PostEditor = require('../components/PostEditor');
 
-import Uppy from 'uppy/lib/core';
-import Dashboard from 'uppy/lib/plugins/Dashboard';
-import XHRUpload from 'uppy/lib/plugins/XHRUpload';
-import Webcam from 'uppy/lib/plugins/Webcam';
-
 const AUTHOR_DATE_OPTS = {
     // era: 'long',
     year: 'numeric',
@@ -114,7 +109,7 @@ class AuthorInfo extends hyperHTML.Component {
                         Ссылки:
                     </div>
                     <div class="divData">
-                        <a href="${this.state.wikipediaLink}">Вики</a>
+                        <a target="_blank" href="${this.state.wikipediaLink}">Вики</a>
                     </div>
                 </div>            
                 <div class="flexBoxAuthorInformation">

@@ -1,0 +1,16 @@
+/* для пропорциональности найти высоту блока tui-image-editor  убрать 100 процентную высоту одного кэнваса */
+
+.body-container {
+    /* width: 90vw; */
+    max-width: 700px !important;
+    margin-top: 2%;
+    display: none;
+}
+
+.tui-image-editor-controls {
+    min-height: 0px;
+}
+
+.tui-image-editor-canvas-container {
+    width: 100%;
+}

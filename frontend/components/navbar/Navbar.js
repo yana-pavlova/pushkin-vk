@@ -84,7 +84,7 @@ module.exports = class NavBar extends hyperHTML.Component {
         <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal2">О<span style="opacity: 0;">о</span>проекте</a></li>
         <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal">Контакты</a></li> 
         <li><a class="aliveA" href="/wall">Стена</a></li> 
-        <li><a class="aliveA" href="/tests/testsIndex.html">Тесты</a></li> 
+        <li><a class="aliveA" href="/tests">Тесты</a></li> 
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

@@ -108,9 +108,10 @@ module.exports = class RegisterPage extends hyperHTML.Component {
         `
 
         return this.html`
-            ${new NavBar (this.state)}
-
             <div class='register' id='login-page'>
+                <div class="navForMainPage">
+                    ${new NavBar (this.state)}
+                </div>
                 <div class='container'>
                     <div class='row'>
                         <div class='myRegister col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3'>

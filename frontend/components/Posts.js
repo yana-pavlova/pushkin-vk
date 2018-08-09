@@ -1,8 +1,6 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const PostEditor = require('./PostEditor');
 
-// let lazyLoad = new LazyLoad();
-
 module.exports = class Posts extends hyperHTML.Component {
     constructor(state, queryPrefix) {
         super();
@@ -25,7 +23,6 @@ module.exports = class Posts extends hyperHTML.Component {
             
             that.state.posts.results = that.state.posts.results.concat(res.posts.results);
             that.render();
-            // hyperHTML(document.querySelector('#content'))`${new Wall(res)}`;
         }).catch(e => console.log(e));
     }
 
@@ -52,7 +49,8 @@ class Post extends hyperHTML.Component {
         let post = this.state;
         let author = this.state.author;
         let comments = this.state.comments;
-
+        let id = this.state.id;
+        
         return this.html`
             <div class='card-post'>
                 ${new ContentHeader(author, post.publishedDate)}
@@ -126,7 +124,6 @@ class PostContent extends hyperHTML.Component {
         let that = this;
         xhr.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
-                // console.log('content', contentValue, 'image', that.state.uploadedFiles);
                 
                 that.post.content = contentValue;
                 that.post.image = newImage;
@@ -159,23 +156,11 @@ class PostContent extends hyperHTML.Component {
     }
 
     showImageModal(e) {
-        //отменить стандартное действие браузера
         e.preventDefault();
-        // console.log($(this));
-        
-        //присвоить атрибуту scr элемента img модального окна
-        //значение атрибута scr изображения, которое обёрнуто
-        //вокруг элемента a, на который нажал пользователь $(this.image.currentSrc)
+
         let src = this.image.currentSrc;
-        // console.log(src);
-        
-        // src = src.split('/');
-        // src = src[src.length - 1];
-        // src = "images/" + src;
-        // console.log("SRC", src);
         
         $('#image-modal .modal-body img').attr('src', src);
-        //открыть модальное окно
         $("#image-modal").modal('show');
     }
 

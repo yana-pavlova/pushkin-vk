@@ -951,7 +951,7 @@
 .uppy-Dashboard-dropFilesTitle {
   max-width: 460px !important;
   text-align: center !important;
-  font-size: 18px !important;
+  /* font-size: 18px !important; */
   line-height: 1.45 !important;
   font-weight: 400 !important;
   color: rgba(82, 82, 82, 0.8) !important;
@@ -960,7 +960,7 @@
     font-size: 24px !important; }
 
 .uppy-Dashboard-note {
-  font-size: 13px !important;
+  /* font-size: 13px !important; */
   line-height: 1.2 !important;
   text-align: center !important;
   color: rgba(82, 82, 82, 0.8) !important;

@@ -25,8 +25,19 @@
     background-size: cover;
 }
 
+#asya {
+    height: 100vw;
+    background: url(/tests/asyaStory/asya.jpg) no-repeat;
+    background-size: cover;
+}
+
 .shinelBody {
     background: url(/tests/shinelStory/1.jpg) no-repeat;
+    background-size: cover;
+}
+
+.karamoraBody {
+    background: url(../../images/karamoraStory/karamora.jpg) no-repeat;
     background-size: cover;
 }
 

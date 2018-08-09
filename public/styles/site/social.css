@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Caveat|Pacifico');
+
+
 /*----------------------------------------------------------------
   [Table of contents]
   1. Body
@@ -103,12 +107,15 @@ video, img {
     display: block;
     margin-bottom: 2%;
     margin-top: 2%;
-    /* max-width: 700px; */
+    font-family: 'Amatic SC', cursive;
+    font-size: 200% !important;
+    max-width: 700px;
 }
 
 .card-post .btn {
     margin-top: 2%;
     margin-right: 1%;
+    font-size: 100%;
 }
 
 .card-post-text {
@@ -217,6 +224,10 @@ video, img {
     /* background: #dadada; */
 }
 
+.flexBoxHeaderPost a {
+    font-weight: bold;
+}
+
 .flexBoxHeaderPost {
     /* background: #ffeab6; */
     margin: 1%;
@@ -259,8 +270,8 @@ video, img {
     /* display: flex;
     flex-direction: column;
     align-items: center; */
-    width: 100%;
-    max-width: 900px;
+    /* width: 100%; */
+    max-width: 700px;
 }
 
 .profile-data {
@@ -277,9 +288,17 @@ video, img {
     margin-bottom: 2%;
     padding: 2%;
     font-size: 1.5vw;
-    max-width: 700px;
-    /* max-width: 98.5%; */
-    /* max-width: 75%; */
+    font-family: 'Amatic SC', cursive;
+    font-size: 200% !important;
+}
+
+.flexContainerAuthorInformation h3 {
+    font-size: 100% !important;
+}
+
+.flexContainerAuthorInformation a {
+    color: blue;
+    text-decoration: underline;
 }
 
 .flexBoxAuthorInformation {
@@ -612,8 +631,19 @@ footer.login-footer {
     background: transparent;
 }
 
-.uppy-Dashboard-inner {
-    
+.uppy-Dashboard-inner span {
+    font-family: 'Amatic SC', cursive;
+    font-size: 150% !important;
+}
+
+.uppy-Dashboard-inner a {
+    font-family: 'Amatic SC', cursive;
+    font-size: 100% !important;
+}
+
+.uppy-Dashboard-note {
+    font-family: 'Amatic SC', cursive;
+    font-size: 150% !important;
 }
 
 /* IMAGES IN MODAL WINDOW */
@@ -642,6 +672,10 @@ footer.login-footer {
 
 .navbar {
     margin-bottom: 0px !important;
+}
+
+#myNavbar {
+    font-size: 130%;
 }
 
 .register {
@@ -756,4 +790,132 @@ footer.login-footer {
 #image-modal button:hover {
     background: rgba(146,146,146,0.3);
     transition: .5s linear;
+}
+
+/* TESTS */
+
+#grinev {
+    height: 100vw;
+    background: url(../../images/grinevStory/grinev.jpg) no-repeat;
+    background-size: cover;
+}
+
+#igor {
+    height: 100vw;
+    background: url(../../images/igorStory/igor.jpg) no-repeat;
+    background-size: cover;
+}
+
+#onegin {
+    height: 100vw;
+    background: url(../../images/oneginStory/onegin.jpg) no-repeat;
+    background-size: cover;
+}
+
+#iuda {
+    height: 100vw;
+    background: url(../../images/iudaStory/iuda.jpg) no-repeat;
+    background-size: cover;
+}
+
+#asya {
+    height: 100vw;
+    background: url(../../images/asyaStory/asya.jpg) no-repeat;
+    background-size: cover;
+}
+
+#shinel {
+    height: 100vw;
+    background: url(../../images/shinelStory/shinel.jpg) no-repeat;
+    background-size: cover;
+}
+
+#karamora {
+    height: 100vw;
+    background: url(../../images/karamoraStory/karamora.jpg) no-repeat;
+    background-size: cover;
+}
+
+#mainDiv {
+    background: white;
+    margin: auto;
+    margin-top: 2%;
+    padding: 3%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 18px black;
+    max-width: 700px;
+    width: 80%;
+    /* font-family: 'Pacifico', cursive; */
+}
+
+.testP {
+    font-family: 'Caveat', cursive;
+    font-size: 200%;
+    text-align: center;
+}
+
+.testButton {
+    padding: 1%;
+    margin-top: 1%;
+    background: white;
+    border-radius: 10px;
+    border: 0.5px solid black;
+}
+
+section button:hover, section div:hover {
+    background: rgba(163, 163, 163, 0.2);
+    /* border: 1px solid black; */
+    transition: 0.5s linear;
+    text-decoration: none;
+}
+
+section a {
+    color: black;
+    text-decoration: none;
+    font-family: 'Caveat', cursive;
+    font-size: 150%;
+}
+
+.imgTest {
+    /* width: 50%; */
+    max-width: 566px !important;
+    display:block; margin:0 auto;
+    /* max-height: 500px; */
+    box-shadow: 0px 0px 3px black;
+}
+
+#story2, #story3, #story4, #story5, #story6,#story7, #story8, #story9, #story10, #story11, #story12, #story13, #story14, #story15, #story16, #story17, #story18, #story19, #story20, #story21, #story22, #story23, #story24, #story25, #story26, #story27, #story28, #story29, #story30, #story31, #story32, #story33, #story34, #story35, #story36, #story37, #story38, #story39, #story40, #story41 {
+    display: none;
+}
+
+section div {
+    margin: 10px;
+    padding: 1%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px black;
+    font-size: 130%;
+}
+
+section a {
+    font-size: 170%;
+}
+
+.interruptTest {
+    margin-top: -3%;
+    margin-right: -2%;
+    border: 1px solid rgba(163, 163, 163, 0);
+    background: rgba(163, 163, 163, 0);
+    float: right;
+    opacity: 0.5;
+}
+
+.interruptTest a:hover, button:hover {
+    background: rgba(163, 163, 163, 0);
+    text-decoration: none;
+}
+
+.testH3 {
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 200% !important;
 }
