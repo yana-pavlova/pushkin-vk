@@ -775,12 +775,14 @@ footer.login-footer {
     -khtml-border-radius: 5px;
 }
 
+.navbar-brand {
+    font-size: 190%;
+}
+
 /* СТИЛИ МОДАЛЬНОГО ОКНА ОТКРЫВАЮЩЕГО КАРТИНКУ */
 
 #image-modal {
     text-align: center;
-    font-family: 'Amatic SC', cursive;
-    font-size: 150% !important;    
 }
 
 #image-modal button {
