@@ -127,12 +127,16 @@ video, img {
 }
 
 .img-post {
-    max-width: 500px;
+    max-width: 700px;
     /* max-width: 75%; */
     /* max-height: 75%; */
     margin: 1%;
     /* padding-right: 10%;
     padding-left: 10%; */
+}
+
+iframe {
+    width: 100%;
 }
 
 .info-user i { color:#929292; }
