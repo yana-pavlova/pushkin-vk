@@ -120,6 +120,7 @@ video, img {
 
 .card-post-text {
     margin: 1%;
+    word-wrap: break-word;
 }
 
 .card-post-content img {
