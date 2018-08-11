@@ -52,6 +52,7 @@ class AuthorInfo extends hyperHTML.Component {
         birthDay = birthDay.toLocaleString('ru', AUTHOR_DATE_OPTS);
         let deathDay = new Date(this.state.deathDay);
         deathDay = deathDay.toLocaleString('ru', AUTHOR_DATE_OPTS);
+        let user = this.state.user;
         
         return this.html`
             <div class='flexContainerAuthorInformation'>
@@ -117,7 +118,7 @@ class AuthorInfo extends hyperHTML.Component {
                         Куратор страницы:
                     </div>
                     <div class="divData">
-                        ${this.state.name.first} ${this.state.name.last}
+                        ${this.state.user}
                     </div>
                 </div>
             </div>

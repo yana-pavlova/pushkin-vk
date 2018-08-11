@@ -52,13 +52,15 @@ class Post extends hyperHTML.Component {
         let id = this.state.id;
         
         return this.html`
-            <div class='card-post'>
+        <div class="card-post">
+            <a name="${id}">
                 ${new ContentHeader(author, post.publishedDate)}
                 <div class='flex_containerPost'>
                         ${new PostContent(post)}
                         ${new CommentBlock(comments, post.id)}
                 </div>
-            </div>
+            </a>
+        </div>
             `
     }
 }
@@ -164,6 +166,20 @@ class PostContent extends hyperHTML.Component {
         $("#image-modal").modal('show');
     }
 
+    onconnected(element){
+        let title = this.post.author.name.last + ' ' + this.post.author.name.first + ' в проекте "Пушкин в VK". Узнай, о чём пишут классики!'
+        let link = window.location.href + "#" + this.post.id;
+        this.element = event.srcElement;
+        let share = Ya.share2(`${this.shareElementId}`, {
+            content: {
+                url: link,
+                title: title,
+                description: 'Сообщество мёртвых писателей. Качественный контент. Присоединяйся!'          
+            }
+        });
+        
+    }
+
     render(){
         let content;
         if (this.post.image.filename) {
@@ -187,10 +203,10 @@ class PostContent extends hyperHTML.Component {
         }
         else {
             let text;
-            if (this.post.content.length > 200 && !this.showAll) {
+            if (this.post.content.length > 300 && !this.showAll) {
                 text = hyperHTML.wire()`
                     <div class='card-post-text content-extendable' data-call=showMore onclick=${this}>
-                        ${{html: this.post.content.substr(0, 200)}}...
+                        ${{html: this.post.content.substr(0, 300)}}...
                         <br>
                         <a>Разверни меня полностью</a>
                     </div>
@@ -237,10 +253,12 @@ class PostContent extends hyperHTML.Component {
                 }
             `
         }
+        this.shareElementId = `share_${this.post.id}`
         return this.html`
-            <div class='card-post-content flexBoxPost'>${content}</div>
+            <div class='card-post-content flexBoxPost' onconnected=${this}>${content}</div>
             <div class='reaction flexBoxLike'>
                 ${new Like(this.post)}
+                <div id='${this.shareElementId}' class="ya-share2" data-services="vkontakte,facebook,twitter,odnoklassniki,moimir,linkedin,lj,viber,whatsapp,skype,telegram" counter="true" data-limit="3"></div>
             </div>
         `
     }

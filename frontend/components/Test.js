@@ -13,7 +13,7 @@ module.exports = class Test extends hyperHTML.Component {
         let link2 = `../images/${this.state.name}Story/${this.state.name}.jpg`;
         return this.html`
             <div class="thumbnail flex_block">
-                    <img src="${link2}" alt="Карамора. Автор неизвестен">
+                    <img src="${link2}" alt="${this.state.alt}">
                     <div class="caption">
                         <h3 class="testH3">${this.state.title}</h3>
                         <p class="testP">${this.state.paragraph}</p>
