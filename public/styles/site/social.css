@@ -789,6 +789,26 @@ footer.login-footer {
     -khtml-border-radius: 5px;
 }
 
+/* КНОПКА БОЛЬШЕ АВТОРОВ */
+
+.linkUp2 {
+    background: transparent;
+    border:1px solid #ccc;
+    text-align:center;
+    padding:10px;
+    position:fixed;
+    bottom:70px;
+    right:5px;
+    cursor:pointer;
+    color:#333;
+    font-family: 'Amatic SC', cursive;
+    font-size:150%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+}
+
 /* КНОПКА ПОКАЗАТЬ ЕЩЁ */
 
 #buttonDown {
@@ -961,6 +981,84 @@ section a {
 
 .testH3 {
     text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 200% !important;
+}
+
+/* СТИЛИ ДЛЯ БЛОКА "НУЖНА ПОМОЩЬ" */
+
+#editorHelper {
+    display: none;
+}
+
+.editorHelperP {
+    color: blue;
+    font-weight: bold;
+}
+
+/* СТИЛИ ДЛЯ СТРАНИЦЫ "АВТОРЫ" */
+
+.authorsBlock img {
+    width: 30%;
+    max-width: 300px;
+    margin-right: 2%;
+}
+
+.authorsBlock {
+    margin: 2%;
+    background: white;
+    padding: 2%;
+    display: flex;
+    align-items: flex-start;
+    font-family: 'Amatic SC', cursive;
+    font-size: 200% !important;
+}
+
+.authorsBlock a:hover {
+    text-decoration: none !important;
+}
+
+.busy {
+    color: red;
+    font-weight: bold;
+}
+
+.available {
+    color: green;
+    font-weight: bold;
+}
+
+/* СТИЛИ ДЛЯ НАВБАРА */
+
+.active {
+    background: rgba(255,255,255,0.2) !important;
+}
+
+/* СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА ДОБАВЛЕНИЯ НОВОГО АВТОРА */
+
+#modalMoreAuthors {
+    font-family: 'Amatic SC', cursive;
+    font-size: 200% !important;
+}
+
+#modalMoreAuthors button {
+    font-size: 100% !important;
+    border: 1px solid black !important;   
+}
+
+#modalMoreAuthors button:hover {
+    background: rgba(114, 113, 113, 0.8);
+    transition: 0.5s linear;
+
+}
+
+#modalMoreAuthors input {
+    font-size: 100%;
+}
+
+.alert-success {
+    margin: 2%;
+    padding: 2%;
     font-family: 'Amatic SC', cursive;
     font-size: 200% !important;
 }

@@ -1,14 +1,15 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const PostEditor = require('./PostEditor');
+const PostImage = require('./PostImage');
 
 module.exports = class Posts extends hyperHTML.Component {
-    constructor(state, queryPrefix) {
+    constructor(state, queryPrefix, isSinglePost=false) {
         super();
         this.queryPrefix = queryPrefix || '/api/post/list'
         this.currentPage = 1;
         this.state = state;
         this.getNextPage = this.getNextPage.bind(this);
-        this.hasMore = true;
+        this.hasMore = !isSinglePost;
     }
 
     getNextPage(){
@@ -34,6 +35,23 @@ module.exports = class Posts extends hyperHTML.Component {
                     ? hyperHTML.wire()`<button id="buttonDown" onclick='${this.getNextPage}'>Показать ещё</button>`
                     : ''
                 }
+            </div>
+
+            <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close myButtonClose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <div class="modal-title my-image-modal-title">Просмотр изображения</div>
+                        </div>
+                        <div class="modal-body">
+                            <img class="img-responsive center-block" src="" alt="">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         `;
     }
@@ -74,7 +92,6 @@ class PostContent extends hyperHTML.Component {
         this.visible = true;
         this.state.uploadedFiles = [];
         this.getUploadedFiles = this.getUploadedFiles.bind(this);
-        this.showImageModal = this.showImageModal.bind(this);
     }
     
     deletePost() {
@@ -157,18 +174,10 @@ class PostContent extends hyperHTML.Component {
         this.render();
     }
 
-    showImageModal(e) {
-        e.preventDefault();
-
-        let src = this.image.currentSrc;
-        
-        $('#image-modal .modal-body img').attr('src', src);
-        $("#image-modal").modal('show');
-    }
-
     onconnected(element){
         let title = this.post.author.name.last + ' ' + this.post.author.name.first + ' в проекте "Пушкин в VK". Узнай, о чём пишут классики!'
-        let link = window.location.href + "#" + this.post.id;
+        let link = window.location.origin + "/wall/post/" + this.post.id;
+        
         this.element = event.srcElement;
         let share = Ya.share2(`${this.shareElementId}`, {
             content: {
@@ -182,8 +191,9 @@ class PostContent extends hyperHTML.Component {
 
     render(){
         let content;
+        let image = ''
         if (this.post.image.filename) {
-            this.image = hyperHTML.wire()`<img draggable='false' tabindex='1' class='img-post thumbnail' alt='Изображение' src='${'/' + this.post.image.filename}' onclick=${this.showImageModal}>`
+            image = new PostImage(this.post.image);
         }
         if (this.isEdited) {
             content = hyperHTML.wire()`
@@ -218,32 +228,7 @@ class PostContent extends hyperHTML.Component {
             }
             content = hyperHTML.wire()`
                 ${text}
-                ${(this.post.image.filename)
-                    ? hyperHTML.wire()`
-                        <a>
-                            ${this.image}
-                        </a>
-
-                        <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
-
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close myButtonClose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                <div class="modal-title my-image-modal-title">Просмотр изображения</div>
-                            </div>
-                            <div class="modal-body">
-                                <img class="img-responsive center-block" src="" alt="">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        `
-                    : ''
-                }
+                ${image}
                 ${(_LOCALS.isSignedIn && this.post.author._id == _LOCALS.user.currentAuthor._id)
                     ? new Dropdown([
                         {text: 'редактировать', clickHandler: this.editContent, that: this}, 

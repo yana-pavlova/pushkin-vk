@@ -1,11 +1,12 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const AuthorsPage = require('./screens/AuthorsPage');
 
-let api = (_LOCALS) ? '?apiKey=' + _LOCALS.apiKey : '?apiKey=123';
+let Loading = require('./screens/Loading');
+hyperHTML(document.querySelector('#content'))`${new Loading()}`;
 
 let author = document.location.pathname.replace('/author', '');
 
-fetch('/api/post/list' + author + api, {method: 'GET'}).then((res) => {
+fetch('/api/post/list' + author, {method: 'GET'}).then((res) => {
         return res.json();
     }).then((res) => {
         hyperHTML(document.querySelector('#content'))`${new AuthorsPage(res)}`;

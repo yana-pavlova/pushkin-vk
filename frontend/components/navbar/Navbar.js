@@ -68,34 +68,36 @@ module.exports = class NavBar extends hyperHTML.Component {
                         `
             }
         }
+        
         return this.html`
         <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a name="top" class="navbar-brand" href="/">Главная</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal2">О<span style="opacity: 0;">о</span>проекте</a></li>
-        <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal">Контакты</a></li> 
-        <li><a class="aliveA" href="/wall">Стена</a></li> 
-        <li><a class="aliveA" href="/tests">Тесты</a></li> 
-      </ul>
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                </button>
+                <a name="top" class="navbar-brand" href="/">Главная</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal2">О<span style="opacity: 0;">о</span>проекте</a></li>
+                    <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal">Контакты</a></li> 
+                    <li><a class=${this.activeSection == 'wall' ? 'aliveA active' : 'aliveA'} href="/wall">Стена</a></li> 
+                    <li><a class=${this.activeSection == 'tests' ? 'aliveA active' : 'aliveA'} href="/tests">Тесты</a></li> 
+                    <li><a class=${this.activeSection == 'authors' ? 'aliveA active' : 'aliveA'} href="/authors">Авторы</a></li> 
+                </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="aliveA" style="font-size:100%">
-        ${currentAuthor}</a>
-        </li>
-        ${new LoginDropdown()}</a>
-      </ul>
-    </div>
-  </div>
-</nav>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="aliveA" style="font-size:100%">
+                    ${currentAuthor}</a>
+                    </li>
+                    ${new LoginDropdown()}</a>
+                </ul>
+                </div>
+            </div>
+        </nav>
         `;
     }
 }

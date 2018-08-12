@@ -26,15 +26,15 @@ exports = module.exports = function (app) {
     // Views
     app.get('/', routes.views.index);
     app.get('/wall', routes.views.wall);
-    
+    app.get('/wall/post/:id', routes.views.post);
     // app.get('/wall/:category?', routes.views.blog); // TODO kill me
-    // app.get('/wall/post/:post', routes.views.post); // TODO kill me
     app.get('/author/:author', routes.views.author);
     app.get('/login', routes.views.login);
     app.get('/register', routes.views.register);
     app.get('/settings', routes.views.settings);
     app.get('/tests', routes.views.tests);
     app.get('/tests/:id', routes.views.singleTest);
+    app.get('/authors', routes.views.authors);
 
     //auth
     app.get('/auth/signin', keystone.middleware.api, auth.signin);
@@ -52,7 +52,8 @@ exports = module.exports = function (app) {
     // authors
     app.get('/api/authors/available', keystone.middleware.api, routes.api.author.available);
     app.get('/api/authors/popular', keystone.middleware.api, routes.api.author.popular);
-    
+    app.get('/api/authors/all', keystone.middleware.api, routes.api.author.getAll);
+    app.get('/api/authors/request-new', keystone.middleware.api, routes.api.author.newAuthorRequest);
     // post
     app.get('/api/post/list', keystone.middleware.api, routes.api.post.list);
     app.get('/api/post/list-and-pop-authors', keystone.middleware.api, routes.api.post.listAndGetPopAuthors);

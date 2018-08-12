@@ -5,9 +5,10 @@ const Related = require('../components/Related');
 
 
 module.exports = class Wall extends hyperHTML.Component {
-    constructor(state) {
+    constructor(state, isSinglePost=false) {
         super();
         this.state = state;
+        this.isSinglePost = isSinglePost;
     }
 
     render() {
@@ -17,7 +18,7 @@ module.exports = class Wall extends hyperHTML.Component {
         return this.html`
             ${new NavBar (this.state)}
             <div class='wall flexContainerForAll'>
-                        ${new Posts(this.state)}
+                        ${new Posts(this.state, false, this.isSinglePost)}
                         <a href="#top"><button class="linkUp">Вверх!</button></a>
             </div>
         `;

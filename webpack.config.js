@@ -6,12 +6,14 @@ module.exports = {
 
 	entry: {
 		index: './index',
-        wall: './wall',
+		wall: './wall',
+		post: './post',
 		author: './author',
 		register: './register',
 		settings: './settings',
 		tests: './tests',
-		singleTest: './singleTest'
+		singleTest: './singleTest',
+		authors: './authors'
 	},
 
 	output: {

@@ -226,20 +226,21 @@ exports.remove = function(req, res) {
 
 // Get Post by ID
 exports.get = function(req, res) {
-    console.log('get by id');
-    
-    requireAdmin(req, res, () => {
-        Post.model.findById(req.params.id)
-            .populate({path: 'author', select: 'slug authorPhoto authorName'})
-            .populate({path: 'comments'})
-            .populate({path: 'likes'})
-            .exec(function(err, item) {
-                if (err) return res.apiError('database error', err);
-                if (!item) return res.apiError('not found');
-                
-                res.apiResponse({
-                    post: item
-                });
+    let data = req.params;
+    if (!data) return res.apiError('error', 'no data');
+    if (!data.id) return res.apiError('error', 'no data');
+    console.log('get post by id', data.id);
+
+    Post.model.findById(data.id)
+        .populate({path: 'author', select: 'slug photo name'})
+        .populate({path: 'comments', options: { sort: { publishedDate: -1 } } })
+        .populate({path: 'likes'})
+        .exec(function(err, item) {
+            if (err) return res.apiError('database error', err);
+            if (!item) return res.apiError('not found');
+            
+            res.apiResponse({
+                post: item
             });
-    });
+        });
 }

@@ -113,14 +113,6 @@ class AuthorInfo extends hyperHTML.Component {
                         <a target="_blank" href="${this.state.wikipediaLink}">Вики</a>
                     </div>
                 </div>            
-                <div class="flexBoxAuthorInformation">
-                    <div class="divDataName">
-                        Куратор страницы:
-                    </div>
-                    <div class="divData">
-                        ${this.state.user}
-                    </div>
-                </div>
             </div>
         `
     }
@@ -188,7 +180,7 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
             <div  >
                 ${new NavBar (this.state)}
                 <div class='profile flexContainerForAll'>
-                    <div class='content-posts profile-content'>                        <div class='container-posts'>
+                    <div class='content-posts profile-content'><div class='container-posts'>
 
                             ${(_LOCALS.isSignedIn && _LOCALS.user.currentAuthor._id == this.state.author._id)
                                 ? hyperHTML.wire()`
