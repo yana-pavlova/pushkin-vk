@@ -1062,3 +1062,9 @@ section a {
     font-family: 'Amatic SC', cursive;
     font-size: 200% !important;
 }
+
+/* СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ РЕДАКТИРОВАТЬ ПОСТ */
+
+.post-tool-bar ul {
+    font-size: 100%;
+}

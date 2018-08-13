@@ -13,7 +13,8 @@ module.exports = {
 		settings: './settings',
 		tests: './tests',
 		singleTest: './singleTest',
-		authors: './authors'
+		authors: './authors',
+		readerRegister: './readerRegister'
 	},
 
 	output: {

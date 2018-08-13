@@ -237,10 +237,10 @@ module.exports = class PostEditor extends hyperHTML.Component {
         return this.html`
             <div class='${this.class}' onconnected=${this} >
                 <textarea class='form-control' id='${this.textAreaId}' value=${this.post.content}></textarea>
+                <button class="btn btn-success btn-help" onclick=${this.showHelp.bind(this)}>Нужна помощь?</button>
                 ${this.buttons.map((b) => {
                     return hyperHTML.wire()`
                         <button class='${b.class}' onclick=${b.onClick}>${b.title}</button>
-                        <button class="btn btn-success btn-help" onclick=${this.showHelp.bind(this)}>Нужна помощь?</button>
                         <div id="editorHelper">
                             <h2>Я должен делать ссылки на источник материала?</h2>
                             <p>Вы не обязаны этого делать, однако мы призываем вас быть честными: используя чужой труд, оставьте ссылку на источник. Это необходимо также для того, чтобы нам было легче верифицировать информацию, которую вы решили опубликовать.</p>

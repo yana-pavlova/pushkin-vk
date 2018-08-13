@@ -47,7 +47,7 @@ exports = module.exports = function (app) {
     // users
     app.get('/api/user/create', keystone.middleware.api, routes.api.user.create);
     app.get('/api/user/change-current-author', keystone.middleware.api, routes.api.user.changeCurrentAuthor);
-
+    app.get('/api/user/createReader', keystone.middleware.api, routes.api.user.create);
 
     // authors
     app.get('/api/authors/available', keystone.middleware.api, routes.api.author.available);

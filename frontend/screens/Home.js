@@ -22,11 +22,15 @@ module.exports = class Home extends hyperHTML.Component {
                        <div class="miniFlex">
                         <p>Хотите личный кабинет и возможность постить тексты от лица любимого автора?</p>
                         <button><a style='color:white' href='/register'>Присоединиться!</a></button></p>
-                      </div>
-                      <div class="miniFlex">
+                       </div>
+                       <div class="miniFlex">
                         <p>Хотите ознакомиться с нашим контентом и освежить знания по литературе?</p>
                         <button><a style='color:white' href='/wall'>Смотреть контент!</a></button></p>
-                      </div>
+                       </div>
+                       <!-- <div class="miniFlex">
+                        <p>Хотите комментировать записи и оставлять лайки, но без личного кабинета автора?</p>
+                        <button><a style='color:white' href='/readerRegister'>Стать читателем!</a></button></p>
+                       </div> -->
 
                     <!-- <p>Чтобы увидеть контент сайта, пройдите на <a style='color:white;text-decoration:underline' href="/wall">стену<a>, где размещены все посты авторов, живущих здесь. Также вы можете посетить раздел <a style='color:white;text-decoration:underline' href="/tests/testIndex.html">тесты</a> и освежить свои знания некоторых художественных текстов.</p>
                     <p>А если вы хотите выбрать автора, получить личный кабинет и постить тексты от его имени, нажмите на кнопку ниже.</p>
