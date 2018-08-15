@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 @import url('https://fonts.googleapis.com/css?family=Caveat|Pacifico');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300');
 
 
 /*----------------------------------------------------------------
@@ -397,11 +397,11 @@ iframe {
     right: 20px;
 }
 
-/* .scrollbar-container {
+.scrollbar-container {
     height: 340px;
     overflow-y: scroll;
     overflow-x: hidden;
-} */
+}
 
 .badge-replay, .badge-message {
     font-size: 14px;
@@ -577,6 +577,9 @@ footer.login-footer {
     border-radius: 10px;
 }
 
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:window-inactive {
+    background: #f3ad00;
+}
 
 
 

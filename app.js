@@ -79,10 +79,11 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-    posts: ['posts', 'post-comments'],
+    posts: ['posts', 'post-comments', 'post-likes'],
     // galleries: 'galleries', // TODO kill me or use me
     // enquiries: 'enquiries', // TODO kill me or use me
     users: 'users',
+    authors: 'authors',
 });
 
 // Start Keystone to connect to your database and initialise the web server

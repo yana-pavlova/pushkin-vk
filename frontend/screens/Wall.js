@@ -12,15 +12,16 @@ module.exports = class Wall extends hyperHTML.Component {
     }
 
     render() {
-        // console.log(this.state.posts);
-        // console.log ('количество постов',this.state.posts.total)
-        // console.log ('один пост',this.state.posts.results[0])
         return this.html`
             ${new NavBar (this.state)}
             <div class='wall flexContainerForAll'>
-                        ${new Posts(this.state, false, this.isSinglePost)}
-                        <a href="#top"><button class="linkUp">Вверх!</button></a>
+                ${new Posts(this.state, false, this.isSinglePost)}
+                <a href="#top"><button class="linkUp">Вверх!</button></a>
             </div>
         `;
     }
 }
+
+// <div class="sidebar-right hidden-xs hidden-sm">
+//     ${new Related(this.state)}
+// </div>

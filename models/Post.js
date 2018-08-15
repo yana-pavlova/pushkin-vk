@@ -54,5 +54,5 @@ Post.schema.set('toJSON', {
 Post.relationship({ ref: 'PostComment', refPath: 'post' });
 Post.relationship({ ref: 'PostLike', refPath: 'post' });
 
-Post.defaultColumns = 'content|20%, state, author, publishedDate';
+Post.defaultColumns = 'content|20%, state, author, publishedDate, image';
 Post.register();

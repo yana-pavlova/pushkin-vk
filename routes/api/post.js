@@ -7,7 +7,7 @@ let User = keystone.list('User');
 let Author = keystone.list('Author');
 
 const FIRST_PAGE = 1;
-const POST_PER_PAGE = 30;
+const POST_PER_PAGE = 10;
 const MAX_PAGES_PER_QUERY = 1;
 
 // list all posts and get popular authors

@@ -3,6 +3,7 @@ let { requireAdmin, requireUser } = require('../auth');
 
 let PostComment = keystone.list('PostComment');
 let Author = keystone.list('Author');
+let User = keystone.list('User');
 
 // List
 exports.list = function(req, res) {
@@ -34,6 +35,7 @@ exports.create = function(req, res) {
             if (author.user.toString() !== req.user.id) return res.apiError('user error');
             
             data.publishedDate = new Date();
+            data.user = req.user;
 
             item.getUpdateHandler(req)
                 .process(data, function(err, result) {
@@ -46,7 +48,7 @@ exports.create = function(req, res) {
                         .exec(function (err, newComment) {
                             let c = newComment;
                             c.author = author;
-
+                            c.user = req.user;
                             res.apiResponse({comment: c});
                         })
                 });
@@ -85,6 +87,43 @@ exports.update = function(req, res) {
             })
         });
     });
+}
+
+// create comment from reader
+exports.createByReader = function (req, res) {
+    requireUser(req, res, () => {
+        let data = (req.method == 'POST') ? req.body : req.query;
+        
+        if (!data) return res.apiError('error', 'no data');
+        if (!data.content || !data.post) return res.apiError('error', 'no data');
+        
+        let item = new PostComment.model();
+        
+        User.model.findById(req.user.id).exec((err, user) => {
+            if (err) return res.apiError('database error', err);
+            
+            data.publishedDate = new Date();
+            data.user = req.user;
+
+            item.getUpdateHandler(req)
+                .process(data, function(err, result) {
+                    if (err) return res.apiError('error', err);
+                    
+                    let id = item._id;
+
+                    PostComment.model.findById(id)
+                        // .populate({path: 'user', select: 'name'})
+                        .exec(function (err, newComment) {
+                            let c = newComment;
+                            c.user = req.user;
+
+                            res.apiResponse({comment: c});
+                        })
+                });
+
+        })
+        
+    })
 }
 
 // Delete by ID

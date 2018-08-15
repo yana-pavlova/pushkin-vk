@@ -16,9 +16,9 @@ User.add({
     password: { type: Types.Password, initial: true, required: true },
 
     authors: { type: Types.Relationship, many: true, ref: 'Author', index: true, label: 'Авторы' },
-
     currentAuthor: { type: Types.Relationship, ref: 'Author', label: 'Текущий автор'},
 
+    role: { type: Types.Select, options: 'author, reader' }
 }, 'Permissions', {
     isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 });
@@ -51,9 +51,11 @@ User.schema.set('toJSON', {
  * Relationships
  */
 User.relationship({ ref: 'Author', path: 'authors', refPath: 'user' });
+User.relationship({ ref: 'PostComment', path: 'postcomments', refPath: 'user' });
+User.relationship({ ref: 'PostLike', path: 'postlike', refPath: 'user' });
 
 /**
  * Registration
  */
-User.defaultColumns = 'name, email, isAdmin';
+User.defaultColumns = 'name, email, role, authors';
 User.register();

@@ -41,14 +41,20 @@ module.exports = class LoginDropdown extends hyperHTML.Component {
         let dropdownContent;
         if (this.isSignedIn) {
             dropdownContent = hyperHTML.wire()`
-                <li> <a href='/settings' >Сменить автора</a> </li>
-                ${_LOCALS.user.isAdmin 
+                ${_LOCALS.user.role == 'author' 
                     ? hyperHTML.wire()`
-                        <li><a class="dropdown-item" href='/keystone/signin'>Секретный раздел</a></li>
+                        <li> <a href='/settings' >Сменить автора</a> </li>
+                        <li role='separator' class='divider'></li>
                         `
                     : ''
                 }
-                <li role='separator' class='divider'></li>
+                ${_LOCALS.user.isAdmin 
+                    ? hyperHTML.wire()`
+                        <li><a class="dropdown-item" href='/keystone'>Секретный раздел</a></li>
+                        <li role='separator' class='divider'></li>
+                        `
+                    : ''
+                }
                 <li><a class="dropdown-item" onclick=${this.logout} >Выйти</a></li>
             `
         }

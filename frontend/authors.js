@@ -1,7 +1,7 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const Authors = require('./screens/Authors');
 
-let Loading = require('./screens/Loading');
+let Loading = require('./components/Loading');
 hyperHTML(document.querySelector('#content'))`${new Loading()}`;
 
 fetch('/api/authors/all', {method: 'GET'}).then((res) => {

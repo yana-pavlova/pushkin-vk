@@ -6,8 +6,8 @@ exports = module.exports = function (req, res) {
     var locals = res.locals;
     
     // Init locals
-    locals.section = 'readerRegister';
+    locals.section = 'registerReader';
 
     // Render the view
-    view.render('readerRegister');
+    view.render('registerReader');
 };

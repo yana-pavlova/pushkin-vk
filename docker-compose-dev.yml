@@ -2,10 +2,13 @@ version: "2"
 
 services:
   nginx:
-    build: nginx
-    container_name: nginx
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile-dev
+    image: nginx-dev
+    container_name: nginx-dev
     ports:
-      - "80:80"
+      - "3000:80"
     links:
       - app
     volumes:
@@ -13,8 +16,8 @@ services:
     restart: always
 
   app:
-    image: yanapavlova/pushkin-vk
-    container_name: pushkinvk
+    image: pushkinvk-dev
+    container_name: pushkinvk-dev
     ports:
       - "3005:3005"
     links:

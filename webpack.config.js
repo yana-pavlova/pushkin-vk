@@ -10,11 +10,11 @@ module.exports = {
 		post: './post',
 		author: './author',
 		register: './register',
+		registerReader: './registerReader',
 		settings: './settings',
 		tests: './tests',
 		singleTest: './singleTest',
 		authors: './authors',
-		readerRegister: './readerRegister',
 		emodji: './emodji'
 	},
 

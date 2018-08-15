@@ -51,10 +51,11 @@ exports.initLocals = function (req, res, next) {
                     currentAuthor: user.currentAuthor,
                     name: user.name,
                     isAdmin: user.isAdmin,
+                    role: user.role || 'reader',
                     _id: user.id,
                 }
 
-                data.user.currentAuthor = data.user.currentAuthor || user.authors[0]
+                if (user.role == 'author') data.user.currentAuthor = data.user.currentAuthor || user.authors[0]
 
                 data.isSignedIn = true;
 

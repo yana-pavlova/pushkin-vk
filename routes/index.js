@@ -31,12 +31,13 @@ exports = module.exports = function (app) {
     app.get('/author/:author', routes.views.author);
     app.get('/login', routes.views.login);
     app.get('/register', routes.views.register);
+    app.get('/register-reader', routes.views.registerReader);
     app.get('/settings', routes.views.settings);
     app.get('/tests', routes.views.tests);
     app.get('/tests/:id', routes.views.singleTest);
     app.get('/authors', routes.views.authors);
     app.get('/emodji', routes.views.emodji);
-    app.get('/readerRegister', routes.views.readerRegister);
+    
 
     //auth
     app.get('/auth/signin', keystone.middleware.api, auth.signin);
@@ -49,7 +50,7 @@ exports = module.exports = function (app) {
     // users
     app.get('/api/user/create', keystone.middleware.api, routes.api.user.create);
     app.get('/api/user/change-current-author', keystone.middleware.api, routes.api.user.changeCurrentAuthor);
-    app.get('/api/user/createReader', keystone.middleware.api, routes.api.user.create);
+    app.get('/api/user/create-reader', keystone.middleware.api, routes.api.user.createReader);
 
     // authors
     app.get('/api/authors/available', keystone.middleware.api, routes.api.author.available);
@@ -70,10 +71,12 @@ exports = module.exports = function (app) {
     
     // likes
     app.get('/api/like/post', keystone.middleware.api, routes.api.like.likePost);
-    
+    app.get('/api/like/post-by-reader', keystone.middleware.api, routes.api.like.likePostByReader);
+
     // comment
     app.get('/api/comment/list', keystone.middleware.api, routes.api.comment.list);
     app.all('/api/comment/create', keystone.middleware.api, routes.api.comment.create);
+    app.all('/api/comment/create-by-reader', keystone.middleware.api, routes.api.comment.createByReader);
     app.get('/api/comment/:id', keystone.middleware.api, routes.api.comment.get);
     app.all('/api/comment/:id/update', keystone.middleware.api, routes.api.comment.update);
     app.get('/api/comment/:id/remove', keystone.middleware.api, routes.api.comment.remove);

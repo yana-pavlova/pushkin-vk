@@ -1,6 +1,7 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const PostEditor = require('./PostEditor');
 const PostImage = require('./PostImage');
+let Loading = require('./Loading');
 
 module.exports = class Posts extends hyperHTML.Component {
     constructor(state, queryPrefix, isSinglePost=false) {
@@ -8,33 +9,49 @@ module.exports = class Posts extends hyperHTML.Component {
         this.queryPrefix = queryPrefix || '/api/post/list'
         this.currentPage = 1;
         this.state = state;
-        this.getNextPage = this.getNextPage.bind(this);
-        this.hasMore = !isSinglePost;
+        if (isSinglePost) this.hasMore = !isSinglePost;
+        else this.hasMore = !(this.state.posts.totalPages == this.currentPage);
+        this.loading = new Loading({visible: false});
+        this.showMoreButtonId = 'buttonDown';
+        this.showMoreButton = hyperHTML.wire()`<button id=${this.showMoreButtonId} onclick=${this.getNextPage.bind(this)}>Показать ещё</button>`
     }
 
-    getNextPage(){
+    getNextPage(e){
+        e.preventDefault();
+        let showMoreButtonEl = document.querySelector(`#${this.showMoreButtonId}`);
         this.currentPage += 1;
         let query = `${this.queryPrefix}?page=${this.currentPage}`;
-        
+        let postCount = this.state.posts.results.length;
+        this.loading.show();
+        showMoreButtonEl.hidden = true;
+
         let that = this;
-        fetch(query, {method: 'GET'}).then((res) => {
+        fetch(query, {method: 'GET'}, true).then((res) => {
             return res.json();
         }).then((res) => {
-            if (!res.posts.results.length) that.hasMore = false;
-            
-            that.state.posts.results = that.state.posts.results.concat(res.posts.results);
-            that.render();
+            if (!res.posts.results.length) {
+                showMoreButtonEl.hidden = true;
+                this.loading.hide();
+            }
+            else {
+                that.loading.hide();
+                showMoreButtonEl.hidden = false;
+                let newState = {...that.state}
+                newState.posts.results = that.state.posts.results.concat(res.posts.results);
+                that.setState(newState)
+
+                let index = postCount;
+                window.location = `${window.location.pathname}#${this.state.posts.results[index].id}`;
+            }
         }).catch(e => console.log(e));
     }
 
-    render() {        
+    render() {
         return this.html`
             <div class='container-posts'>
-                ${ this.state.posts.results.map( post => new Post(post) ) }
-                ${(this.hasMore)
-                    ? hyperHTML.wire()`<button id="buttonDown" onclick='${this.getNextPage}'>Показать ещё</button>`
-                    : ''
-                }
+                ${this.state.posts.results.map(post => new Post(post))}
+                ${this.showMoreButton}
+                ${this.loading}
             </div>
 
             <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
@@ -72,7 +89,7 @@ class Post extends hyperHTML.Component {
         return this.html`
         <div class="card-post">
             <a name="${id}">
-                ${new ContentHeader(author, post.publishedDate)}
+                ${new ContentHeader(author, post.publishedDate, 'author')}
                 <div class='flex_containerPost'>
                         ${new PostContent(post)}
                         ${new CommentBlock(comments, post.id)}
@@ -191,8 +208,8 @@ class PostContent extends hyperHTML.Component {
 
     render(){
         let content;
-        let image = ''
-        if (this.post.image.filename) {
+        let image = '';
+        if (this.post.image.filename){
             image = new PostImage(this.post.image);
         }
         if (this.isEdited) {
@@ -229,7 +246,7 @@ class PostContent extends hyperHTML.Component {
             content = hyperHTML.wire()`
                 ${text}
                 ${image}
-                ${(_LOCALS.isSignedIn && this.post.author._id == _LOCALS.user.currentAuthor._id)
+                ${(_LOCALS.isSignedIn && _LOCALS.user.role == 'author' && this.post.author._id == _LOCALS.user.currentAuthor._id)
                     ? new Dropdown([
                         {text: 'редактировать', clickHandler: this.editContent, that: this}, 
                         {text: 'удалить', clickHandler: this.deletePost, that: this}
@@ -263,17 +280,26 @@ class Like extends hyperHTML.Component {
         if (!_LOCALS.isSignedIn) return;
         if (_LOCALS.user._id == this.state.postAuthor) return;
         
-        let q = `/api/like/post/?postId=${this.state.postId}&author=${_LOCALS.user.currentAuthor._id}`;
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', q, true);
-        xhr.send();
+        let queryArray = [];
+        let role = _LOCALS.user.role;
 
+        queryArray.push(`postId=${this.state.postId}`);
+        
+        if (role == 'author') queryArray.push(`author=${_LOCALS.user.currentAuthor._id}`);
+        if (queryArray.length === 0) return;
+
+        let query = queryArray.map((q) => q).join('&');
+        if (role == 'author') query = `/api/like/post/?${query}`;
+        if (role == 'reader') query = `/api/like/post-by-reader/?${query}`;
+        // let q = `/api/like/post/?postId=${this.state.postId}&author=${_LOCALS.user.currentAuthor._id}`;
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', query, true);
+        xhr.send();
         let that = this;
         xhr.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
                 let res = JSON.parse(this.responseText);
                 if (res.error) return;
-                
                 that.state.likesCount = res.likesCount;
                 that.render();
             }
@@ -308,15 +334,19 @@ class CommentBlock extends hyperHTML.Component {
     addComment(event) {
         let contentValue = event.render().querySelector('textarea').value;
         let queryArray = [];
+        let role = _LOCALS.user.role;
+
         if (contentValue !== '') queryArray.push(`content=${contentValue}`);
         queryArray.push(`post=${this.postId}`);
-        queryArray.push(`author=${_LOCALS.user.currentAuthor._id}`);
+        
+        if (role == 'author') queryArray.push(`author=${_LOCALS.user.currentAuthor._id}`);
 
         if (queryArray.length === 0) return;
 
         let query = queryArray.map((q) => q).join('&');
         
-        query = `/api/comment/create/?${query}`;
+        if (role == 'author') query = `/api/comment/create/?${query}`;
+        if (role == 'reader') query = `/api/comment/create-by-reader/?${query}`;
 
         let xhr = new XMLHttpRequest();
         xhr.open('GET', query, true);
@@ -334,24 +364,29 @@ class CommentBlock extends hyperHTML.Component {
         }
     }
 
-    showMore() {
+    showMore(e) {
+        e.preventDefault()
         this.showAll = true;
         this.render();
     }
 
     render() {
         if (!this.comments.length && !_LOCALS.isSignedIn) return this.html`<div></div>`;
-        let content;
+        let role;
+        if (_LOCALS.isSignedIn) role = _LOCALS.user.role;
         let comments;
-        if (this.comments.length >= this.commentsMaxLength && !this.showAll) {
+        if (this.comments.length > this.commentsMaxLength && !this.showAll) {
             comments = hyperHTML.wire()`
                 <ul>
                     ${this.comments.map((comment, i) => {
                         if (i < this.commentsMaxLength) {
+                            let header = ''
+                            if (comment.hasOwnProperty('author')) header = new ContentHeader(comment.author, comment.publishedDate, 'author');
+                            else header = new ContentHeader(comment.user, comment.publishedDate, 'reader')
                             return hyperHTML.wire()`
                             <hr>
                                 <li>
-                                    ${new ContentHeader(comment.author, comment.publishedDate)}
+                                    ${header}
                                     <div class='comment-content'>
                                         ${comment.content}
                                     </div>
@@ -369,21 +404,27 @@ class CommentBlock extends hyperHTML.Component {
         else {
             comments = hyperHTML.wire()`
                 <ul>
-                    ${this.comments.map(comment => hyperHTML.wire(comment)`
-                    <hr>
-                        <li>
-                            ${new ContentHeader(comment.author, comment.publishedDate)}
-                            <div class='comment-content'>
-                                ${comment.content}
-                                
-                            </div>
-                        </li>
-                    `)}
+                    ${this.comments.map(comment => {
+                        let header = ''
+                        if (comment.hasOwnProperty('author')) header = new ContentHeader(comment.author, comment.publishedDate, 'author');
+                        else header = new ContentHeader(comment.user, comment.publishedDate, 'reader')
+                        return hyperHTML.wire(comment)`
+                            <hr>
+                            <li>
+                                ${header}
+                                <div class='comment-content'>
+                                    ${comment.content}
+                                    
+                                </div>
+                            </li>
+                        `})}
                 </ul>
             `
         }
         return this.html`
             <div class='comments'>
+                ${comments}
+
                 ${(_LOCALS.isSignedIn)
                     ? hyperHTML.wire()`
                         <div class='add-new-comment'>
@@ -401,7 +442,6 @@ class CommentBlock extends hyperHTML.Component {
                     `
                     : ''
                 }
-                ${comments}
             </div>
         `
     }
@@ -420,10 +460,10 @@ const PUB_DATE_OPTS = {
 }
 
 class ContentHeader extends hyperHTML.Component {
-    constructor(author, pubDate) {
+    constructor(author, pubDate, role='reader') {
         super();
         this.author = author;
-        
+        this.role = role;
         this.pubDate = '';
         if (pubDate != undefined) {
             this.pubDate = new Date(pubDate);
@@ -431,29 +471,53 @@ class ContentHeader extends hyperHTML.Component {
         }
     }
 
-    render() {        
-        let authorsPage = '/author/' + this.author.slug;
-        let photo = this.author.photo ? `/${this.author.photo.filename}` : '/images/avatar-default.png';
-        let name = `${this.author.name.last} ${this.author.name.first}`;
-        
-        return this.html`
-            <div class='flexContainerHeaderPost'>
-                <div class='flexBoxHeaderPost'>
-                    <!--author's photo -->
-                    <a href='${authorsPage}'>
+    render() {
+
+        if (this.role == 'author') {
+            let authorsPage = '/author/' + this.author.slug;
+            let photo = this.author.photo ? `/${this.author.photo.filename}` : '/images/avatar-default.png';
+            let name = `${this.author.name.last} ${this.author.name.first}`;
+            
+            return this.html`
+                <div class='flexContainerHeaderPost'>
+                    <div class='flexBoxHeaderPost'>
+                        <!--author's photo -->
+                        <a href='${authorsPage}'>
+                            <div class='img-circle img-user' style=${`background-image:URL(${photo});`} alt='${name}'></div>
+                        </a>
+                        <!--author's name -->
+                    </div> <!-- end 1 flexBox -->
+                    <div class='flexBoxHeaderPost info-user'>
+                            <a href='${authorsPage}'>${name}</a>
+                        <p>
+                            <i>${this.pubDate}</i>
+                        </p>
+                    </div>
+                    <!-- end 2flexBox -->
+                </div> <!-- end flexContainer -->
+            `
+        }
+        else {
+            let photo = this.author.photo ? `/${this.author.photo.filename}` : '/images/reader-default.png';
+            let name = `${this.author.name.last} ${this.author.name.first}`;
+            
+            return this.html`
+                <div class='flexContainerHeaderPost'>
+                    <div class='flexBoxHeaderPost'>
+                        <!--author's photo -->
                         <div class='img-circle img-user' style=${`background-image:URL(${photo});`} alt='${name}'></div>
-                    </a>
-                    <!--author's name -->
-                </div> <!-- end 1 flexBox -->
-                <div class='flexBoxHeaderPost info-user'>
-                        <a href='${authorsPage}'>${name}</a>
-                    <p>
-                        <i>${this.pubDate}</i>
-                    </p>
-                </div>
-                <!-- end 2flexBox -->
-            </div> <!-- end flexContainer -->
-        `
+                        <!--author's name -->
+                    </div> <!-- end 1 flexBox -->
+                    <div class='flexBoxHeaderPost info-user'>
+                        ${name}
+                        <p>
+                            <i>${this.pubDate}</i>
+                        </p>
+                    </div>
+                    <!-- end 2flexBox -->
+                </div> <!-- end flexContainer -->
+            `
+        }
     }
 }
 class Dropdown extends hyperHTML.Component {

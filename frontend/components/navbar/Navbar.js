@@ -57,16 +57,29 @@ module.exports = class NavBar extends hyperHTML.Component {
     render() {
         let currentAuthor = '';
         if (_LOCALS.isSignedIn) {
-            let a = _LOCALS.user.currentAuthor;
-            if (a) {
-                currentAuthor = hyperHTML.wire()`
-                            <li>
-                                <a href=${`/author/${a.slug}`}>
-                                    ${a.name.first} ${a.name.last}
-                                </a>
-                            </li>
-                        `
+            if(_LOCALS.user.role == 'author') {
+                let a = _LOCALS.user.currentAuthor;
+                if (a) {
+                    currentAuthor = hyperHTML.wire()`
+                                <li>
+                                    <a href=${`/author/${a.slug}`}>
+                                        ${a.name.first} ${a.name.last}
+                                    </a>
+                                </li>
+                            `
+                }
             }
+            if (_LOCALS.user.role == 'reader') {
+                let a = _LOCALS.user.name;
+                if (a) {
+                    currentAuthor = hyperHTML.wire()`
+                                <li>
+                                    Читатель ${a.first} ${a.last}
+                                </li>
+                            `
+                }
+            }
+            
         }
         
         return this.html`

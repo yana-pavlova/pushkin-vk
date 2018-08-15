@@ -1,10 +1,10 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 let Register = require('./screens/Register');
 
-// let api = (_LOCALS) ? '?apiKey=' + _LOCALS.apiKey : '';
-let api = (_LOCALS) ? '?apiKey=' + _LOCALS.apiKey : '?apiKey=123';
+let Loading = require('./components/Loading');
+hyperHTML(document.querySelector('#content'))`${new Loading()}`;
 
-fetch('/api/authors/available' + api, {method: 'GET'}).then((res) => {
+fetch('/api/authors/available', {method: 'GET'}).then((res) => {
     return res.json();
 }).then((res) => {
     hyperHTML(document.querySelector('#content'))`${new Register(res)}`;

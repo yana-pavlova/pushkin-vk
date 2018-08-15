@@ -20,7 +20,6 @@ exports.create = function(req, res) {
         if (!data.author) return res.apiError('error', 'author required');
 
         // EMAIL
-
         nodemailer.createTestAccount((err, account) => {
 
             let mailForUser = `<h2>Социальная сеть "Пушкин в VK" приветствует Вас, ${data.name_last}!</h2> <p>Поздравляем с успешной регистрацией на сайте pushkinvk.ru.</p><p>Ваш пароль: ${data.password}</p><p>Ваш логин: ${data.email} </p><p>Желаем приятного времяпрепровождения! </p>`;
@@ -62,9 +61,8 @@ exports.create = function(req, res) {
             });
         });
 
-        // EMAIL
-
         
+        // Create db record
         let newUser = new User.model();
 
         Author.model.findById(data.author).exec((err, author) => {
@@ -81,6 +79,7 @@ exports.create = function(req, res) {
                 password: data.password,
                 email: data.email,
                 currentAuthor: author,
+                role: 'author'
             }
 
             newUser.getUpdateHandler(req).process(content, function(err) {
@@ -125,6 +124,8 @@ exports.changeCurrentAuthor = function(req, res) {
     })
 }
 
+
+// create reader
 exports.createReader = function(req, res) {    
     let data = (req.method == 'POST') ? req.body : req.query;
     console.log('create user', data);
@@ -134,10 +135,8 @@ exports.createReader = function(req, res) {
     if (!data.name_last) return res.apiError('error', 'name required');
     if (!data.email) return res.apiError('error', 'username required');
     if (!data.password) return res.apiError('error', 'password required');
-    if (!data.author) return res.apiError('error', 'author required');
 
     // EMAIL
-
     nodemailer.createTestAccount((err, account) => {
 
         let mailForUser = `<h2>Социальная сеть "Пушкин в VK" приветствует Вас, ${data.name_last}!</h2> <p>Поздравляем с успешной регистрацией на сайте pushkinvk.ru.</p><p>Ваш пароль: ${data.password}</p><p>Ваш логин: ${data.email} </p><p>Желаем приятного времяпрепровождения! </p>`;
@@ -179,36 +178,22 @@ exports.createReader = function(req, res) {
         });
     });
 
-    // EMAIL
-
-    
+    // Create db record
     let newUser = new User.model();
-
-    Author.model.findById(data.author).exec((err, author) => {
-        if (err) return res.apiError('database error', err);
-        if (!author) return res.apiError('error', 'no author');
-        if (author.hasOwnProperty('user')) return res.apiError('error', 'author is already chosen by another user');
         
-        let content = {
-            authors: [author],
-            name: {
-                first: data.name_first,
-                last: data.name_last,
-            },
-            password: data.password,
-            email: data.email,
-            currentAuthor: author,
-        }
+    let content = {
+        name: {
+            first: data.name_first,
+            last: data.name_last,
+        },
+        password: data.password,
+        email: data.email,
+        role: 'reader',
+    }
 
-        newUser.getUpdateHandler(req).process(content, function(err) {
-            if (err) return res.apiError('error', err);
-            
-            author.getUpdateHandler(req).process({user: newUser}, function(err){
-                if (err) return res.apiError('error', err);
-                
-                res.apiResponse('ok')
-            })  
-        });
+    newUser.getUpdateHandler(req).process(content, function(err) {
+        if (err) return res.apiError('error', err);
+        res.apiResponse('ok'); 
+    });
 
-    })
 }
