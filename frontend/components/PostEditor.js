@@ -8,7 +8,7 @@ import Webcam from 'uppy/lib/plugins/Webcam';
 import imageToBlob from 'image-to-blob';
 
 let editorInstanceCounter = 0;
-let editorHelperIsShow = false;
+// let editorHelperIsShow = false;
 
 module.exports = class PostEditor extends hyperHTML.Component {
     
@@ -42,7 +42,7 @@ module.exports = class PostEditor extends hyperHTML.Component {
         
         this.actions = params.actions || {};
         this.showUploadModal = this.showUploadModal.bind(this);
-        this.showHelp = this.showHelp.bind(this);
+        // this.showHelp = this.showHelp.bind(this);
     }
 
     onconnected(event) {
@@ -237,26 +237,38 @@ module.exports = class PostEditor extends hyperHTML.Component {
         return this.html`
             <div class='${this.class}' onconnected=${this} >
                 <textarea class='form-control' id='${this.textAreaId}' value=${this.post.content}></textarea>
-                <button class="btn btn-success btn-help" onclick=${this.showHelp.bind(this)}>Нужна помощь?</button>
+                <button class="btn btn-success btn-help"><a data-toggle="modal" data-target="#myHelperModal">Нужна помощь?</a></button>
+                    <div id="myHelperModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h4>Как оформить пост?</h4>
+                                </div>
+                                <div class="modal-body">
+                                <h2>Я должен делать ссылки на источник материала?</h2>
+                                <p>Вы не обязаны этого делать, однако мы призываем вас быть честными: используя чужой труд, оставьте ссылку на источник. Это необходимо также для того, чтобы нам было легче верифицировать информацию, которую вы решили опубликовать.</p>
+                                <h2>Как сделать ссылку?</h2>
+                                <p>Просто скопируйте следующий текст и подставьте свои значения:</p>
+                                <p class="editorHelperP">&lt;a target="_blank" href="ВАШ URL"&gt;ВАША ССЫЛКА ДЛЯ КЛИКА&lt;/a&gt;</p>
+                                <h2>Как выбрать изображение?</h2>
+                                <p>Старайтесь выбирать маленькие картинки. Идеально, если ширина изображения не будет больше 700 пикселей.</p>
+                                <h2>Как вставить видео с ютуба?</h2>
+                                <p>Найдите нужное видео на ютубе. Под видео найдите кнопку "поделиться" и нажмите на ссылку "встроить" рядом с таким значком: "< >"</p>
+                                <p>Вы увидите примерно такой код:</p>
+                                <p class="editorHelperP">&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/h70PjN_Gu_A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt&lt;/iframe&gt</p>
+                                <p>Скопируйте его и вставьте в поле для публикации. Когда вы нажмёте кнопку "опубликовать", на странице вместо кода появится видео.</p>
+                                <h2>Остались вопросы?</h2>
+                                <p>Свяжитесь с нами по почте pushkinvk@gmail.com</p>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-default my-btn-helper" data-dismiss="modal">Закрыть</button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
                 ${this.buttons.map((b) => {
                     return hyperHTML.wire()`
                         <button class='${b.class}' onclick=${b.onClick}>${b.title}</button>
-                        <div id="editorHelper">
-                            <h2>Я должен делать ссылки на источник материала?</h2>
-                            <p>Вы не обязаны этого делать, однако мы призываем вас быть честными: используя чужой труд, оставьте ссылку на источник. Это необходимо также для того, чтобы нам было легче верифицировать информацию, которую вы решили опубликовать.</p>
-                            <h2>Как сделать ссылку?</h2>
-                            <p>Просто скопируйте следующий текст и подставьте свои значения:</p>
-                            <p class="editorHelperP">&lt;a target="_blank" href="ВАШ URL"&gt;ВАША ССЫЛКА ДЛЯ КЛИКА&lt;/a&gt;</p>
-                            <h2>Как выбрать изображение?</h2>
-                            <p>Старайтесь выбирать маленькие картинки. Идеально, если ширина изображения не будет больше 700 пикселей.</p>
-                            <h2>Как вставить видео с ютуба?</h2>
-                            <p>Найдите нужное видео на ютубе. Под видео найдите кнопку "поделиться" и нажмите на ссылку "встроить" рядом с таким значком: "< >"</p>
-                            <p>Вы увидите примерно такой код:</p>
-                            <p class="editorHelperP">&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/h70PjN_Gu_A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt&lt;/iframe&gt</p>
-                            <p>Скопируйте его и вставьте в поле для публикации. Когда вы нажмёте кнопку "опубликовать", на странице вместо кода появится видео.</p>
-                            <h2>Остались вопросы?</h2>
-                            <p>Свяжитесь с нами по почте pushkinvk@gmail.com</p>
-                        </div>
                     `
                 })}
                 <hr>

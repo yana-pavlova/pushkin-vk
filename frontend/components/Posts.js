@@ -204,7 +204,7 @@ class PostContent extends hyperHTML.Component {
                         class: '', 
                         buttons: [
                             {title: 'Сохранить', class: 'btn btn-primary', onClick: this.saveEdition}, 
-                            {title: 'Отменить', class: 'btn', onClick: this.cancelEdition},
+                            {title: 'Отменить', class: 'btn btnCancel', onClick: this.cancelEdition},
                         ],
                         actions: {getUploadedFiles: this.getUploadedFiles}
                     })

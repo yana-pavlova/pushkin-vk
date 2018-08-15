@@ -35,6 +35,8 @@ exports = module.exports = function (app) {
     app.get('/tests', routes.views.tests);
     app.get('/tests/:id', routes.views.singleTest);
     app.get('/authors', routes.views.authors);
+    app.get('/emodji', routes.views.emodji);
+    app.get('/readerRegister', routes.views.readerRegister);
 
     //auth
     app.get('/auth/signin', keystone.middleware.api, auth.signin);

@@ -114,7 +114,7 @@ module.exports = class RegisterPage extends hyperHTML.Component {
                 </div>
                 <div class='container'>
                     <div class='row'>
-                        <div class='myRegister col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3'>
+                        <div class='myRegister'>
                         
                         ${firstPart}    
 

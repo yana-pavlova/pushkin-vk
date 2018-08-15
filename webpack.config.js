@@ -14,7 +14,8 @@ module.exports = {
 		tests: './tests',
 		singleTest: './singleTest',
 		authors: './authors',
-		readerRegister: './readerRegister'
+		readerRegister: './readerRegister',
+		emodji: './emodji'
 	},
 
 	output: {

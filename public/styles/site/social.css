@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 @import url('https://fonts.googleapis.com/css?family=Caveat|Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 
 
 /*----------------------------------------------------------------
@@ -128,9 +129,19 @@ video, img {
     font-size: 100%;
 }
 
+.card-post .btn a {
+    color: white;
+}
+
+.btnCancel:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
 .card-post-text {
     margin: 1%;
     word-wrap: break-word;
+    font-family: 'Roboto Slab', serif;
+    font-size: 70%;
 }
 
 .card-post-content img {
@@ -835,6 +846,8 @@ footer.login-footer {
 
 #image-modal {
     text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 150%;
 }
 
 #image-modal button {
@@ -924,7 +937,7 @@ footer.login-footer {
     margin-top: 1%;
     background: white;
     border-radius: 10px;
-    border: 0.5px solid black;
+    border: 1px solid black;
 }
 
 section button:hover, section div:hover {
@@ -1067,4 +1080,13 @@ section a {
 
 .post-tool-bar ul {
     font-size: 100%;
+}
+
+.my-btn-helper {
+    border: 1px solid black !important;
+}
+
+.my-btn-helper:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transition: 0.5s linear;
 }

@@ -86,6 +86,7 @@ module.exports = class NavBar extends hyperHTML.Component {
                     <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal">Контакты</a></li> 
                     <li><a class=${this.activeSection == 'wall' ? 'aliveA active' : 'aliveA'} href="/wall">Стена</a></li> 
                     <li><a class=${this.activeSection == 'tests' ? 'aliveA active' : 'aliveA'} href="/tests">Тесты</a></li> 
+                    <li><a class=${this.activeSection == 'emodji' ? 'aliveA active' : 'aliveA'} href="/emodji">Эмодзи</a></li> 
                     <li><a class=${this.activeSection == 'authors' ? 'aliveA active' : 'aliveA'} href="/authors">Авторы</a></li> 
                 </ul>
 
