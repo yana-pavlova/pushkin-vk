@@ -917,6 +917,12 @@ footer.login-footer {
     background-size: cover;
 }
 
+#poorPeopleBody {
+    height: 100vw;
+    background: url(../../images/poorPeopleStory/poorPeople.jpg) no-repeat;
+    background-size: cover;
+}
+
 #mainDiv {
     background: white;
     margin: auto;

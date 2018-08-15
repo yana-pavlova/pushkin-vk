@@ -174,23 +174,23 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
 
     render() {
         // console.log(this);
-        
+        let newPub = '';
+        if (_LOCALS.isSignedIn) {
+            if (_LOCALS.user.role == 'author' && _LOCALS.user.currentAuthor._id == this.state.author._id) {
+                newPub = hyperHTML.wire()`
+                    <div class='card-post newPublication'>
+                        <p>Новая публикация</p>
+                        ${new PostEditor({that: this, autoFocus: false, post: '', class: '', buttons: [{title: 'Опубликовать', class: 'btn btn-primary', onClick: this.addNewPost}], actions: {getUploadedFiles: this.getUploadedFiles}})}
+                    </div>`
+            }
+        }
         return this.html`
           <a href="#top"><button class="linkUp">Вверх!</button></a>
             <div  >
                 ${new NavBar (this.state)}
                 <div class='profile flexContainerForAll'>
                     <div class='content-posts profile-content'><div class='container-posts'>
-
-                            ${(_LOCALS.isSignedIn && _LOCALS.user.currentAuthor._id == this.state.author._id)
-                                ? hyperHTML.wire()`
-                                    <div class='card-post newPublication'>
-                                        <p>Новая публикация</p>
-                                        ${new PostEditor({that: this, autoFocus: false, post: '', class: '', buttons: [{title: 'Опубликовать', class: 'btn btn-primary', onClick: this.addNewPost}], actions: {getUploadedFiles: this.getUploadedFiles}})}
-                                    </div>
-                                `
-                                : ''
-                            }
+                            ${newPub}
                             ${new AuthorInfo(this.state.author)}
                         ${new Posts(this.state, this.queryPrefix)}
                     </div>
