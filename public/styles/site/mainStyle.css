@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+/* @import url('https://fonts.googleapis.com/css?family=Amatic+SC'); */
+@import url('../../fonts/Amatic_SC/AmaticSC-Regular.ttf');
+
 
 body {
     background: url('/images/backPushkin.png') center !important;
