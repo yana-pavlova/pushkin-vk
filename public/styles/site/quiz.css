@@ -4,6 +4,20 @@
   padding: 0;
 }
 
+@media(max-width:400px) and (min-width:0px) {
+  table {
+    font-family: initial;
+    font-size: 12px;
+    min-width: 200px !important;
+  }
+  table img {
+    width: 20px;
+  }
+  input {
+    width: 100%;
+  }
+}
+
 /* @import url('https://fonts.googleapis.com/css?family=Amatic+SC'); */
 
 .quiz button,
@@ -22,10 +36,11 @@
 
 .quiz {
   font-family: 'Amatic';
-  position: relative;
+  /* position: relative; */
   font-size: 180%;
   margin: auto;
   max-width: 700px;
+  padding: 2%;
 }
 
 .quiz ul {
@@ -97,7 +112,7 @@
 
 .quiz .quizQuestions > li .questionTitle {
   margin: 0;
-  padding: 20px 0;
+  /* padding: 20px 0; */
 }
 
 .quiz .quizQuestions ul.questionAnswers {
@@ -217,12 +232,6 @@
   line-height: 1.5em;
 }
 
-@media screen and (min-width: 640px) {
-  .quiz .quizResults li {
-    padding-left: 20px;
-  }
-}
-
 .quiz .quizResults .viewResults {
   background: #7AC29A;
 }
@@ -244,14 +253,15 @@
 }
 
 #quiz-container {
-  margin-top: 50px;
-  margin-bottom: 150px;
+  margin-top: 5%;
+  min-width: 200px;
+  /* margin-bottom: 150px; */
   /* display: none; */
 }
 
 .quiz {
   width: 100%;
-  padding: 2rem;
+  /* padding: 2px; */
   border-radius: 8px;
   box-shadow: 0 1px 2px rgba(164, 158, 147, 0.6);
   background-color: #fff;
@@ -259,10 +269,9 @@
   /* border: 1px solid #ddd; */
 }
 
-/* #quiz-chooser {
-  margin-top: 50px;
-  margin-bottom: 200px;
-} */
+#quiz-chooser {
+  min-width: 200px;
+}
 
 .quiz-choose-card {
   background-color: #fa0;
@@ -299,15 +308,16 @@ margin-top: 2%;
 
 .emodjiTest {
   flex-basis: 32%;
-  min-width: 240px;
+  min-width: 150px;
 }
 
 #quizHeader {
-  font-family: 'Amatic SC',cursive;
+  font-family: 'Amatic';
   background: white;
   padding: 2%;
   text-align: center;
   max-width: 700px;
+  min-width: 200px;
   margin: auto;
   margin-top: 2%;
 }
@@ -348,7 +358,7 @@ img {
 
 table {
   width: 100%;
-  min-width: 390px;
+  min-width: 350px;
   /* font-size: 120%; */
 }
 
@@ -367,7 +377,7 @@ tr {
 }
 
 td {
-  padding: 1%;
+  padding: 1px;
 }
 
 /* СТИЛИ ДЛЯ РЕЗУЛЬТАТОВ ТЕСТОВ */

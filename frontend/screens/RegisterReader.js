@@ -56,6 +56,7 @@ module.exports = class RegisterReader extends hyperHTML.Component {
 
                             <form class='form-horizontal form-box' onsubmit=${this.register}>
                                 <p>Внимание! Регистрируясь на сайте, Вы безоговорочно и полностью принимаете <a target="_blank" href="/conditions.pdf">пользовательское соглашение</a>.</p>
+                                <p>Внимание! Читатель не имеет личного кабинета и не может делать посты от имени автора. Читатель может ставить лайки и писать комментарии к постам. Если вы хотите делать посты, <a href='register'>зарегистрируйтесь</a> как автор.</p>
                                 <p>После совершения регистрации Вы будете перенаправлены на страницу входа, а на указанную Вами почту придёт сообщением с Вашим логином и паролем.</p>
                                 <div class='form-group'>
                                     <label for='name_first' class='col-sm-3 control-label myFormLabelsName'>Фамилия</label>

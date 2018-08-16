@@ -42,7 +42,7 @@ module.exports = class PostImage extends hyperHTML.Component {
     }
 
     onLoadError(){
-        console.log('error!');
+        // console.log('error!');
     }
 
     showModal(e) {

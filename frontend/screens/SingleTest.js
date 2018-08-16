@@ -21,7 +21,7 @@ module.exports = class SingleTest extends hyperHTML.Component {
     render() {
         return this.html`
             <div id="${story}">
-                <div class="navForMainPage">
+                <div class="navForMainPage navbarTest">
                         ${new NavBar (this.state)}
                 </div>
                         ${currentStory}

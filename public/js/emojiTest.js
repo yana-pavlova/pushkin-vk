@@ -821,6 +821,1722 @@ var sexthQuiz = {
     a: `люблю, баюкающие, дождливые, листве, дождь, дождь, гроб, спал, вода, ждут, рук`
 }
 
+var seventhQuiz = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+         В огромном городе моём - <img class=emojiIcon src='images/emodji/bridge_at_night.png'>. 
+     </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             Из <img class=emojiIcon src='images/emodji/house.png'> сонного иду - прочь 
+         </td>
+        <td>
+            <input>
+         </td>
+    </tr>
+    <tr>
+        <td>
+             И люди думают: <img class=emojiIcon src='images/emodji/bride_with_veil.png'>, дочь,- 
+         </td>
+        <td>
+            <input>
+         </td>
+     </tr>
+     <tr>
+        <td>
+             А я запомнила одно: <img class=emojiIcon src='images/emodji/bridge_at_night.png'>. 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+             <td>
+                     Июльский ветер мне метет - путь, 
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И где-то <img class=emojiIcon src='images/emodji/musical_note.png'> в окне - чуть. 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+     <tr>
+        <td>
+             Ах, нынче ветру до <img class=emojiIcon src='images/emodji/sunrise.png'> - дуть 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             Сквозь стенки тонкие груди - в грудь. 
+         </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+         <td>
+         </td>
+         <td>
+         </td>
+      </tr>
+      <tr>
+             <td>
+                     Есть черный <img class=emojiIcon src='images/emodji/deciduous_tree.png'>, и в окне - свет, 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И звон на башне, и в руке - <img class=emojiIcon src='images/emodji/sunflower.png'>, 
+             </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И шаг вот этот - никому - вслед, 
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И тень вот эта, а меня - нет. 
+             </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                 Огни - как нити золотых бус, 
+             </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                 Ночного <img class=emojiIcon src='images/emodji/maple_leaf.png'> во рту - вкус. 
+             </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Освободите от дневных уз, 
+             </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Друзья, поймите, что я вам - <img class=emojiIcon src='images/emodji/sleeping.png'>.
+             </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, seventhQuiz, quiz7)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `ночь, дома, жена, ночь, музыка, зари, тополь, цвет, листика, снюсь`
+}
+
+var eigthQuiz = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             Имя твое — <img class=emojiIcon src='images/emodji/bird.png'> в руке, 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             Имя твое — льдинка на <img class=emojiIcon src='images/emodji/stuck_out_tongue.png'>. 
+         </td>
+        <td>
+            <input>
+         </td>
+    </tr>
+    <tr>
+        <td>
+             Одно-единственное движенье <img class=emojiIcon src='images/emodji/lips.png'>. 
+         </td>
+        <td>
+            <input>
+         </td>
+     </tr>
+     <tr>
+        <td>
+             Имя твое — пять букв. 
+         </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             <img class=emojiIcon src='images/emodji/baseball.png'>, пойманный на лету, 
+        </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+             <td>
+                     Серебряный бубенец во <img class=emojiIcon src='images/emodji/open_mouth.png'>. 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+             </td>
+             <td>
+             </td>
+          </tr>
+     <tr>
+        <td>
+             <img class=emojiIcon src='images/emodji/rock.png'>, кинутый в тихий пруд, 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             Всхлипнет так, как тебя зовут. 
+         </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+         <td>
+                 В легком щелканье ночных <img class=emojiIcon src='images/emodji/racehorse.png'> 
+         </td>
+         <td>
+             <input>
+         </td>
+      </tr>
+      <tr>
+             <td>
+                     Громкое имя твое гремит. 
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И назовет его нам в висок 
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Звонко щелкающий <img class=emojiIcon src='images/emodji/gun.png'>. 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Имя твое — ах, нельзя! — 
+                 </td>
+          </tr>
+          <tr>
+             <td>
+                     Имя твое — <img class=emojiIcon src='images/emodji/kiss.png'> в глаза, 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     В нежную стужу недвижных век. 
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Имя твое — поцелуй в <img class=emojiIcon src='images/emodji/snowflake.png'>. 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Ключевой, ледяной, голубой глоток… 
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     С именем твоим — <img class=emojiIcon src='images/emodji/sleeping.png'> глубок.            </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, eigthQuiz, quiz8)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `птица, языке, губ, мячик, рту, камень, копыт, курок, поцелуй, снег, сон`
+}
+
+var ninethQuiz = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             <img  class="emojiIcon" src=images/emodji/girl.png> пела в церковном хоре 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             О всех усталых в чужом краю, 
+         </td>
+        <td>
+         </td>
+    </tr>
+    <tr>
+        <td>
+             О всех кораблях, ушедших в <img class="emojiIcon" src=images/emodji/sea.png>, 
+         </td>
+        <td>
+            <input>
+         </td>
+     </tr>
+     <tr>
+        <td>
+             О всех, забывших <img class="emojiIcon" src=images/emodji/smile.png> свою. 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+             <td>
+                     Так <img  class="emojiIcon" src=images/emodji/microphone.png> ее голос, летящий в купол, 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И луч сиял на белом плече, 
+             </td>
+             <td>
+             </td>
+          </tr>
+     <tr>
+        <td>
+             И каждый из <img  class="emojiIcon" src=images/emodji/black_square.png> смотрел и слушал, 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             Как белое <img class="emojiIcon" src=images/emodji/dress.png> пело в луче. 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+         <td>
+         </td>
+         <td>
+         </td>
+      </tr>
+      <tr>
+             <td>
+                     И всем казалось, что <img  class="emojiIcon" src=images/emodji/smile.png> будет, 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Что в тихой заводи все <img  class="emojiIcon" src=images/emodji/ship.png>, 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Что на чужбине <img  class="emojiIcon" src=images/emodji/tired_face.png> люди 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Светлую жизнь себе обрели. 
+                 </td>
+          </tr>
+          <tr>
+             <td>
+                     И голос был сладок, и луч был тонок, 
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И только высоко, у Царских <img class="emojiIcon" src=images/emodji/door.png>, 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Причастный Тайнам,- плакал <img class="emojiIcon" src=images/emodji/baby.png> 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     О том, что никто не придет назад.                </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, ninethQuiz, quiz9)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `девушка, море, радость, пел, мрака, платье, радость, корабли, усталые, врат, ребёнок`
+}
+
+var tenthQuiz = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             Мне нравится, что вы <img class="emojiIcon" src=images/emodji/hospital.png> не мной, 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             Мне нравится, что я <img class="emojiIcon" src=images/emodji/hospital.png> не Вами, 
+         </td>
+        <td>
+            <input>
+         </td>
+    </tr>
+    <tr>
+        <td>
+             Что никогда тяжелый <img class="emojiIcon" src=images/emodji/earth_asia.png> земной 
+         </td>
+        <td>
+            <input>
+         </td>
+     </tr>
+     <tr>
+        <td>
+             Не <img class="emojiIcon" src=images/emodji/wavy_dash.png> под нашими ногами. 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+             <td>
+                     Мне нравится, что можно быть <img class="emojiIcon" src=images/emodji/laughing.png>, 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Распущенной - и не играть словами, 
+                 </td>
+             <td>
+             </td>
+          </tr>
+     <tr>
+        <td>
+             И не краснеть удушливой <img class="emojiIcon" src=images/emodji/wavy_dash.png>, 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             Слегка соприкоснувшись рукавами. 
+         </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+         <td>
+         </td>
+         <td>
+         </td>
+      </tr>
+      <tr>
+             <td>
+                     Мне нравится еще, что Вы при мне 
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Спокойно обнимаете <img class="emojiIcon" src=images/emodji/girl.png>, 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Не прочите мне в адовом <img class="emojiIcon" src=images/emodji/fire.png> 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Гореть за то, что я не Вас <img class="emojiIcon" src=images/emodji/kiss.png>. 
+             </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Что имя нежное мое, мой нежный, не 
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Упоминаете ни днем, ни <img class="emojiIcon" src=images/emodji/bridge_at_night.png> - всуе... 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Что никогда в <img class="emojiIcon" src=images/emodji/church.png> тишине 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Не пропоют над нами: аллилуйя! 
+             </td>
+             <td>
+ 
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Спасибо Вам и <img class="emojiIcon" src=images/emodji/blue_heart.png> и рукой 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+                 <td>
+                         За то, что Вы меня, не зная сами! 
+                     </td>
+                 <td>
+                     
+                 </td>
+              </tr>
+          <tr>
+             <td>
+                     Так любите: за мой ночной покой, 
+                 </td>
+             <td>
+                 
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     За редкость встреч <img class="emojiIcon" src=images/emodji/sunrise.png> часами. 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+ 
+             </td>
+             <td>
+                 
+             </td>
+          </tr>
+          <tr>
+                 <td>
+                         За наши не-гулянья под <img class="emojiIcon" src=images/emodji/moon.png>, 
+                     </td>
+                 <td>
+                     <input>
+                 </td>
+              </tr>
+          <tr>
+             <td>
+                     За <img class="emojiIcon" src=images/emodji/sunny.png>, не у нас над головами, 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     За то, что Вы больны - увы! - не мной, 
+                 </td>
+             <td>
+                 
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Не пропоют над нами: аллилуйя! 
+             </td>
+             <td>
+                 
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     За то, что я больна - увы! - не Вами!
+             </td>
+             <td>
+                 
+             </td>
+          </tr>
+                  <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, tenthQuiz, quiz10)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `больны, больна, шар, уплывёт, смешной, волной, другую, огне, целую, ночью, церковной, сердцем, закатными, луной, солнце`
+}
+
+var eleventhQuiz = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             <img class="emojiIcon" src=images/emodji/bridge_at_night.png>, улица, фонарь, аптека, 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             Бессмысленный и тусклый <img class="emojiIcon" src=images/emodji/flashlight.png>. 
+         </td>
+        <td>
+            <input>
+         </td>
+    </tr>
+     <tr>
+        <td>
+             Живи еще хоть четверть века - 
+         </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             Все будет так. Исхода нет.
+        </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+             <td>
+             </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     <img class="emojiIcon" src=images/emodji/coffin.png> - начнешь опять сначала 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+     <tr>
+        <td>
+             И повторится все, как <img class="emojiIcon" src=images/emodji/older_woman.png>: 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             <img class="emojiIcon" src=images/emodji/bridge_at_night.png>, ледяная рябь канала, 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+         <td>
+                 Аптека, улица, фонарь.
+         </td>
+         <td>
+         </td>
+      </tr>
+                  <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, eleventhQuiz, quiz11)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `ночь, свет, умрёшь, встарь, ночь`
+}
+
+var Quiz12 = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             Мело, мело по всей <img class="emojiIcon" src=images/emodji/earth_americas.png> 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Во все пределы. 
+         </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+    <tr>
+     <td>
+             <img class="emojiIcon" src=images/emodji/candle.png> горела на столе, 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             <img class="emojiIcon" src=images/emodji/candle.png> горела. 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Как летом роем мошкара 
+         </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Летит на <img class="emojiIcon" src=images/emodji/fire.png>, 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Слетались хлопья со двора <br>
+             К оконной раме. 
+                                 </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             <img class="emojiIcon" src=images/emodji/cloud-with-snow.png> лепила на стекле 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Кружки и <img class="emojiIcon" src=images/emodji/arrow.png>. 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Свеча горела на столе,<br>
+             Свеча горела.
+         </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+             На озаренный потолок 
+             Ложились тени, <br>
+                     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             Скрещенья <img class="emojiIcon" src=images/emodji/open_hands.png>, скрещенья ног, 
+         </td>
+        <td>
+            <input>
+         </td>
+    </tr>
+    <tr>
+        <td>
+             Судьбы скрещенья. 
+         </td>
+        <td>
+ 
+         </td>
+     </tr>
+     <tr>
+        <td>
+             И падали два <img class="emojiIcon" src=images/emodji/boot.png> 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             Со стуком на пол. 
+         </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+             <td>
+                     И воск <img class="emojiIcon" src=images/emodji/droplet.png> с ночника 
+             </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     На <img class="emojiIcon" src=images/emodji/dress.png> капал. 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+     <tr>
+        <td>
+             И все терялось в <img class="emojiIcon" src=images/emodji/snowflake.png> мгле 
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             Седой и белой. <br>
+             Свеча горела на столе,<br> 
+             Свеча горела. <br>
+         </td>
+        <td>
+ 
+         </td>
+     </tr>
+     <tr>
+         <td>
+                 На <img class="emojiIcon" src=images/emodji/candle.png> дуло из угла, 
+             </td>
+         <td>
+             <input>
+         </td>
+      </tr>
+      <tr>
+             <td>
+                     И жар соблазна 
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Вздымал, как <img class="emojiIcon" src=images/emodji/angel.png>, два крыла 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Крестообразно. 
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     <img class="emojiIcon" src=images/emodji/cloud-with-snow.png> весь месяц в феврале, 
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И то и дело <br>
+                     Свеча горела на столе,<br> 
+                     Свеча горела.                </td>
+             <td>
+             </td>
+          </tr>
+                  <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, Quiz12, quiz12)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `земле, свеча, свеча, пламя, метель, стрелы, рук, башмачка, слезами, платье, снежной, свечку, ангел, мело`
+}
+
+var Quiz13 = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             Ниоткуда с <img class="emojiIcon" src=images/emodji/heart.png>, надцатого мартобря,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             дорогой, уважаемый, милая, но не важно
+         </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             даже кто, ибо черт <img class="emojiIcon" src=images/emodji/neutral_face.png>, говоря
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             откровенно, не вспомнить уже, не ваш, но
+         </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             и ничей верный <img class="emojiIcon" src=images/emodji/older_man.png> вас приветствует с одного
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             из пяти континентов, держащегося на ковбоях.
+         </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Я любил тебя больше, чем <img class="emojiIcon" src=images/emodji/angel.png> и самого,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             и поэтому дальше теперь<br>
+             от тебя, чем от них обоих.
+                                             </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Далеко, поздно <img class="emojiIcon" src=images/emodji/night-with-stars.png>, в долине, на самом дне,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             в городке, занесенном <img class="emojiIcon" src=images/emodji/snowflake.png> по ручку двери,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             извиваясь <img class="emojiIcon" src=images/emodji/night-with-stars.png> на простыне,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+     <td>
+             как не сказано ниже, по крайней мере,<br>
+             я взбиваю подушку мычащим "ты",
+                                 </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             за <img class="emojiIcon" src=images/emodji/mountain.png>, которым конца и края,
+         </td>
+        <td>
+            <input>
+         </td>
+    </tr>
+    <tr>
+        <td>
+             в темноте всем телом твои черты
+             как безумное зеркало повторяя.        </td>
+        <td>
+ 
+         </td>
+     </tr>
+                  <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, Quiz13, quiz13)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `любовью, лица, друг, ангелов, ночью, снегом, ночью, горами`
+}
+
+var Quiz14 = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             А ты думал - я тоже такая, <br>
+             Что можно забыть меня, 
+                     </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             И что брошусь, моля и <img class="emojiIcon" src=images/emodji/crycauseoflove.png>, 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Под копыта гнедого <img class="emojiIcon" src=images/emodji/horse.png>. 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Или стану просить у знахарок 
+         </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             В наговорной <img class="emojiIcon" src=images/emodji/sea.png> корешок 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             И пришлю тебе странный <img class="emojiIcon" src=images/emodji/gift.png> - 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Мой заветный душистый платок. 
+         </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Будь же проклят. Ни стоном, ни <img class="emojiIcon" src=images/emodji/eyes.png> 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Окаянной души не коснусь, 
+         </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Но клянусь тебе <img class="emojiIcon" src=images/emodji/angel.png> садом, 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Чудотворной иконой клянусь, 
+         </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+     <td>
+             И <img class="emojiIcon" src=images/emodji/night-with-stars.png> наших пламенным чадом - 
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             Я к тебе никогда не вернусь.        </td>
+        <td>
+ 
+     </td>
+    </tr>
+              <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, Quiz14, quiz14)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `рыдая, коня, воде, подарок, взглядом, ангельским, ночей`
+}
+
+var Quiz15 = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             - Как больно, милая, как странно,
+         </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Сроднясь в <img class="emojiIcon" src=images/emodji/earth_asia.png>, сплетясь ветвями -
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Как больно, милая, как странно<br>
+             Раздваиваться под пилой.
+                     </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Не зарастет на <img class="emojiIcon" src=images/emodji/heart.png> рана,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Прольется чистыми <img class="emojiIcon" src=images/emodji/droplet.png>,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Не зарастет на сердце рана -<br>
+             Прольется пламенной смолой.<br><br>
+             - Пока жива, с тобой я буду -
+                     </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Душа и <img class="emojiIcon" src=images/emodji/blood.jpg> нераздвоимы, -
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Пока жива, с тобой я буду -
+         </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Любовь и <img class="emojiIcon" src=images/emodji/death.jpeg> всегда вдвоем.
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Ты понесешь с собой, любимый,<br>
+             Ты понесешь с собой повсюду,<br>
+             Ты понесешь с собой повсюду<br>
+                     </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+     <td>
+             Родную землю, милый <img class="emojiIcon" src=images/emodji/house.png>.
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+        <td><br>
+             - Но если мне укрыться нечем<br>
+ От жалости неисцелимой,<br>
+ Но если мне укрыться нечем
+ </td>
+        <td>
+ 
+     </td>
+    </tr>
+    <tr>
+        <td>
+             От холода и <img class="emojiIcon" src=images/emodji/black_circle.png> ?
+         </td>
+        <td>
+         <input>
+         </td>
+     </tr>
+     <tr>
+        <td>
+             <br>- За расставаньем будет встреча,<br>
+             Не забывай меня, любимый,<br>
+             За расставаньем будет встреча,<br>
+             Вернемся оба - я и ты.<br><br>
+             - Но если я безвестно кану -
+                     </td>
+        <td>
+ 
+     </td>
+     </tr>
+     <tr>
+        <td>
+             Короткий <img class="emojiIcon" src=images/emodji/light.png> луча дневного, -
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+             <td>
+                     Но если я безвестно кану
+                 </td>
+             <td>
+ 
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     За звездный пояс, млечный <img class="emojiIcon" src=images/emodji/smoke.png>?
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+     <tr>
+        <td>
+             <br>- Я за тебя молиться стану,<br>
+             Чтоб не забыл пути земного,<br>
+             Я за тебя молиться стану,<br>
+             Чтоб ты вернулся невредим.<br><br>
+                     </td>
+        <td>
+ 
+     </td>
+     </tr>
+     <tr>
+        <td>
+             Трясясь в прокуренном <img class="emojiIcon" src=images/emodji/train.png>,
+         </td>
+        <td>
+         <input>
+         </td>
+     </tr>
+     <tr>
+         <td>
+                 Он стал бездомным и смиренным,<br>
+                 Трясясь в прокуренном вагоне,
+                             </td>
+         <td>
+ 
+         </td>
+      </tr>
+      <tr>
+             <td>
+                     Он полуплакал, <img class="emojiIcon" src=images/emodji/sleeping.png>,
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Когда состав на скользком склоне,<br>
+                     Вдруг изогнулся страшным креном,<br>
+                     Когда состав на скользком склоне
+                                     </td>
+             <td>
+ 
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     От рельс <img class="emojiIcon" src=images/emodji/ferris_wheel.png> оторвал.
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Нечеловеческая сила <br>
+                     В одной давильне всех калеча,<br>
+                     Нечеловеческая сила 
+                                     </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                 Земное сбросила с <img class="emojiIcon" src=images/emodji/earth_asia.png>.
+             </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     <br>...И никого не защитила<br>
+                     Вдали обещанная встреча,<br>
+                     И никого не защитила
+                                     </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     <img class="emojiIcon" src=images/emodji/hand.png>, зовущая вдали...
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td><br>
+                     С любимыми не расставайтесь,<br>
+                     С любимыми не расставайтесь,<br>
+                     С любимыми не расставайтесь,<br>
+                     Всей кровью прорастайте в них, -<br>
+                     И каждый раз навек прощайтесь,<br>
+                     И каждый раз навек прощайтесь,<br>
+                     И каждый раз навек прощайтесь,<br>
+                                 </td>
+             <td>
+ 
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Когда уходите на <img class="emojiIcon" src=images/emodji/alarm_clock.png>!                </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+                  <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, Quiz15, quiz15)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `земле, сердце, слезами, кровь, смерть, дом, темноты, свет, дым, вагоне, полуспал, колёса, земли, рука, миг`
+}
+
+var Quiz16 = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             <img class="emojiIcon" src=images/emodji/elephant.png> бились бивнями так,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Что казались белым <img class="emojiIcon" src=images/emodji/rock.png>
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Под рукой художника.
+         </td>
+     <td>
+ 
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Олени заплетались <img class="emojiIcon" src=images/emodji/imp.png> так,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Что казалось, их соединял старинный <img class="emojiIcon" src=images/emodji/ring.png>
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             С взаимными увлечениями и взаимной неверностью.
+         </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Реки вливались в <img class="emojiIcon" src=images/emodji/sea.png так,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Что казалось: <img class="emojiIcon" src=images/emodji/hand.png> одного душит шею другого.        </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+                  <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, Quiz16, quiz16)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `слоны, камнем, рогами, брак, море, рука`
+}
+
+var Quiz17 = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             Когда умирают <img class="emojiIcon" src=images/emodji/horse.png> — дышат,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Когда умирают <img class="emojiIcon" src=images/emodji/grass.jpg> — сохнут,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Когда умирают <img class="emojiIcon" src=images/emodji/sunny.png> — они гаснут,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+    <tr>
+     <td>
+             Когда умирают люди — <img class="emojiIcon" src=images/emodji/microphone.png> песни.        </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+                  <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, Quiz17, quiz17)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `кони, травы, солнца, поют`
+}
+
 function showResults(event, quizNumber, quiz) {
     event.preventDefault();
     let userAnswers = [];
@@ -828,41 +2544,30 @@ function showResults(event, quizNumber, quiz) {
     let length = $('input').length;
     for(let i = 0; i < length; i++) {
         answer = $('input')[i].value;
+        answer = answer.trim();
         userAnswers.push(answer);
     }
     countAnswers(userAnswers, quizNumber, quiz);
 }
 
-function countAnswers(userAnswers, quizNumber, quiz) {
+function countAnswers(userAnswers, quizNumber, quiz) {    
     userAnswers = userAnswers.join(', ');
     userAnswers = userAnswers.toLowerCase();
-    // console.log("!!!", quiz);
-    
-    //если равны вернёт ноль
     renderAnswers(userAnswers, quizNumber, quiz)
 }
 
 function renderAnswers(userAnswers, quizNumber, quiz) {
-    // console.log("FAIl");
-    userAnswers = userAnswers.replace(' ', '');
     userAnswers = userAnswers.split(',');
-    let rigthAnswers = quizNumber.a.replace(' ', '');
+    let rigthAnswers = quizNumber.a.trim();
     rigthAnswers = rigthAnswers.split(',');
-    
-    // console.log(userAnswers, rigthAnswers);
     let array = [];
     let rightUserAnswers = [];
-    // console.log(rigthAnswers.length);
-    
     for(let i = 0; i<userAnswers.length; i++) {
-        // console.log("i'm in");
         if(rigthAnswers[i].localeCompare(userAnswers[i]) == 0) {
-            // console.log(i, " верен");
             userAnswers[i] = '<td class="right">' + userAnswers[i] + '</td>';
             array.push(userAnswers[i]);
             rightUserAnswers.push(userAnswers[i])
         } else {
-            // console.log(i, " неверен");
             userAnswers[i] = '<td class="wrong">' + userAnswers[i] + '</td>';
             array.push(userAnswers[i])
         }
@@ -900,7 +2605,30 @@ var quiz5 = $("#quiz5");
 quiz5.hide();
 var quiz6 = $("#quiz6");
 quiz6.hide();
-
+var quiz7 = $("#quiz7");
+quiz7.hide();
+var quiz8 = $("#quiz8");
+quiz8.hide();
+var quiz9 = $("#quiz9");
+quiz9.hide();
+var quiz10 = $("#quiz10");
+quiz10.hide();
+var quiz11 = $("#quiz11");
+quiz11.hide();
+var quiz11 = $("#quiz11");
+quiz11.hide();
+var quiz12 = $("#quiz12");
+quiz12.hide();
+var quiz13 = $("#quiz13");
+quiz13.hide();
+var quiz14 = $("#quiz14");
+quiz14.hide();
+var quiz15 = $("#quiz15");
+quiz15.hide();
+var quiz16 = $("#quiz16");
+quiz16.hide();
+var quiz17 = $("#quiz17");
+quiz17.hide();
 
 function showQuiz(type, that) {
     $('#quiz-chooser').hide();
@@ -924,19 +2652,74 @@ function showQuiz(type, that) {
             quiz3.show();
             break;
         case 'quiz4':
-            quizHeader.text('Угадай сюжет по эмодзи');
+            quizHeader.text('Угадай слово по эмодзи');
             quiz4.append(forthQuiz.q);
             quiz4.show();
             break;
         case 'quiz5':
-            quizHeader.text('Угадай сюжет по эмодзи');
+            quizHeader.text('Угадай слово по эмодзи');
             quiz5.append(fifthQuiz.q);
             quiz5.show();
             break;
         case 'quiz6':
-            quizHeader.text('Угадай сюжет по эмодзи');
+            quizHeader.text('Угадай слово по эмодзи');
             quiz6.append(sexthQuiz.q);
             quiz6.show();
             break;
-    }
+        case 'quiz7':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz7.append(seventhQuiz.q);
+            quiz7.show();
+            break;
+        case 'quiz8':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz8.append(eigthQuiz.q);
+            quiz8.show();
+            break;
+        case 'quiz9':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz9.append(ninethQuiz.q);
+            quiz9.show();
+            break;
+        case 'quiz10':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz10.append(tenthQuiz.q);
+            quiz10.show();
+            break;
+        case 'quiz11':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz11.append(eleventhQuiz.q);
+            quiz11.show();
+            break;
+        case 'quiz12':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz12.append(Quiz12.q);
+            quiz12.show();
+            break;
+        case 'quiz13':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz13.append(Quiz13.q);
+            quiz13.show();
+            break;
+        case 'quiz14':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz14.append(Quiz14.q);
+            quiz14.show();
+            break;
+        case 'quiz15':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz15.append(Quiz15.q);
+            quiz15.show();
+            break;
+        case 'quiz16':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz16.append(Quiz16.q);
+            quiz16.show();
+            break;
+        case 'quiz17':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz17.append(Quiz17.q);
+            quiz17.show();
+            break;
+        }
 }

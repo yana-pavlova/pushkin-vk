@@ -15,7 +15,8 @@ module.exports = {
 		tests: './tests',
 		singleTest: './singleTest',
 		authors: './authors',
-		emodji: './emodji'
+		emodji: './emodji',
+		login: './login'
 	},
 
 	output: {

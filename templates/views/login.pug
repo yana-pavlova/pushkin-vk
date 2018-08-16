@@ -1,55 +1,11 @@
 extends ../layouts/default
 
+block css
+    link(href="/styles/site/mainStyle.css", rel="stylesheet")
+
 block content
     #content
-        #login-page
-            .form-box
-                .form-logo
-                    p.text-center
-                        img(src='./images/logo.png', alt='logo')
-                
-                form(onsubmit='login(this); return false;')
-                    input#email.form-control(type='text', placeholder='E-mail', autocomplete='email')
-                    input#password.form-control(type='password', placeholder='Пароль', autocomplete='current-password')
-                    input.btn.btn-primary(type='submit', value='ВОЙТИ')
-                    hr
-                    a.btn( data-toggle="modal", data-target="#forgotPasswordModal", href='#', title='Forgot password', style='color: white') Забыли пароль?
-                    a.btn(href='register', title='Sign in', style='color: white') Новый пользователь?
-                    hr
-                    a.btn(href="/") На главную
-
-                div(id="forgotPasswordModal" class="modal fade")
-                    div(class="modal-dialog")
-                        div(class="modal-content")
-                            div(class="modal-header")
-                                h4 Если вы забыли пароль
-                            div(class="modal-body")
-                                p Во-первых, нам очень жаль, потому что мгновенного способа восстановить пароль на сайте не существует
-                                p Во-вторых, напишите нам письмо с темой "Я забыл пароль" на адрес pushkinvk@gmail.com и ждите ответа в течение дня
-                                p А пока у вас нет доступа к личному кабинету, пройдите вот 
-                                    a(href="/wall" style="color:blue") сюда 
-                                    |или 
-                                    a(href="tests/testsIndex.html" style="color:blue") сюда
-                                    |. Приятного времяпрепровождения!
-                            div(class="modal-footer")
-                                button(type="button" class="btn btn-default forgotPasswordButton" data-dismiss="modal") Всё понял!
 
 block js
-    script.
-        function login(form) {
-            let username = 'username=' + form.querySelector('#email').value;
-            let password = 'password=' + form.querySelector('#password').value;
-            let q = 'auth/signin?' + username + '&' + password;
-            let xhr = new XMLHttpRequest();
-            let that = this;
-            
-            xhr.open('GET', q, true);
-            xhr.send();
-            xhr.onreadystatechange = function() {
-                if (this.readyState == XMLHttpRequest.DONE) {
-                    let res = JSON.parse(this.responseText);
-                    if (res.success) window.location = '/wall';
-                }
-            }
-        }
-    
+    script(src="/js/build/commons.js")
+    script(src="/js/build/login.js")

@@ -491,7 +491,7 @@ Login
 .btn-social:active:focus { background: #d09400;}
 
 .form-box {
-    width: 50%;
+    width: 75%;
     /* height: 370px; */
     padding: 4%;
     color: #ffffff;
@@ -509,7 +509,7 @@ Login
 }
 
 .form-box input {
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .form-box input[type="submit"] {
@@ -521,9 +521,9 @@ Login
     padding: 0 10px;
 }
 
-.form-logo img { width:90px;
+/* .form-logo img { width:90px;
                  margin:25px 0 10px;
-                 height: auto;}
+                 height: auto;} */
 
 .login-action, .login-action:link, .login-action:focus, .login-action:visited {
     color: #ffffff;
@@ -639,7 +639,7 @@ footer.login-footer {
 }
 
 .navbar {
-    min-width: 270px;
+    min-width: 200px;
     /* height: 60px; */
 }
 
@@ -730,8 +730,8 @@ footer.login-footer {
 
 .myRegister {
     margin-top: 5%;
-    background: url('/images/backPushkin.png') center !important;
-    background-size: cover;
+    /* background: url('/images/backPushkin.png') center !important;
+    background-size: cover; */
 }
 
 .myFormControl {
@@ -739,7 +739,7 @@ footer.login-footer {
 }
 
 .myFormLabelsName {
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .myButtonRegister {
@@ -911,7 +911,7 @@ footer.login-footer {
     background-size: cover;
 }
 
-#poorPeopleBody {
+#poorPeople {
     height: 100vw;
     background: url(../../images/poorPeopleStory/poorPeople.jpg) no-repeat;
     background-size: cover;
@@ -1092,4 +1092,8 @@ section a {
 .my-btn-helper:hover {
     background: rgba(255, 255, 255, 0.2);
     transition: 0.5s linear;
+}
+
+.navbarTest {
+    background: rgba(0, 0, 0, 0.6)
 }

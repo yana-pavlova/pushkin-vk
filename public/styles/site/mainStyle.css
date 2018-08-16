@@ -217,6 +217,21 @@ h4 {
     font-size: 250%;
 }
 
-.thumbnail button {
+form-logo img {
+    width: 15%;
+    opacity: 0.5;
+}
 
+#loginForm {
+    width: 75%;
+    margin: auto !important;
+    max-width: 700px;
+}
+
+#loginForm input {
+    margin: 2%;
+}
+
+.navbarTest {
+    background: rgba(0, 0, 0, 0.6)
 }

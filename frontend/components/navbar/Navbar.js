@@ -73,7 +73,7 @@ module.exports = class NavBar extends hyperHTML.Component {
                 let a = _LOCALS.user.name;
                 if (a) {
                     currentAuthor = hyperHTML.wire()`
-                                <li>
+                                <li style="font-size: 140%">
                                     Читатель ${a.first} ${a.last}
                                 </li>
                             `
