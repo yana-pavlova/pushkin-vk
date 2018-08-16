@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+* 
+{
+  margin: 0;
+  padding: 0;
+}
+
+/* @import url('https://fonts.googleapis.com/css?family=Amatic+SC'); */
 
 .quiz button,
 .quiz .quizQuestions ul.questionAnswers li,
@@ -15,7 +21,7 @@
 }
 
 .quiz {
-  font-family: 'Amatic SC',cursive;
+  font-family: 'Amatic';
   position: relative;
   font-size: 180%;
   margin: auto;
@@ -279,7 +285,7 @@
 display: flex;
 max-width: 100%;
 width: 100%;
-font-family: 'Amatic SC',cursive;
+font-family: 'Amatic';
 justify-content: space-around;
 flex-wrap: wrap;
 flex-direction: column;

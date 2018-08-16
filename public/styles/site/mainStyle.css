@@ -1,6 +1,11 @@
-/* @import url('https://fonts.googleapis.com/css?family=Amatic+SC'); */
-@import url('../../fonts/Amatic_SC/AmaticSC-Regular.ttf');
+* 
+{
+  margin: 0;
+  padding: 0;
+}
 
+/* @import url('https://fonts.googleapis.com/css?family=Amatic+SC'); */
+/* @import url('../../fonts/AmaticSC-Regular.woff'); */
 
 body {
     background: url('/images/backPushkin.png') center !important;
@@ -9,20 +14,20 @@ body {
 
 nav {
     color: white;
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Amatic';
     margin-bottom: 2%;
 }
 
 h4 {
     text-align: center;
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Amatic';
 }
 
 .mainP {
     color: white;
     font-size: 200%;
     text-align: center;
-    font-family: 'Amatic SC', 'Geneva', 'Arial', 'Helvetica', 'sans-serif';
+    font-family: 'Amatic', 'Geneva', 'Arial', 'Helvetica', 'sans-serif';
     margin-bottom: 5%;
     max-width: 85%;
     margin-right: auto;
@@ -109,7 +114,7 @@ a:active, li:active {
 
 #myModal, #myModal2, #myHelperModal {
     text-align: center;
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Amatic';
     font-size: 200% !important;
 }
 
@@ -175,7 +180,7 @@ h4 {
 
 .thumbnail a {
     color: black;
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Amatic';
     font-size: 150% !important;
 }
 
@@ -203,7 +208,7 @@ h4 {
 
 .flex_container p, h3 {
     text-align: center;
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Amatic';
     font-size: 200%;
 }
 
