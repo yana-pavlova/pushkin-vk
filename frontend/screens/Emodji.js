@@ -12,6 +12,23 @@ module.exports = class Emodji extends hyperHTML.Component {
 
                     <h1 id="quizHeader">Проверьте свои знания!</h1>
                     <div class="emodji" id="quiz-chooser">
+                                
+                                <div onclick="showQuiz('quiz21')" class="quiz-choose-card emodjiTest">
+                                    <h2>"Незнакомка" А.А. Блока</h2>
+                                </div>
+
+                                <div onclick="showQuiz('quiz20')" class="quiz-choose-card emodjiTest">
+                                    <h2>"Никого не будет в доме" Б.Л. Пастернака</h2>
+                                </div>
+
+                                <div onclick="showQuiz('quiz18')" class="quiz-choose-card emodjiTest">
+                                    <h2>"Письма римскому другу" И.А. Бродского (часть 1)</h2>
+                                </div>
+
+                                <div onclick="showQuiz('quiz19')" class="quiz-choose-card emodjiTest">
+                                    <h2>"Письма римскому другу" И.А. Бродского (часть 2)</h2>
+                                </div>
+
                                 <div onclick="showQuiz('quiz1')" class="quiz-choose-card emodjiTest">
                                     <h2>"Я вас любил" И.А. Бродского</h2>
                                 </div>
@@ -76,9 +93,8 @@ module.exports = class Emodji extends hyperHTML.Component {
                                 </div>
                     
                                 <div onclick="showQuiz('quiz17')" class="quiz-choose-card emodjiTest">
-                                    <h2>"Кога умирают кони - дышат" В.В. Хлебникова</h2>
+                                    <h2>"Когда умирают кони - дышат" В.В. Хлебникова</h2>
                                 </div>
-                    
                     </div>
 
                     <div id="quiz-container">
@@ -99,6 +115,10 @@ module.exports = class Emodji extends hyperHTML.Component {
                         <div id="quiz15" class="quiz"></div>
                         <div id="quiz16" class="quiz"></div>
                         <div id="quiz17" class="quiz"></div>
+                        <div id="quiz18" class="quiz"></div>
+                        <div id="quiz19" class="quiz"></div>
+                        <div id="quiz20" class="quiz"></div>
+                        <div id="quiz21" class="quiz"></div>
 
                     </div>
                 `

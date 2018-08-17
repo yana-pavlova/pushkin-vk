@@ -2537,6 +2537,890 @@ var Quiz17 = {
     a: `кони, травы, солнца, поют`
 }
 
+var Quiz18 = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             Нынче ветрено и <img class="emojiIcon" src=images/emodji/wavy_dash.png> с перехлёстом.
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             Скоро осень, все изменится в округе.<br>
+             Смена красок этих трогательней, Постум,
+                </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+             чем <img class="emojiIcon" src=images/emodji/dress.png> перемена у подруги.
+         </td>
+        <td>
+            <input>
+         </td>
+     </tr>
+     <tr>
+        <td>
+             <img class="emojiIcon" src=images/emodji/girl.png> тешит до известного предела --
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             дальше локтя не пойдешь или колена.<br>
+             Сколь же радостней прекрасное вне тела:<br>
+                ни объятья невозможны, ни измена!<br>
+        
+                ___<br>
+                </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+             <td>
+                     Посылаю тебе, Постум, эти <img class="emojiIcon" src=images/emodji/books.png>.
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Что в столице? Мягко стелют? <img class="emojiIcon" src=images/emodji/sleeping.png> не жестко?
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+     <tr>
+        <td>
+             Как там Цезарь? Чем он занят? Все интриги?
+         </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             Все интриги, вероятно, да <img class="emojiIcon" src=images/emodji/meat_on_bone.png>.
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+         <td>
+                 Я сижу в своем саду, горит <img class="emojiIcon" src=images/emodji/light.png>.
+             </td>
+         <td>
+             <input>
+         </td>
+      </tr>
+      <tr>
+             <td>
+                     Ни подруги, ни прислуги, ни знакомых.<br>
+                     Вместо слабых мира этого и сильных --<br>
+                        лишь согласное гуденье насекомых.<br>
+                
+                        ___<br>
+                
+                     Здесь лежит купец из Азии. Толковым<br>
+                        был купцом он -- деловит, но незаметен.
+                                </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     <img class="emojiIcon" src=images/emodji/death.jpeg> быстро -- лихорадка. По торговым
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     он делам сюда приплыл, а не за этим.<br>
+                     <br>
+                     Рядом с ним -- легионер, под грубым кварцем.<br>
+                        Он в сражениях империю прославил.
+                                </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Сколько раз могли <img class="emojiIcon" src=images/emodji/death.jpeg> ! а умер старцем.
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Даже здесь не существует, Постум, правил.<br>
+                     ___
+                         <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Пусть и вправду, Постум, курица не <img class="emojiIcon" src=images/emodji/bird.png>,
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     но с куриными мозгами хватишь горя.<br>
+                     Если выпало в Империи родиться,
+                                </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     лучше жить в глухой провинции у <img class="emojiIcon" src=images/emodji/sea.png>.
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И от Цезаря далеко, и от вьюги.<br>
+                     Лебезить не нужно, трусить, торопиться.<br>
+                  Говоришь, что все наместники -- ворюги?<br>
+                             </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+                 <td>
+                         Но ворюга мне милей, чем <img class="emojiIcon" src=images/emodji/blood.jpg>.
+                     </td>
+                 <td>
+                     <input>
+                 </td>
+              </tr>
+          <tr>
+             <td>
+                     ___
+                 </td>
+             <td>
+                 
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Этот <img class="emojiIcon" src=images/emodji/droplet.png> переждать с тобой, гетера,
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     я согласен, но давай-ка без торговли:<br>
+                     брать сестерций с покрывающего тела --<br>
+                        все равно что дранку требовать от кровли.<br>
+                
+             </td>
+             <td>
+                 
+             </td>
+          </tr>
+          <tr>
+                 <td>
+                         Протекаю, говоришь? Но где же <img class="emojiIcon" src=images/emodji/sea.png>?
+                     </td>
+                 <td>
+                     <input>
+                 </td>
+              </tr>
+          <tr>
+             <td>
+                     Чтобы лужу оставлял я -- не бывало.
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Вот найдешь себе какого-нибудь <img class="emojiIcon" src=images/emodji/man.png>,
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     он и будет протекать на покрывало.            </td>
+             <td>
+                 
+             </td>
+          </tr>
+                  <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, Quiz18, quiz18)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `волны, наряда, дева, книги, спать, обжорство, светильник, умер, убить, птица, моря, кровопийца, ливень, лужа, мужа`
+}
+
+var Quiz19 = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             Вот и прожили мы больше половины.
+         </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             Как сказал мне <img class="emojiIcon" src=images/emodji/older_man.png> раб перед таверной:
+         </td>
+        <td>
+            <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+             "Мы, <img class="emojiIcon" src=images/emodji/eyes.png>, видим лишь руины".
+         </td>
+        <td>
+            <input>
+         </td>
+     </tr>
+     <tr>
+        <td>
+             Взгляд, конечно, очень варварский, но верный.
+         </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             <br>
+             Был в <img class="emojiIcon" src=images/emodji/mountain.png>. Сейчас вожусь с большим букетом.
+             
+                </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+             <td>
+                     Разыщу большой кувшин, <img class="emojiIcon" src=images/emodji/droplet.png> налью им...
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Как там в Ливии, мой Постум, -- или где там?<br>
+                     Неужели до сих пор еще воюем?<br>
+             
+                     ___
+                             </td>
+             <td>
+             </td>
+          </tr>
+     <tr>
+        <td>
+             Помнишь, Постум, у наместника <img class="emojiIcon" src=images/emodji/girl.png>?
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             Худощавая, но с полными ногами.<br>
+             Ты с ней спал еще... Недавно стала жрица.
+                </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+         <td>
+                 Жрица, Постум, и общается с <img class="emojiIcon" src=images/emodji/innocent.png>.
+             </td>
+         <td>
+             <input>
+         </td>
+      </tr>
+      <tr>
+             <td>
+                     Приезжай, попьем <img class="emojiIcon" src=images/emodji/wine_glass.png>, закусим хлебом.
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Или сливами. Расскажешь мне известья.<br>
+                     Постелю тебе в саду под чистым небом
+                                </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     и скажу, как называются <img class="emojiIcon" src=images/emodji/star.png>.
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     ___<br>
+ 
+                     Скоро, Постум, друг твой, любящий сложенье,<br>
+                        долг свой давний вычитанию заплатит.
+                                </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Забери из-под подушки <img class="emojiIcon" src=images/emodji/moneybag.png>,
+             </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     там немного, но на похороны хватит.
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Поезжай на вороной своей <img class="emojiIcon" src=images/emodji/horse.png>
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     в дом гетер под городскую нашу стену.<br>
+                     Дай им цену, за которую любили,<br>
+                        чтоб за ту же и оплакивали цену.<br>
+                
+                        ___<br>
+                
+                     Зелень лавра, доходящая до дрожи.
+                                            </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+                 <td>
+                         <img class="emojiIcon" src=images/emodji/door.png> распахнутая, пыльное оконце,
+                     </td>
+                 <td>
+                     <input>
+                 </td>
+              </tr>
+          <tr>
+             <td>
+                     стул покинутый, оставленное ложе.
+                 </td>
+             <td>
+                 
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Ткань, впитавшая полуденное <img class="emojiIcon" src=images/emodji/sunny.png>.
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     <br>Понт шумит за черной изгородью пиний.               
+             </td>
+             <td>
+                 
+             </td>
+          </tr>
+          <tr>
+                 <td>
+                         Чье-то <img class="emojiIcon" src=images/emodji/ship.png> с ветром борется у мыса.
+                     </td>
+                 <td>
+                     <input>
+                 </td>
+              </tr>
+          <tr>
+             <td>
+                     На рассохшейся скамейке -- Старший Плиний.
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Дрозд щебечет в шевелюре <img class="emojiIcon" src=images/emodji/deciduous_tree.png>.
+             </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+                  <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, Quiz19, quiz19)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `старый, оглядываясь, горах, воды, сестрица, богами, вина, созвездья, сбереженья, кобыле, дверь, солнце, судно, кипариса`
+}
+
+var Quiz20 = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             Никого не будет в <img class="emojiIcon" src=images/emodji/house.png>,
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             Кроме сумерек. Один
+         </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+             <img class="emojiIcon" src=images/emodji/snowflake.png> день в сквозном проеме
+         </td>
+        <td>
+            <input>
+         </td>
+     </tr>
+     <tr>
+        <td>
+             Незадёрнутых гардин.<br>
+             <br>
+             Только белых мокрых комьев<br>
+             Быстрый промельк моховой,
+                     </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             Только крыши, <img class="emojiIcon" src=images/emodji/cloud-with-snow.png>, и, кроме            
+                </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+             <td>
+                     Крыш и снега, никого.<br>
+                     <br>
+                     И опять зачертит иней,<br>
+                     И опять завертит мной<br>
+                     Прошлогоднее унынье
+                                     </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И дела <img class="emojiIcon" src=images/emodji/snowman.png> иной.
+             </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+     <tr>
+        <td>
+             <br>
+             И опять кольнут доныне<br>
+             Неотпущенной виной,<br>
+             И окно по крестовине<br>
+             Сдавит голод дровяной.<br>
+             <br>
+             Но нежданно по портьере<br>
+             Пробежит сомненья дрожь,-
+         </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             <img class="emojiIcon" src=images/emodji/silent.png> шагами меря.
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+         <td>
+                 Ты, как будущность, войдешь.
+             </td>
+         <td>
+         </td>
+      </tr>
+      <tr>
+             <td>
+                     <br>Ты появишься из <img class="emojiIcon" src=images/emodji/door.png>
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     В чем-то белом, без причуд,<br>
+                     В чем-то, впрямь из тех материй,<br>
+                     Из которых хлопья шьют.<br>    
+             </td>
+             <td>
+             </td>
+          </tr>
+                  <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, Quiz20, quiz20)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `доме, зимний, снег, зимы, тишину, двери`
+}
+
+var Quiz21 = {
+    q: `<table border="0">
+    <tr>
+     <th>Наши вопросы</th>
+     <th>Ваши ответы</th>
+    </tr>
+    <tr>
+     <td>
+             По <img class="emojiIcon" src=images/emodji/night-with-stars.png> над ресторанами
+         </td>
+     <td>
+         <input>
+     </td>
+    </tr>
+    <tr>
+        <td>
+             Горячий воздух дик и глух,
+         </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+             И правит окриками <img class="emojiIcon" src=images/emodji/tropical_drink.png>
+         </td>
+        <td>
+            <input>
+         </td>
+     </tr>
+     <tr>
+        <td>
+             Весенний и тлетворный дух.<br>
+             Вдали, над пылью переулочной,
+                                 </td>
+        <td>
+        </td>
+     </tr>
+     <tr>
+        <td>
+             Над скукой загородных <img class="emojiIcon" src=images/emodji/house_with_garden.png>,
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+             <td>
+                     Чуть золотится крендель булочной,
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И раздается <img class="emojiIcon" src=images/emodji/baby.png> плач.
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+     <tr>
+        <td>
+             И каждый вечер, за шлагбаумами,<br>
+             Заламывая котелки,
+                     </td>
+        <td>
+       </td>
+     </tr>
+     <tr>
+        <td>
+             Среди канав гуляют с <img class="emojiIcon" src=images/emodji/two_women_holding_hands.png>
+         </td>
+        <td>
+            <input>
+        </td>
+     </tr>
+     <tr>
+         <td>
+                 Испытанные остряки.<br>
+                 Над озером скрипят уключины,
+                             </td>
+         <td>
+         </td>
+      </tr>
+      <tr>
+             <td>
+                     И раздается <img class="emojiIcon" src=images/emodji/woman.png> визг,
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     А в <img class="emojiIcon" src=images/emodji/cloud.png>, ко всему приученный,
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Бессмысленно кривится диск.<br>
+                     И каждый вечер друг единственный
+                                     </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     В моем <img class="emojiIcon" src=images/emodji/wine_glass.png> отражен
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И влагой терпкой и таинственной,<br>
+                     Как я, смирен и оглушен.<br>
+                     А рядом у соседних столиков<br>
+                     Лакеи сонные торчат,<br>
+                                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И пьяницы с глазами <img class="emojiIcon" src=images/emodji/rabbit2.png>
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     «In vino Veritas!» кричат.
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И каждый вечер, в <img class="emojiIcon" src=images/emodji/alarm_clock.png> назначенный,
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     (Иль это только <img class="emojiIcon" src=images/emodji/sleeping.png> мне?)
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+                 <td>
+                         Девичий стан, шелками схваченный,<br>
+                         В туманном движется окне.<br>
+                         И медленно, пройдя меж пьяными,<br>
+                         Всегда без спутников, одна,<br>
+                         Дыша духами и туманами,<br>
+                         Она садится у окна.<br>
+                         И веют древними поверьями<br>
+                         Ее упругие шелка,
+                                             </td>
+                 <td>
+                 </td>
+              </tr>
+          <tr>
+             <td>
+                     И <img class="emojiIcon" src=images/emodji/womans_hat.png> с траурными перьями,
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И в <img class="emojiIcon" src=images/emodji/ring.png> узкая рука.
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И странной близостью закованный<br>
+                     Смотрю за темную вуаль,<br>
+                     И вижу берег очарованный<br>
+                     И очарованную даль.<br>
+                     Глухие тайны мне поручены,<br>
+                                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+                 <td>
+                         Мне чье-то <img class="emojiIcon" src=images/emodji/sunny.png> вручено,
+                     </td>
+                 <td>
+                     <input>
+                 </td>
+              </tr>
+          <tr>
+             <td>
+                     И все души моей излучины
+                 </td>
+             <td>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     Пронзило терпкое <img class="emojiIcon" src=images/emodji/wine_glass.png>.
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И перья страуса склоненные<br>
+                     В моем качаются мозгу,
+                                 </td>
+             <td>
+                 
+             </td>
+          </tr>
+          <tr>
+             <td>
+                     И <img class="emojiIcon" src=images/emodji/eyes.png> синие бездонные
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+          <tr>
+                 <td>
+                         Цветут на дальнем берегу.<br>
+                         В моей душе лежит сокровище,
+                                             </td>
+                 <td>
+                 </td>
+              </tr>
+          <tr>
+             <td>
+                     И <img class="emojiIcon" src=images/emodji/key.png> поручен только мне!
+                 </td>
+             <td>
+                 <input>
+             </td>
+          </tr>
+                   <tr>
+                 <td>
+                         Ты право, пьяное чудовище!
+                     </td>
+                 <td>
+                 </td>
+              </tr>
+          <tr>
+                 <td>
+                         Я знаю: истина в <img class="emojiIcon" src=images/emodji/wine_glass.png>.                                            </td>
+                 </td>
+                 <td>
+                     <input>
+                 </td>
+              </tr>
+ 
+                      <tr>
+             <td>
+                 <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+             </td>
+             <td>
+                 <button class="btn-show-results" onclick="showResults(event, Quiz21, quiz21)">
+                     <a href="/emodji">Узнать результаты</a>
+                 </button>
+             </td>
+         </tr>
+ </table>`,
+    a: `вечерам, пьяными, дач, детский, дамами, женский, небе, стакане, кроликов, час, снится, шляпа, кольцах, солнце, вино, очи, ключ, вине`
+}
+
 function showResults(event, quizNumber, quiz) {
     event.preventDefault();
     let userAnswers = [];
@@ -2629,6 +3513,14 @@ var quiz16 = $("#quiz16");
 quiz16.hide();
 var quiz17 = $("#quiz17");
 quiz17.hide();
+var quiz18 = $("#quiz18");
+quiz18.hide();
+var quiz19 = $("#quiz19");
+quiz19.hide();
+var quiz20 = $("#quiz20");
+quiz20.hide();
+var quiz21 = $("#quiz21");
+quiz21.hide();
 
 function showQuiz(type, that) {
     $('#quiz-chooser').hide();
@@ -2720,6 +3612,26 @@ function showQuiz(type, that) {
             quizHeader.text('Угадай слово по эмодзи');
             quiz17.append(Quiz17.q);
             quiz17.show();
+            break;
+        case 'quiz18':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz18.append(Quiz18.q);
+            quiz18.show();
+            break;
+        case 'quiz19':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz19.append(Quiz19.q);
+            quiz19.show();
+            break;
+        case 'quiz20':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz20.append(Quiz20.q);
+            quiz20.show();
+            break;
+        case 'quiz21':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz21.append(Quiz21.q);
+            quiz21.show();
             break;
         }
 }
