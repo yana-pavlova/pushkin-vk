@@ -147,6 +147,9 @@ video, img {
     margin: 1%;
     /* padding-right: 10%;
     padding-left: 10%; */
+    max-height: 500px;
+    width: auto;
+    max-width: 100%;
 }
 
 iframe {
