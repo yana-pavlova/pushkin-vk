@@ -13,6 +13,10 @@ module.exports = class Emodji extends hyperHTML.Component {
                     <h1 id="quizHeader">Проверьте свои знания!</h1>
                     <div class="emodji" id="quiz-chooser">
                     
+                                <div onclick="showQuiz('quiz26')" class="quiz-choose-card emodjiTest">
+                                    <h2>"Холмы" И.А. Бродского</h2>
+                                </div>
+                    
                                 <div onclick="showQuiz('quiz25')" class="quiz-choose-card emodjiTest">
                                     <h2>"Не отрекаются любя" В.М. Тушновой</h2>
                                 </div>
@@ -139,6 +143,7 @@ module.exports = class Emodji extends hyperHTML.Component {
                         <div id="quiz23" class="quiz"></div>
                         <div id="quiz24" class="quiz"></div>
                         <div id="quiz25" class="quiz"></div>
+                        <div id="quiz26" class="quiz"></div>
 
                     </div>
                 `

@@ -823,6 +823,7 @@ footer.login-footer {
 /* КНОПКА ПОКАЗАТЬ ЕЩЁ */
 
 #buttonDown {
+    font-family: Amatic;
     background: transparent;
     border:1px solid #ccc;
     text-align:center;
