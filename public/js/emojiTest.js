@@ -5208,6 +5208,175 @@ var Quiz26 = {
     a: `холма, церковь, водоём, облака, грузовика, ворона, мостам, холме, трава, коровы, языком, вилка, бутылка, кустам, кусты, ботинки, вода, свадеб, платьев, траве, закат, тучи, земли, колокол, сигаретой, холма, кусты, сон, земля, топором, кровь, сердца, пруд, женихи, зарёй, коровы, кровь, кустах, цветах, старуха, холму, коровы, пруду, дверь, пруда, смерть, вода, стебле, корове, смерть, вагоне, детей, взорах, город, свадьбы, смерть, бант, вороны, машины, мужчины, галстуки, церкви, холм, домах, розы, гроб, розы, реку, лесам, домам, холмы, земли, любовь, свет, кустах, тьмы, смерть, холмы`
 }
 
+var Quiz27 = {
+    q: `<table border="0">
+    <tr>
+        <td>
+            Я вас любил: <img class="emojiIcon" src=images/emodji/heart.png> ещё, быть может,
+        </td>
+        <td>
+            <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                В душе моей угасла не совсем;<br>
+                Но пусть она вас больше не тревожит;
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>Я не хочу <img class="emojiIcon" src=images/emodji/cry.png> вас ничем.
+        </td>
+        <td>
+            <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                Я вас любил <img class="emojiIcon" src=images/emodji/silent.png>, безнадежно,
+        </td>
+        <td>
+        <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            То <img class="emojiIcon" src=images/emodji/innocent.png>, то ревностью томим;
+        </td>
+        <td>
+            <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                Я вас любил так искренно, так нежно,
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>Как дай вам <img class="emojiIcon" src=images/emodji/angel.png> любимой быть другим.</td>
+        <td>
+            <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+           <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+        </td>
+        <td>
+           <button class="btn-show-results" onclick="showResults(event, Quiz27, quiz27)">
+               <a href="/emodji">Узнать результаты</a>
+           </button>
+        </td>
+    </tr>
+    </table>`,
+    a: `любовь, печалить, безмолвно, робостью, бог`
+}
+
+var Quiz28 = {
+    q: `<table border="0">
+    <tr>
+        <td>
+                Бессонница. Гомер. Тугие паруса.
+            </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                Я список <img class="emojiIcon" src=images/emodji/ship.png> прочел до середины:
+            </td>
+        <td>
+            <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                Сей длинный выводок, сей <img class="emojiIcon" src=images/emodji/train2.png> журавлиный,
+            </td>
+        <td>
+            <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                Что над Элладою когда-то поднялся.
+            </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                Как <img class="emojiIcon" src=images/emodji/bird.png> клин в чужие рубежи,-
+            </td>
+        <td>
+            <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                На головах царей <img class="emojiIcon" src=images/emodji/angel.png> пена,-
+            </td>
+        <td>
+            <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                Куда плывете вы? Когда бы не Елена,<br>
+                Что Троя вам одна, ахейские мужи?
+                    </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                И <img class="emojiIcon" src=images/emodji/sea.png>, и Гомер - всё движется любовью.
+            </td>
+        <td>
+            <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                Кого же слушать мне? И вот Гомер <img class="emojiIcon" src=images/emodji/silent.png>,
+        </td>
+        <td>
+            <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                И <img class="emojiIcon" src=images/emodji/sea.png> черное, витийствуя, шумит
+            </td>
+        <td>
+        <input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                И с тяжким грохотом подходит к изголовью.
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+           <button class="btn-end"><a href="/emodji">Сбросить тест</a></button>
+        </td>
+        <td>
+           <button class="btn-show-results" onclick="showResults(event, Quiz28, quiz28)">
+               <a href="/emodji">Узнать результаты</a>
+           </button>
+        </td>
+    </tr>
+    </table>`,
+    a: `кораблей, поезд, журавлиный, божественная, море, молчит, море`
+}
+
 function showResults(event, quizNumber, quiz) {
     event.preventDefault();
     let userAnswers = [];
@@ -5318,6 +5487,10 @@ var quiz25 = $("#quiz25");
 quiz25.hide();
 var quiz26 = $("#quiz26");
 quiz26.hide();
+var quiz27 = $("#quiz27");
+quiz27.hide();
+var quiz28 = $("#quiz28");
+quiz28.hide();
 
 function showQuiz(type, that) {
     $('#quiz-chooser').hide();
@@ -5454,6 +5627,16 @@ function showQuiz(type, that) {
             quizHeader.text('Угадай слово по эмодзи');
             quiz26.append(Quiz26.q);
             quiz26.show();
+            break;
+        case 'quiz27':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz27.append(Quiz27.q);
+            quiz27.show();
+            break;
+        case 'quiz28':
+            quizHeader.text('Угадай слово по эмодзи');
+            quiz28.append(Quiz28.q);
+            quiz28.show();
             break;
         }
 }

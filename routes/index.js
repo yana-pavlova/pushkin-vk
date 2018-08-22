@@ -35,6 +35,8 @@ exports = module.exports = function (app) {
     app.get('/settings', routes.views.settings);
     app.get('/tests', routes.views.tests);
     app.get('/tests/:id', routes.views.singleTest);
+    app.get('/guess', routes.views.guess);
+    app.get('/guess/:id', routes.views.singleGuess);
     app.get('/authors', routes.views.authors);
     app.get('/emodji', routes.views.emodji);
     

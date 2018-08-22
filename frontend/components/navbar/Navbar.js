@@ -91,16 +91,19 @@ module.exports = class NavBar extends hyperHTML.Component {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span> 
                 </button>
-                <a name="top" class="navbar-brand" href="/">Главная</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
+                <ul class="myLeftBar nav navbar-nav">
+                    <li><a href="/">Главная</a></li>
                     <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal2">О<span style="opacity: 0;">о</span>проекте</a></li>
                     <li><a class="aliveA" href="#" data-toggle="modal" data-target="#myModal">Контакты</a></li> 
-                    <li><a class=${this.activeSection == 'wall' ? 'aliveA active' : 'aliveA'} href="/wall">Стена</a></li> 
+                    <li><a class=${this.activeSection == 'wall' ? 'aliveA active' : 'aliveA'} href="/wall">Стена</a></li>
+                    <li><a class=${this.activeSection == 'authors' ? 'aliveA active' : 'aliveA'} href="/authors">Авторы</a></li> 
+                <!-- </ul>
+                <ul class="nav navbar-nav"> -->
                     <li><a class=${this.activeSection == 'tests' ? 'aliveA active' : 'aliveA'} href="/tests">Тесты</a></li> 
                     <li><a class=${this.activeSection == 'emodji' ? 'aliveA active' : 'aliveA'} href="/emodji">Эмодзи</a></li> 
-                    <li><a class=${this.activeSection == 'authors' ? 'aliveA active' : 'aliveA'} href="/authors">Авторы</a></li> 
+                    <li><a class=${this.activeSection == 'emodji' ? 'aliveA active' : 'aliveA'} href="/guess">Угадай текст</a></li> 
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

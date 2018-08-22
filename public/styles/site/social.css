@@ -724,6 +724,8 @@ footer.login-footer {
 
 #myNavbar {
     font-size: 130%;
+    max-width: 900px;
+    /* margin: auto; */
 }
 
 .register {
@@ -755,7 +757,7 @@ footer.login-footer {
 }
 
 .myLinkDropdownToggle {
-    float: left;
+    /* float: left; */
 }
 
 .navbar button:hover {
@@ -1032,6 +1034,9 @@ section a {
     align-items: flex-start;
     font-family: 'Amatic';
     font-size: 200% !important;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 2%;
 }
 
 .authorsBlock a:hover {
@@ -1046,6 +1051,10 @@ section a {
 .available {
     color: green;
     font-weight: bold;
+}
+
+#authorsContainer {
+    max-width: 700px;
 }
 
 /* СТИЛИ ДЛЯ НАВБАРА */
@@ -1100,4 +1109,8 @@ section a {
 
 .navbarTest {
     background: rgba(0, 0, 0, 0.6)
+}
+
+.myLeftBar {
+    max-width: 600px;
 }

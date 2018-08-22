@@ -1,0 +1,123 @@
+body {
+    height: 100%;
+}
+
+#guessText {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 2%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-family: Amatic;
+    font-size: 200%;
+}
+
+#guessText button {
+    font-size: 80% !important;
+}
+
+/* всё поле, относящееся к задающему утверждению */
+#guessContent {
+    min-height: 50%;
+}
+
+/* Аватар задающего утверждения */
+.guessPhoto {
+    width: 70%;
+    max-width: 50px;
+    border-radius: 50%;
+    margin: 10%;
+}
+
+/* Картинка в утверждении */
+.guessAnswerImg {
+    max-width: 500px;
+}
+
+.guessAnswer {
+    width: 75%;
+    margin: auto;
+}
+
+.guessPrompt {
+    display: flex;
+    width: 100%;
+}
+
+.guessImg, .empty {
+    width: 20%;
+    min-width: 50px;
+    /* background: yellow; */
+}
+
+#rules {
+    display: none;
+}
+
+.userContent {
+    /* background: gray; */
+    margin-top: 3%;
+}
+
+.userContent a {
+    color: white;
+}
+
+.userContent a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.guessPrompt a {
+    color: white;
+}
+
+.guessPrompt a:hover {
+    text-decoration: none;
+}
+
+.userContent input {
+    border: 1px solid rgba(216, 216, 216, 0.9);
+    border-radius: 10px;
+    background: rgba(216, 216, 216, 0.1);
+}
+
+.promptP {
+    font-weight: bold;
+}
+
+.oneGuess {
+    width: 20%;
+    min-width: 180px;
+    background: white;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 1%;
+    text-align: center;
+}
+
+.guestList {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-family: Amatic;
+    font-size: 150%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.guestList h4 {
+    font-weight: bold;
+}
+
+.guestList p {
+    font-size: 130%;
+}
+
+.guestList a:hover {
+    text-decoration: none;
+    color: black;
+}

@@ -14,9 +14,11 @@ module.exports = {
 		settings: './settings',
 		tests: './tests',
 		singleTest: './singleTest',
+		singleGuess: './singleGuess',
 		authors: './authors',
 		emodji: './emodji',
-		login: './login'
+		login: './login',
+		guess: './guess'
 	},
 
 	output: {
