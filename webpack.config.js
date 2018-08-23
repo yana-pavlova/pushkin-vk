@@ -77,10 +77,21 @@ module.exports = {
             	test: /\.js$/,
             	exclude: /(node_modules|bower_components)/,
             	use: {
-            		loader: 'babel-loader',
+					loader: 'babel-loader',
+					// exclude: /node_modules/,
             		options: {
             			presets: ['@babel/preset-env']
-            		}
+					}
+					
+					// options: {
+					// 	presets: [
+					// 	  ['env', {
+					// 		targets: {
+					// 		  browsers: "> 3%" // можно и указать конкретные браузеры
+					// 		}
+					// 	  }]
+					// 	]
+					// }
             	}
             }
         ]

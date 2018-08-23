@@ -1,5 +1,5 @@
 const hyperHTML = require('hyperhtml/cjs').default;
-import LoginDropdown from './LoginDropdown';
+const LoginDropdown = require('./LoginDropdown');
 
 module.exports = class NavBar extends hyperHTML.Component {
     constructor() {
