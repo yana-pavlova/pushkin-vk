@@ -1,11 +1,18 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 
-import Uppy from 'uppy/lib/core';
-import Dashboard from 'uppy/lib/plugins/Dashboard';
-import XHRUpload from 'uppy/lib/plugins/XHRUpload';
-import Webcam from 'uppy/lib/plugins/Webcam';
+// import Uppy from 'uppy/lib/core';
+// import Dashboard from 'uppy/lib/plugins/Dashboard';
+// import XHRUpload from 'uppy/lib/plugins/XHRUpload';
+// import Webcam from 'uppy/lib/plugins/Webcam';
 
-import imageToBlob from 'image-to-blob';
+// import imageToBlob from 'image-to-blob';
+
+const Uppy = require('uppy/lib/core');
+const Dashboard = require('uppy/lib/plugins/Dashboard');
+const XHRUpload = require('uppy/lib/plugins/XHRUpload');
+const Webcam = require('uppy/lib/plugins/Webcam');
+
+const imageToBlob = require('image-to-blob');
 
 let editorInstanceCounter = 0;
 // let editorHelperIsShow = false;
