@@ -245,13 +245,13 @@ module.exports = class PostEditor extends hyperHTML.Component {
             <div class='${this.class}' onconnected=${this} >
                 <textarea class='form-control' id='${this.textAreaId}' value=${this.post.content}></textarea>
                 <button class="btn btn-success btn-help"><a data-toggle="modal" data-target="#myHelperModal">Нужна помощь?</a></button>
-                    <div id="myHelperModal" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
+                <div id="myHelperModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
                                 <h4>Как оформить пост?</h4>
-                                </div>
-                                <div class="modal-body">
+                            </div>
+                            <div class="modal-body">
                                 <h2>Я должен делать ссылки на источник материала?</h2>
                                 <p>Вы не обязаны этого делать, однако мы призываем вас быть честными: используя чужой труд, оставьте ссылку на источник. Это необходимо также для того, чтобы нам было легче верифицировать информацию, которую вы решили опубликовать.</p>
                                 <h2>Как сделать ссылку?</h2>
@@ -266,13 +266,14 @@ module.exports = class PostEditor extends hyperHTML.Component {
                                 <p>Скопируйте его и вставьте в поле для публикации. Когда вы нажмёте кнопку "опубликовать", на странице вместо кода появится видео.</p>
                                 <h2>Остались вопросы?</h2>
                                 <p>Свяжитесь с нами по почте pushkinvk@gmail.com</p>
-                                </div>
-                                <div class="modal-footer">
+                            </div>
+                            <div class="modal-footer">
                                 <button type="button" class="btn btn-default my-btn-helper" data-dismiss="modal">Закрыть</button>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 ${this.buttons.map((b) => {
                     return hyperHTML.wire()`
                         <button class='${b.class}' onclick=${b.onClick}>${b.title}</button>

@@ -1,5 +1,6 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const NavBar = require('../components/navbar/Navbar');
+require('../components/Error');
 
 module.exports = class RegisterReader extends hyperHTML.Component {
     constructor(){
@@ -34,10 +35,12 @@ module.exports = class RegisterReader extends hyperHTML.Component {
 
         xhr.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
-                if (this.status == 200) window.location = '/login';
-                else {
-                    let e = JSON.parse(this.responseText);
+                let res = JSON.parse(this.responseText);
+                if (res.error) {
+                    window.errorWindow.showError(res.error);
+                    console.log(res);
                 }
+                else window.location = '/login';
             }
         }
 

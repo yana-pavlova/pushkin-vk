@@ -2,6 +2,7 @@ const hyperHTML = require('hyperhtml/cjs').default;
 const NavBar = require('../components/navbar/Navbar');
 const Posts = require('../components/Posts');
 const PostEditor = require('../components/PostEditor');
+require('../components/Error');
 
 const AUTHOR_DATE_OPTS = {
     // era: 'long',
@@ -145,7 +146,10 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
     addNewPost(e) {
         let contentValue = e.render().querySelector('textarea').value;
         contentValue = contentValue.split("\n").join("<br>");
-        console.log(contentValue);
+        if (contentValue.length > 2000) {
+            window.errorWindow.showError('Не больше 2000 символов.');
+            return;
+        }
         
         let queryArray = [];
         if (contentValue !== '') queryArray.push(`content=${contentValue}`);
@@ -164,10 +168,17 @@ module.exports = class AuthorsPage extends hyperHTML.Component {
         xhr.send();
         xhr.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
-                let newPost = JSON.parse(this.responseText);
-                that.state.posts.results.unshift(newPost.post);
-                that.state.uploadedFiles = [];
-                that.render();
+                let res = JSON.parse(this.responseText);
+                console.log(res);
+                if (res.error) {
+                    window.errorWindow.showError(res.error);
+                    console.log(res);
+                }
+                else {
+                    that.state.posts.results.unshift(res.post);
+                    that.state.uploadedFiles = [];
+                    that.render();
+                }
             }
         }
     }

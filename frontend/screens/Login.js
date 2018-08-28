@@ -1,5 +1,6 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const NavBar = require('../components/navbar/Navbar');
+require('../components/Error');
 
 module.exports = class Login extends hyperHTML.Component {
     constructor(state) {
@@ -22,6 +23,10 @@ module.exports = class Login extends hyperHTML.Component {
             if (this.readyState == XMLHttpRequest.DONE) {
                 let res = JSON.parse(this.responseText);
                 if (res.success) window.location = '/wall';
+                else {
+                    window.errorWindow.showError(res.message);
+                    console.log(res);
+                }
             }
         }
     }

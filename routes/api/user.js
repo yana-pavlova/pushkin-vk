@@ -5,19 +5,21 @@ let User = keystone.list('User');
 let Author = keystone.list('Author');
 
 const nodemailer = require('nodemailer');
-console.log(nodemailer);
+// console.log(nodemailer);
+
+const E = require('./ERRORS');
 
 // Create a User
 exports.create = function(req, res) {    
         let data = (req.method == 'POST') ? req.body : req.query;
         console.log('create user', data);
         
-        if (!data) return res.apiError('error', 'no data');
-        if (!data.name_first) return res.apiError('error', 'name required');
-        if (!data.name_last) return res.apiError('error', 'name required');
-        if (!data.email) return res.apiError('error', 'username required');
-        if (!data.password) return res.apiError('error', 'password required');
-        if (!data.author) return res.apiError('error', 'author required');
+        if (!data) return res.apiError('Не указаны дынные.', 'no data');
+        if (!data.name_first) return res.apiError('Не указано имя.', 'name required');
+        if (!data.name_last) return res.apiError('Не указано имя.', 'name required');
+        if (!data.email) return res.apiError('Не указан e-mail.', 'username required');
+        if (!data.password) return res.apiError('Не указан пароль.', 'password required');
+        if (!data.author) return res.apiError('Не указан автор.', 'author required');
 
         // EMAIL
         nodemailer.createTestAccount((err, account) => {
@@ -66,9 +68,9 @@ exports.create = function(req, res) {
         let newUser = new User.model();
 
         Author.model.findById(data.author).exec((err, author) => {
-            if (err) return res.apiError('database error', err);
-            if (!author) return res.apiError('error', 'no author');
-            if (author.hasOwnProperty('user')) return res.apiError('error', 'author is already chosen by another user');
+            if (err) return res.apiError(E.INNER_ERROR, err);
+            if (!author) return res.apiError('Не указан автор', 'no author');
+            if (author.hasOwnProperty('user')) return res.apiError('Автор уже занят.', 'author is already chosen by another user');
             
             let content = {
                 authors: [author],
@@ -83,10 +85,10 @@ exports.create = function(req, res) {
             }
 
             newUser.getUpdateHandler(req).process(content, function(err) {
-                if (err) return res.apiError('error', err);
+                if (err) return res.apiError(E.INNER_ERROR, err);
                 
                 author.getUpdateHandler(req).process({user: newUser}, function(err){
-                    if (err) return res.apiError('error', err);
+                    if (err) return res.apiError(E.INNER_ERROR, err);
                     
                     res.apiResponse('ok')
                 })  
@@ -102,15 +104,15 @@ exports.changeCurrentAuthor = function(req, res) {
         let data = (req.method == 'POST') ? req.body : req.query;
         console.log('change current author', data);
 
-        if (!data) return res.apiError('error', 'no data');
-        if (!data.author) return res.apiError('error', 'author required');
+        if (!data) return res.apiError('Не указаны данные.', 'no data');
+        if (!data.author) return res.apiError('Не указан автор.', 'author required');
         
         User.model.findById(req.user.id).exec((err, user) => {
-            if (err) return res.apiError('database error', err);
-            if (user.currentAuthor == data.author) return res.apiError('error', 'nothing to change, he is your current author');
+            if (err) return res.apiError(E.INNER_ERROR, err);
+            if (user.currentAuthor == data.author) return res.apiError('Нельзя сменить автора.', 'nothing to change, he is your current author');
 
             Author.model.findById(data.author).exec((err, author) => {
-                if (err) return res.apiError('database error', err);
+                if (err) return res.apiError(E.INNER_ERROR, err);
                 
                 user.currentAuthor = author;
                 
@@ -130,11 +132,11 @@ exports.createReader = function(req, res) {
     let data = (req.method == 'POST') ? req.body : req.query;
     console.log('create user', data);
     
-    if (!data) return res.apiError('error', 'no data');
-    if (!data.name_first) return res.apiError('error', 'name required');
-    if (!data.name_last) return res.apiError('error', 'name required');
-    if (!data.email) return res.apiError('error', 'username required');
-    if (!data.password) return res.apiError('error', 'password required');
+    if (!data) return res.apiError('Не указаны данные.', 'no data');
+    if (!data.name_first) return res.apiError('Не указано имя.', 'name required');
+    if (!data.name_last) return res.apiError('Не указано имя.', 'name required');
+    if (!data.email) return res.apiError('Не указан e-mail.', 'username required');
+    if (!data.password) return res.apiError('Не указан пароль.', 'password required');
 
     // EMAIL
     nodemailer.createTestAccount((err, account) => {
@@ -192,7 +194,7 @@ exports.createReader = function(req, res) {
     }
 
     newUser.getUpdateHandler(req).process(content, function(err) {
-        if (err) return res.apiError('error', err);
+        if (err) return res.apiError(E.INNER_ERROR, err);
         res.apiResponse('ok'); 
     });
 

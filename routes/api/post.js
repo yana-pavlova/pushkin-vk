@@ -6,8 +6,10 @@ let PostComment = keystone.list('PostComment');
 let User = keystone.list('User');
 let Author = keystone.list('Author');
 
+const E = require('./ERRORS')
+
 const FIRST_PAGE = 1;
-const POST_PER_PAGE = 10;
+const POST_PER_PAGE = 20;
 const MAX_PAGES_PER_QUERY = 1;
 
 // list all posts and get popular authors
@@ -24,7 +26,7 @@ exports.listAndGetPopAuthors = function(req, res) {
             .populate({path: 'comments', options: { sort: { publishedDate: -1 } } })
             .populate({path: 'likes'})
             .exec(function(err, posts) {
-                if (err) return res.apiError('database error', err);
+                if (err) return res.apiError(E.INNER_ERROR, err);
                 
                 postAuthorCount = {};
                 posts.results.forEach((p) => {
@@ -61,7 +63,7 @@ exports.list = function(req, res) {
     // requireAdmin(req, res, () => {
         let data = (req.method == 'POST') ? req.body : req.query;
         let page = data.page;
-        if (!data) return res.apiError('error', 'no data');
+        if (!data) return res.apiError(E.INNER_ERROR, 'no data');
         if (!page) page = FIRST_PAGE;
         
         Post.paginate({
@@ -76,7 +78,7 @@ exports.list = function(req, res) {
             .populate({path: 'comments', options: { sort: { publishedDate: -1 } } })
             .populate({path: 'likes'})
             .exec(function(err, results) {
-                if (err) return res.apiError('database error', err);
+                if (err) return res.apiError(E.INNER_ERROR, err);
                 res.apiResponse({posts: results});
             });
 
@@ -88,15 +90,15 @@ exports.listByAuthor = function(req, res) {
         let data = req.params;
         let query = (req.method == 'POST') ? req.body : req.query;
         let page = query.page;
-        if (!data) return res.apiError('error', 'no data');
-        if (!data.author) return res.apiError('error', 'no data');
+        if (!data) return res.apiError(E.INNER_ERROR, 'no data');
+        if (!data.author) return res.apiError(E.INNER_ERROR, 'no data');
         if (!page) page = FIRST_PAGE;
         
         let authorSlug = data.author;
         console.log('post list by author', authorSlug);
         
         Author.model.find().where({'slug': authorSlug}).exec(function(err, author) {
-            if (err) return res.apiError('database error', err);
+            if (err) return res.apiError(E.INNER_ERROR, err);
             
             let authorId = author[0]._id;
             
@@ -116,7 +118,7 @@ exports.listByAuthor = function(req, res) {
                 .populate({path: 'author'})
                 // .populate({path: 'author', select: 'slug authorPhoto authorName'})
                 .exec(function(err, items) {
-                    if (err) return res.apiError('database error', err);
+                    if (err) return res.apiError(E.INNER_ERROR, err);
                     res.apiResponse({
                         posts: items,
                         author: author[0],
@@ -131,23 +133,23 @@ exports.create = function(req, res) {
     requireUser(req, res, () => {
         
         let data = (req.method == 'POST') ? req.body : req.query;
-        if (!data) return res.apiError('error', 'no data');
-        if (!data.content && !data.image) return res.apiError('error', 'no data');
-        if (!data.author) return res.apiError('error', 'no data');
+        if (!data) return res.apiError(E.INNER_ERROR, 'no data');
+        if (!data.content && !data.image) return res.apiError(E.INNER_ERROR, 'no data');
+        if (!data.author) return res.apiError(E.INNER_ERROR, 'no data');
         
         let item = new Post.model();
 
         //check authors user
         Author.model.findById(data.author).exec((err, author) => {
-            if (err) return res.apiError('database error', err);
-            if (author.user.toString() !== req.user.id) return res.apiError('user error');
+            if (err) return res.apiError(E.INNER_ERROR, err);
+            if (author.user.toString() !== req.user.id) return res.apiError(E.USER_ERROR);
 
             data.state = 'published';
             data.publishedDate = new Date();
             data.image = (data.image) ? {filename: data.image} : null;
 
             item.getUpdateHandler(req).process(data, function(err) {
-                if (err) return res.apiError('error', err);
+                if (err) return res.apiError(E.INNER_ERROR, err);
                 let i = item;
                 i.author = author;
 
@@ -166,14 +168,14 @@ exports.update = function(req, res) {
     requireUser(req, res, () => {
         Post.model.findById(req.params.id).exec(function(err, item) {
             
-            if (err) return res.apiError('database error', err);
-            if (!item) return res.apiError('not found');
+            if (err) return res.apiError(E.INNER_ERROR, err);
+            if (!item) return res.apiError(E.NOT_FOUND);
             
             // check if this post belongs to author curated by user
             Author.model.findById(item.author).exec((err, author) => {
 
-                if (err) return res.apiError('database error', err);
-                if (author.user.toString() !== req.user.id) return res.apiError('user error');
+                if (err) return res.apiError(E.INNER_ERROR, err);
+                if (author.user.toString() !== req.user.id) return res.apiError(E.USER_ERROR);
 
                 let data = (req.method == 'POST') ? req.body : req.query;
                 data.publishedDate = new Date();
@@ -187,7 +189,7 @@ exports.update = function(req, res) {
                             flashErrors: true,
                         },
                         function(err) {
-                            if (err) return res.apiError('create error', err);
+                            if (err) return res.apiError(E.INNER_ERROR, err);
                             res.apiResponse({
                                 post: item
                             });
@@ -202,17 +204,17 @@ exports.update = function(req, res) {
 exports.remove = function(req, res) {
     requireUser(req, res, () => {
         Post.model.findById(req.params.id).exec(function (err, item) {
-            if (err) return res.apiError('database error', err);
-            if (!item) return res.apiError('not found');
+            if (err) return res.apiError(E.INNER_ERROR, err);
+            if (!item) return res.apiError(E.NOT_FOUND);
 
             // check authors user
             Author.model.findById(item.author).exec((err, author) => {
 
-                if (err) return res.apiError('database error', err);
-                if (author.user.toString() !== req.user.id) return res.apiError('user error');
+                if (err) return res.apiError(E.INNER_ERROR, err);
+                if (author.user.toString() !== req.user.id) return res.apiError(E.USER_ERROR);
                 
                 item.remove(function (err) {
-                    if (err) return res.apiError('database error', err);
+                    if (err) return res.apiError(E.INNER_ERROR, err);
                     
                     return res.apiResponse({
                         success: true
@@ -227,8 +229,8 @@ exports.remove = function(req, res) {
 // Get Post by ID
 exports.get = function(req, res) {
     let data = req.params;
-    if (!data) return res.apiError('error', 'no data');
-    if (!data.id) return res.apiError('error', 'no data');
+    if (!data) return res.apiError(E.INNER_ERROR, 'no data');
+    if (!data.id) return res.apiError(E.INNER_ERROR, 'no data');
     console.log('get post by id', data.id);
 
     Post.model.findById(data.id)
@@ -236,8 +238,8 @@ exports.get = function(req, res) {
         .populate({path: 'comments', options: { sort: { publishedDate: -1 } } })
         .populate({path: 'likes'})
         .exec(function(err, item) {
-            if (err) return res.apiError('database error', err);
-            if (!item) return res.apiError('not found');
+            if (err) return res.apiError(E.INNER_ERROR, err);
+            if (!item) return res.apiError(E.NOT_FOUND);
             
             res.apiResponse({
                 post: item

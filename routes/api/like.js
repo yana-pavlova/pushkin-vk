@@ -4,23 +4,25 @@ let { requireAdmin, requireUser } = require('../auth');
 let Post = keystone.list('Post');
 let PostLike = keystone.list('PostLike');
 
+const E = require('./ERRORS');
+
 exports.likePost = function(req, res) {
     requireUser(req, res, () => {
         console.log('like by Author');
         
         let data = (req.method == 'POST') ? req.body : req.query;
         
-        if (!data) return res.apiError('error', 'no data');
-        if (!data.postId) return res.apiError('error', 'no postId');
-        if (!data.author) return res.apiError('error', 'no author');
+        if (!data) return res.apiError(E.INNER_ERROR, 'no data');
+        if (!data.postId) return res.apiError('Не указан пост.', 'no postId');
+        if (!data.author) return res.apiError('не указан автор.', 'no author');
 
         Post.model.findById(data.postId)
             .populate({path: 'likes'})
             .exec(function(err, post) {
-                if (err) return res.apiError('database error', err);
-                if (!post) return res.apiError('not found');
+                if (err) return res.apiError(E.INNER_ERROR, err);
+                if (!post) return res.apiError(E.NOT_FOUND);
 
-                if (post.author == data.author) return res.apiError('cant like your own post');
+                if (post.author == data.author) return res.apiError('Нельзя ставить лайк свей записи.');
                 
                 let likeIdToDelete;
                 let likesCount = post.likes.length;
@@ -44,7 +46,7 @@ exports.likePost = function(req, res) {
                     }
 
                     like.getUpdateHandler(req).process(likeData, function(err) {
-                        if (err) return res.apiError('error', err);
+                        if (err) return res.apiError(E.INNER_ERROR, err);
                         likesCount++;
 
                         res.apiResponse({
@@ -56,10 +58,10 @@ exports.likePost = function(req, res) {
                 } else {
                     console.log('delete like');
                     PostLike.model.findById(likeIdToDelete).exec(function (err, item) {
-                        if (err) return res.apiError('database error', err);
-                        if (!item) return res.apiError('not found');
+                        if (err) return res.apiError(E.INNER_ERROR, err);
+                        if (!item) return res.apiError(E.NOT_FOUND);
                         item.remove(function (err) {
-                            if (err) return res.apiError('database error', err);
+                            if (err) return res.apiError(E.NOT_FOUND, err);
                             likesCount--;
                             
                             res.apiResponse({
@@ -77,14 +79,14 @@ exports.likePostByReader = function(req, res) {
         console.log('like by User');
         
         let data = (req.method == 'POST') ? req.body : req.query;
-        if (!data) return res.apiError('error', 'no data');
-        if (!data.postId) return res.apiError('error', 'no postId');
+        if (!data) return res.apiError(E.INNER_ERROR, 'no data');
+        if (!data.postId) return res.apiError(E.INNER_ERROR, 'no postId');
 
         Post.model.findById(data.postId)
             .populate({path: 'likes'})
             .exec(function(err, post) {
-                if (err) return res.apiError('database error', err);
-                if (!post) return res.apiError('not found');
+                if (err) return res.apiError(E.INNER_ERROR, err);
+                if (!post) return res.apiError(E.NOT_FOUND);
                 
                 let likeIdToDelete;
                 let likesCount = post.likes.length;
@@ -108,7 +110,7 @@ exports.likePostByReader = function(req, res) {
                     }
 
                     like.getUpdateHandler(req).process(likeData, function(err) {
-                        if (err) return res.apiError('error', err);
+                        if (err) return res.apiError(E.INNER_ERROR, err);
                         likesCount++;
 
                         res.apiResponse({
@@ -120,10 +122,10 @@ exports.likePostByReader = function(req, res) {
                 } else {
                     console.log('delete like');
                     PostLike.model.findById(likeIdToDelete).exec(function (err, item) {
-                        if (err) return res.apiError('database error', err);
-                        if (!item) return res.apiError('not found');
+                        if (err) return res.apiError(E.INNER_ERROR, err);
+                        if (!item) return res.apiError(E.NOT_FOUND);
                         item.remove(function (err) {
-                            if (err) return res.apiError('database error', err);
+                            if (err) return res.apiError(E.INNER_ERROR, err);
                             likesCount--;
                             res.apiResponse({
                                 likesCount: likesCount,

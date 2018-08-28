@@ -119,7 +119,14 @@ class PostContent extends hyperHTML.Component {
         xhr.send();
         xhr.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
-                location.reload();
+                let res = JSON.parse(this.responseText);
+                if (res.error) {
+                    window.errorWindow.showError(res.error);
+                    console.log(res);
+                }
+                else {
+                    location.reload();
+                }
             }
         }
     }
@@ -160,10 +167,15 @@ class PostContent extends hyperHTML.Component {
         let that = this;
         xhr.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
-                
-                that.post.content = contentValue;
-                that.post.image = newImage;
-                
+                let res = JSON.parse(this.responseText);
+                if (res.error) {
+                    window.errorWindow.showError(res.error);
+                    console.log(res);
+                }
+                else {
+                    that.post.content = contentValue;
+                    that.post.image = newImage;
+                }
                 that.showAll = true;
                 that.isEdited = false;
                 that.render();
@@ -247,10 +259,14 @@ class PostContent extends hyperHTML.Component {
                 ${text}
                 ${image}
                 ${(_LOCALS.isSignedIn && _LOCALS.user.role == 'author' && this.post.author._id == _LOCALS.user.currentAuthor._id)
-                    ? new Dropdown([
-                        {text: 'редактировать', clickHandler: this.editContent, that: this}, 
-                        {text: 'удалить', clickHandler: this.deletePost, that: this}
-                    ])
+                    ? new Dropdown({
+                        title: 'Редактировать пост',
+                        className: '',
+                        buttons: [
+                            {text: 'редактировать', clickHandler: this.editContent, that: this}, 
+                            {text: 'удалить', clickHandler: this.deletePost, that: this}
+                        ]
+                    })
                     : ''
                 }
             `
@@ -299,7 +315,11 @@ class Like extends hyperHTML.Component {
         xhr.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
                 let res = JSON.parse(this.responseText);
-                if (res.error) return;
+                if (res.error) {
+                    window.errorWindow.showError(res.error);
+                    console.log(res);
+                    return;
+                };
                 that.state.likesCount = res.likesCount;
                 that.render();
             }
@@ -388,7 +408,7 @@ class CommentBlock extends hyperHTML.Component {
                                 <li>
                                     ${header}
                                     <div class='comment-content'>
-                                        ${comment.content}
+                                    ${new CommentContent(comment)}
                                     </div>
                                 </li>
                             `
@@ -413,8 +433,7 @@ class CommentBlock extends hyperHTML.Component {
                             <li>
                                 ${header}
                                 <div class='comment-content'>
-                                    ${comment.content}
-                                    
+                                    ${new CommentContent(comment)}
                                 </div>
                             </li>
                         `})}
@@ -428,7 +447,7 @@ class CommentBlock extends hyperHTML.Component {
                 ${(_LOCALS.isSignedIn)
                     ? hyperHTML.wire()`
                         <div class='add-new-comment'>
-                            ${new CommentEditor({
+                            ${new NewCommentEditor({
                                     that: this,
                                     autoFocus: false,
                                     content: '', 
@@ -446,6 +465,209 @@ class CommentBlock extends hyperHTML.Component {
         `
     }
 }
+
+class CommentContent extends hyperHTML.Component {
+    constructor(state) {
+        super();      
+        this.state = state;
+    }
+
+    editContent() {
+        this.isEdited = true;
+        this.render();
+    }
+
+    delete() {
+        let id = this.state._id;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/api/comment/' + id + '/remove', true);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            if (this.readyState == XMLHttpRequest.DONE) {
+                let res = JSON.parse(this.responseText);
+                if (!res.error) location.reload();
+                else {
+                    window.errorWindow.showError(res.error);
+                    console.log(res);
+                }
+            }
+        }
+
+    }
+
+    cancelEdition() {
+        this.isEdited = false;
+        this.render();
+    }
+
+    saveEdition(editor) {
+        
+        let contentValue = editor.element.querySelector('textarea').value;
+        if (contentValue.length > 1000) {
+            window.errorWindow.showError('Не больше 1000 символов.');
+            return;
+        }
+
+        let id = this.state._id;
+
+        let queryArray = [];
+        if (contentValue !== '') queryArray.push(`content=${contentValue}`);
+
+        if (queryArray.length === 0) return;
+
+        let conditions = queryArray.map((q) => q).join('&');
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/api/comment/' + id + '/update?' + conditions, true);
+        xhr.send();
+
+        let that = this;
+        xhr.onreadystatechange = function() {
+            if (this.readyState == XMLHttpRequest.DONE) {
+                let res = JSON.parse(this.responseText);
+
+                if (res.error){
+                    window.errorWindow.showError(res.error);
+                    console.log(res);
+                }
+                else {
+                    that.state.content = contentValue;
+                }
+                
+                that.showAll = true;
+                that.isEdited = false;
+                that.render();
+            }
+        }
+    }
+
+    onconnected(e) {
+        this.element = e.target;
+    }
+
+    render() {
+        // && _LOCALS.user.role == 'author' && this.post.author._id == _LOCALS.user.currentAuthor._id
+        let content = hyperHTML.wire()`
+                ${this.state.content}
+                ${(_LOCALS.isSignedIn && _LOCALS.user._id == this.state.user._id)
+                    ? new Dropdown({
+                        title: '...',
+                        className: 'btn dropdown-toggle',
+                        buttons: [
+                            {text: 'редактировать', clickHandler: this.editContent, that: this}, 
+                            {text: 'удалить', clickHandler: this.delete, that: this}
+                        ]
+                    })
+                    : ''
+                }
+            `
+        if (this.isEdited) {
+            content = hyperHTML.wire()`
+                ${new CommentEditor({
+                        that: this,
+                        autoFocus: true,
+                        className: '', 
+                        content: this.state.content,
+                        buttons: [
+                            {title: 'Сохранить', class: 'btn btn-primary', onClick: this.saveEdition}, 
+                            {title: 'Отменить', class: 'btn btnCancel', onClick: this.cancelEdition},
+                        ],
+                        actions: {}
+                    })
+                }
+            `
+        }
+
+        return this.html`
+            <div onconnected=${this}>${content}</div>
+        `
+    }
+
+}
+
+class CommentEditor extends hyperHTML.Component {
+    constructor(params){
+        super();
+        let that = params.that;
+        this.content = params.content;
+        this.className = params.className || '';
+        this.autoFocus = params.autoFocus || false;
+        this.buttons = params.buttons;
+        this.buttons.forEach((b) => {
+            b.onClick = b.onClick.bind(that, this);
+            b.class = b.class || 'btn';
+        })
+    }
+
+    onconnected(event) {
+        this.element = event.srcElement;
+        this.dashboardContainer = this.element.querySelector('.DashboardContainer');
+        
+        if (this.autoFocus) this.element.querySelector('textarea').focus();
+    }
+
+    render() {
+        return this.html`
+            <div class='${this.className}' onconnected=${this} >
+                <textarea class='form-control' value=${this.content}></textarea>
+                ${this.buttons.map((b) => {
+                    return hyperHTML.wire()`
+                        <button class='${b.class}' onclick=${b.onClick}>${b.title}</button>
+                    `
+                })}
+            </div>
+        `
+    }
+}
+
+class NewCommentEditor extends hyperHTML.Component {
+    
+    /**
+     * @param  {} params
+     * @param.that {} 
+     * @param.autoFocus bool focus on textarea after render
+     * @param.content string
+     * @param.class string
+     * @param.buttons [] 
+     * @param.buttons[i] {}
+     * @param.buttons[i].title string
+     * @param.buttons[i].class string
+     * @param.buttons[i].onClick function
+     */
+    constructor(params) {
+        super();
+        let that = params.that;
+        this.autoFocus = params.autoFocus || false;
+        this.content = params.content || '';
+        this.class = `editor ${params.class || ''}`;
+        this.buttons = params.buttons;
+        this.buttons.forEach((b) => {
+            b.onClick = b.onClick.bind(that, this);
+            b.class = b.class || 'btn';
+        })
+    }
+
+    onconnected(e) {
+        e.preventDefault();
+        this.element = e.target;
+        if (this.autoFocus) this.element.querySelector('textarea').focus();
+    }
+
+    render() {
+        return this.html`
+            <div class='${this.class}' onconnected=${this} >
+                <textarea class='form-control' value=${this.content}></textarea>
+                ${this.buttons.map((b) => {
+                    return hyperHTML.wire()`
+                        <button class='${b.class}' onclick=${b.onClick}>${b.title}</button>
+                    `
+                })}
+            </div>
+        `
+    }
+}
+
 
 const PUB_DATE_OPTS = {
     // era: 'long',
@@ -523,16 +745,18 @@ class ContentHeader extends hyperHTML.Component {
 class Dropdown extends hyperHTML.Component {
     constructor(params) {
         super();
-        this.params = params;
+        this.title = params.title || 'Изменить пост';
+        this.className = params.className || 'btn btn-success dropdown-toggle';
+        this.buttons = params.buttons;
     }
 
     render() {
         return this.html`
             <div class='post-tool-bar dropdown'>
-                <button class='btn btn-success dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true', aria-expanded='false'>Изменить пост</button>
+                <button class='btn btn-success dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true', aria-expanded='false'>${this.title}</button>
                 <span class='caret'></span>
                 <ul class='dropdown-menu'>
-                    ${ this.params.map( p => new DropdownButton(p.text, p.clickHandler, p.that) ) }
+                    ${ this.buttons.map( p => new DropdownButton(p.text, p.clickHandler, p.that) ) }
                 </ul>
             </div>
         `
@@ -553,50 +777,4 @@ class DropdownButton extends hyperHTML.Component {
     }
 }
 
-let editorInstanceCounter = 0;
-class CommentEditor extends hyperHTML.Component {
-    
-    /**
-     * @param  {} params
-     * @param.that {} 
-     * @param.autoFocus bool focus on textarea after render
-     * @param.content string
-     * @param.class string
-     * @param.buttons [] 
-     * @param.buttons[i] {}
-     * @param.buttons[i].title string
-     * @param.buttons[i].class string
-     * @param.buttons[i].onClick function
-     */
-    constructor(params) {
-        super();
-        editorInstanceCounter++;
-        let that = params.that;
-        this.autoFocus = params.autoFocus || false;
-        this.textAreaId = `editor-${editorInstanceCounter}`;
-        this.content = params.content || '';
-        this.class = `editor ${params.class || ''}`;
-        this.buttons = params.buttons;
-        this.buttons.forEach((b) => {
-            b.onClick = b.onClick.bind(that, this);
-            b.class = b.class || 'btn';
-        })
-    }
 
-    onconnected() {
-        if (this.autoFocus) document.getElementById(this.textAreaId).focus();
-    }
-
-    render() {
-        return this.html`
-            <div class='${this.class}' onconnected=${this} >
-                <textarea class='form-control' id='${this.textAreaId}' value=${this.content}></textarea>
-                ${this.buttons.map((b) => {
-                    return hyperHTML.wire()`
-                        <button class='${b.class}' onclick=${b.onClick}>${b.title}</button>
-                    `
-                })}
-            </div>
-        `
-    }
-}

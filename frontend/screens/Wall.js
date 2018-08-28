@@ -2,7 +2,7 @@ const hyperHTML = require('hyperhtml/cjs').default;
 const NavBar = require('../components/navbar/Navbar');
 const Posts = require('../components/Posts');
 const Related = require('../components/Related');
-
+require('../components/Error');
 
 module.exports = class Wall extends hyperHTML.Component {
     constructor(state, isSinglePost=false) {

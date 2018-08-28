@@ -104,14 +104,14 @@ module.exports = class NavBar extends hyperHTML.Component {
                     <li><a class=${this.activeSection == 'tests' ? 'aliveA active' : 'aliveA'} href="/tests">Тесты</a></li> 
                     <li><a class=${this.activeSection == 'emodji' ? 'aliveA active' : 'aliveA'} href="/emodji">Эмодзи</a></li> 
                     <li><a class=${this.activeSection == 'emodji' ? 'aliveA active' : 'aliveA'} href="/guess">Угадай текст</a></li> 
-                </ul>
+                <!-- </ul>
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right"> -->
                     <li><a class="aliveA" style="font-size:100%">
-                    ${currentAuthor}</a>
-                    </li>
-                    ${new LoginDropdown()}</a>
-                </ul>
+                        ${currentAuthor}</a>
+                        </li>
+                        ${new LoginDropdown()}</a>
+                    </ul>
                 </div>
             </div>
         </nav>

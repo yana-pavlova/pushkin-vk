@@ -724,7 +724,7 @@ footer.login-footer {
 
 #myNavbar {
     font-size: 130%;
-    max-width: 900px;
+    /* max-width: 900px; */
     /* margin: auto; */
 }
 
@@ -752,7 +752,7 @@ footer.login-footer {
 }
 
 .myDropDownMenu {
-    position: relative !important;
+    /* position: relative !important; */
     margin-top: 6%;
 }
 
@@ -1112,5 +1112,5 @@ section a {
 }
 
 .myLeftBar {
-    max-width: 600px;
+    /* max-width: 600px; */
 }

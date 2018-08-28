@@ -1,5 +1,6 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const NavBar = require('../components/navbar/Navbar');
+require('../components/Error');
 
 module.exports = class RegisterPage extends hyperHTML.Component {
     constructor(state) {

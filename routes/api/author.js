@@ -5,11 +5,13 @@ let Author = keystone.list('Author');
 let Post = keystone.list('Post');
 const nodemailer = require('nodemailer');
 
+const E = require('./ERRORS');
+
 exports.available = function(req, res) {
     Author.model.find()
         .populate('user')
         .exec((err, authors)  => {
-            if (err) return res.apiError('database error', err);
+            if (err) return res.apiError(E.INNER_ERROR, err);
             
             let available = []
             authors.forEach((a) => {
@@ -25,7 +27,7 @@ exports.available = function(req, res) {
 exports.getAll = function(req, res) {
     Author.model.find()
         .exec((err, authors)  => {
-            if (err) return res.apiError('database error', err);
+            if (err) return res.apiError(E.INNER_ERROR, err);
             
             res.apiResponse({
                 authors: authors,
@@ -35,7 +37,7 @@ exports.getAll = function(req, res) {
 
 exports.popular = function(req, res) {
     Post.model.find().populate('authors').exec((err, posts) => {
-        if (err) return res.apiError('database error', err);
+        if (err) return res.apiError(E.INNER_ERROR, err);
 
         postAuthorCount = {};
 
@@ -72,9 +74,9 @@ exports.newAuthorRequest = function(req, res) {
     let data = (req.method == 'POST') ? req.body : req.query;
     console.log('new author request', data);
 
-    if (!data) return res.apiError('error', 'no data');
-    if (!data.email) return res.apiError('error', 'email required');
-    if (!data.newAuthor) return res.apiError('error', 'newAuthor required')
+    if (!data) return res.apiError(E.INNER_ERROR, 'no data');
+    if (!data.email) return res.apiError('Не указан e-mail.', 'email required');
+    if (!data.newAuthor) return res.apiError('Не указан автор.', 'newAuthor required')
 
     // EMAIL
 
@@ -107,7 +109,7 @@ exports.newAuthorRequest = function(req, res) {
         // send mail with defined transport object
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                return res.apiError(error);
+                return res.apiError(E.INNER_ERROR, error);
             }
             console.log('Message sent: %s', info.messageId);
             // Preview only available when sending through an Ethereal account

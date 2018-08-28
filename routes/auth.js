@@ -12,7 +12,7 @@ exports.signin = function (req, res) {
         return res.json({
           success: false,
           session: false,
-          message: (err && err.message ? err.message : false) || 'Sorry, there was an issue signing you in, please try again.'
+          message: (err && err.message ? err.message : false) || 'Похоже, что-то пошло не так. Попробуйте еще раз.'
         });
       }
       
@@ -29,7 +29,7 @@ exports.signin = function (req, res) {
         return res.json({
           success: false,
           session: false,
-          message: (err && err.message ? err.message : false) || 'Sorry, there was an issue signing you in, please try again.'
+          message: (err && err.message ? err.message : false) || 'Похоже, что-то пошло не так. Попробуйте еще раз.'
         });
       });
       
