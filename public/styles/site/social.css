@@ -206,6 +206,8 @@ iframe {
     margin-bottom: 10px;
     font-family: 'Roboto Slab', serif;
     font-size: 70%;
+	word-wrap: break-word;
+	word-break: break-all;
 }
 
 .comments .img-user {
