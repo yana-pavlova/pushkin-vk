@@ -11,6 +11,8 @@ const E = require('./ERRORS');
 
 // Create a User
 exports.create = function(req, res) {    
+	return res.apiError(E.TEMPORARY_UNAVAILABLE); // HACK!
+	
         let data = (req.method == 'POST') ? req.body : req.query;
         console.log('create user', data);
         
@@ -99,6 +101,8 @@ exports.create = function(req, res) {
 
 // change current author to work with
 exports.changeCurrentAuthor = function(req, res) {
+    return res.apiError(E.TEMPORARY_UNAVAILABLE); // HACK!
+
     requireUser(req, res, () => {
 
         let data = (req.method == 'POST') ? req.body : req.query;
@@ -128,7 +132,9 @@ exports.changeCurrentAuthor = function(req, res) {
 
 
 // create reader
-exports.createReader = function(req, res) {    
+exports.createReader = function(req, res) {   
+    return res.apiError(E.TEMPORARY_UNAVAILABLE); // HACK!
+	
     let data = (req.method == 'POST') ? req.body : req.query;
     console.log('create user', data);
     
